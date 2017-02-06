@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+  <title>Dream.Code.Sleep.Repeat.</title>
+  <link id="favicon" rel="icon" type="image/x-icon" href='/images/shaka.png'>
+  <meta name="description" content="A cool website made by Powell-v2. No critters were hurt during the making of this website.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--Google Font-->
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet">
+  <!--Bootstrap CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!--SlickNav Responsive Menu-->
+  <link rel="stylesheet" href=' /assets/js/SlickNav/dist/slicknav.css' />
+  <!--My Custom Stylesheet-->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <link rel="canonical" href="http://localhost:4000/pages/contact.html">
+
+</head>
+
+  <body>
+
+    <div class="header bot_right">
+  <div class="container">
+    <div class="row">  
+      <ul class="nav pull-right" id="menu">
+        
+        
+          
+        
+          
+            <li>
+              <a href='/' >
+              Home
+              </a>
+            </li>
+          
+        
+          
+            <li>
+              <a href='/pages/skills.html' >
+              Skills
+              </a>
+            </li>
+          
+        
+          
+            <li>
+              <a href='/pages/contact.html'  class='active' >
+              Contact
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div> 
+  </div>
+</div>
+
+    <div class="contact_form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Get in touch</h1>
+        <p id='dots'>
+          <span style="color: #fe02a3;">·</span>
+          <span style="color: #ffb92b;">·</span>
+          <span style="color: #03b8af;">·</span>
+        </p>
+        <p>
+          I'd love to hear from you. Drop me a line via the form below.<br>
+          <span><i class='glyphicon glyphicon-flash'></i></span> Alternatively, you can shoot me a message on <a href='https://t.me/keepiteasy'>Telegram</a>.
+        </p>
+        <form action="//formspree.io/ermolinpv@gmail.com" method="POST">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-6" id="contact_form_subject">
+                <label class="sr-only" for="inputSubject">Subject</label>
+                <input type="text" class="form-control" id='inputSubject' placeholder="Subject (optional)" name='Subject' />
+              </div>    
+              <div class="col-xs-6">
+                <label class="sr-only" for="inputEmail">Email</label>
+                <input type="email" autofocus required class="form-control" id='inputEmail' placeholder="Email" name='_replyto' />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <textarea required class="form-control" rows="4" placeholder="Your message: Hey Pavel, ..." name='Message'></textarea>
+            </div>
+          </div>
+          <!-- Success message -->
+          <div class="alert alert-success alert-dismissable fade in" role="alert" id="success_message">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <em>Thanks for contacting me. I will reply shortly. Salute <i class="glyphicon glyphicon-thumbs-up"></i>
+            </em>
+          </div>
+          <button type="submit" value='Send' class="btn btn-default">
+            Submit <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+          </button>
+          <input type="hidden" name="_subject" value="New form submission from your website" />
+          <input type="text" name="_gotcha" style="display:none" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-4">
+        <h3>
+          Current location
+        </h3>
+        <p id="location">
+          Corralejo, Spain
+          <img src='/images/corralejo.png' id="location_icon" alt="Canaries" title="Canaries">
+        </p>
+      </div>
+      <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" id="connect">
+        <h3>
+          Connect
+        </h3>
+        <a href="https://github.com/Powell-v2">
+          <i class="fa fa-github fa-2x hvr-icon-spin" aria-hidden="true"></i>
+        </a>
+        <a href="http://stackoverflow.com/users/7200363/powell-v2">
+          <i class="fa fa-stack-overflow fa-2x hvr-icon-spin" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!--JavaScript-->
+      <!--FontAwesome-->
+    <script src='https://use.fontawesome.com/865b1aa1a0.js'></script>
+      <!--jQuery-->
+    <script src='/assets/js/jquery-3.1.1.min.js'></script>
+      <!--jQuery UI-->
+    <script src='/assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.js'></script>
+      <!--SlickNav Responsive Menu-->
+    <script src='/assets/js/SlickNav/dist/jquery.slicknav.min.js'></script>
+      <!--SlickNav's Settings-->
+    <script>
+      $(function(){
+        $('#menu').slicknav({
+          label: '',
+          duration: 400,
+          easingOpen: "easeOutBack"
+        });
+      });
+    </script>
+      <!--Bootstrap JS-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <!--My Custom JS-->
+    <script src='/assets/js/main.js'></script>
+      <!--Changing Tab's Title-->
+
+  </body>
+
+</html>

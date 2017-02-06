@@ -226,7 +226,7 @@ textarea.form-control {
 	margin: 0;
 }
 
-/* Icon Spin */
+/* Icon spin */
 .hvr-icon-spin {
   display: inline-block;
   vertical-align: middle;
@@ -276,15 +276,15 @@ textarea.form-control {
 	}
 
 	table tr td:first-child {
-		width: 40%;
+		width: 35%;
 	}
 
 	table tr td:nth-child(2) {
-		width: 60%;
+		width: 75%;
 	}
 
 	table {
-		margin-left: 3em;
+		margin-left: 1.5em;
 	}
 
 	table ul li img {

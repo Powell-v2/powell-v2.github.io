@@ -1,0 +1,31 @@
+---
+layout: default
+title: Blog
+navigation_weight: 3
+---
+<div class="blog_main">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+        <h1>
+          Most recent posts
+        </h1>
+        <p id='dots'>
+          <span style="color: #fe0259">·</span>
+          <span style="color: #ffd112">·</span>
+          <span style="color: #0bc96a">·</span>
+        </p>
+        <ul>
+        {% for post in site.posts %}
+          <li>
+            <h2>
+              <i class='glyphicon glyphicon-hand-right'></i> <a href="{{ post.url }}">{{ post.title }}</a>
+            </h2>
+            {{ post.excerpt }}
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

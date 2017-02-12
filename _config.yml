@@ -16,18 +16,31 @@
 title: Dream.Code.Sleep.Repeat.
 email: oatto.paul@gmail.com
 author: Powell-v2
+permalink: /pages/blog/:year/:month/:day/:title/
 description: > # this means to ignore newlines until "baseurl:"
   A cool website made by Powell-v2.
   No critters were hurt during the making of this website.
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # github_username: Powell-v2
+
+# Defaults
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      author: "Pavel Ermolin"
 
 # Build settings
 markdown: kramdown
 theme: minima
 gems:
   - jekyll-feed
+  - jemoji
 exclude:
   - Gemfile
   - Gemfile.lock

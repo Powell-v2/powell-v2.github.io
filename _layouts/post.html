@@ -1,0 +1,51 @@
+---
+layout: default
+---
+<div class="blog_post">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+          <header class="post-header">
+            <h1 class="post-title" itemprop="name headline">
+              {{ page.title | escape }}
+            </h1>
+            <p class="post-meta">
+              <!--Publish Date-->
+              <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                {{ page.date | date: "%B %d, %Y" }}
+              </time>
+              <!--Post Author-->
+              {% if page.author %}
+              • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
+              {% endif %}
+            </p>
+            <p id="read_time">
+              <em>
+              <!--Estimate Read Time-->
+              <i class="glyphicon glyphicon-time"></i>
+              {% assign words = content | number_of_words %}
+              {% if words < 360 %}
+                1 min
+              {% else %}
+                {{ words | divided_by:180 }} mins
+              {% endif %}
+              read
+              </em>
+            </p>
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            {{ content }}
+          </div>
+
+          {% if site.disqus.shortname %}
+            {% include disqus_comments.html %}
+          {% endif %}
+          
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

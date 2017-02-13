@@ -6,14 +6,22 @@ body, html {
 p {
   margin-bottom: 1.5em; }
 
-a:hover {
+a.link_underline {
+  color: #000;
   text-decoration: none;
-  color: #ef7006;
-  cursor: pointer; }
+  -webkit-box-shadow: inset 0px -4px #ffc555;
+  box-shadow: inset 0px -4px #ffc555;
+  -webkit-transition: background 0.5s cubic-bezier(0.35, 0.65, 0.65, 1);
+  transition: background 0.5s cubic-bezier(0.35, 0.65, 0.65, 1); }
+  a.link_underline:hover {
+    text-decoration: inherit;
+    background: #ffc555; }
 
+/* hide mobile menu when not on a mobile device */
 .slicknav_menu {
   display: none; }
 
+/* header & navigation */
 .header {
   background: url("../../images/header_bg.jpg") no-repeat center 33%;
   background-size: cover;
@@ -43,32 +51,35 @@ a:hover {
   background-image: -moz-linear-gradient(left, transparent, #ef7006);
   background-image: -o-linear-gradient(left, transparent, #ef7006); }
 
-.nav li {
-  display: inline-block;
-  text-transform: uppercase;
-  background-color: #ef7006;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#ef7006));
-  background-image: -webkit-linear-gradient(bottom, transparent, #ef7006);
-  background-image: -moz-linear-gradient(bottom, transparent, #ef7006);
-  background-image: -o-linear-gradient(bottom, transparent, #ef7006);
-  border-top-left-radius: 25px; }
-  .nav li a {
-    color: #fff; }
-    .nav li a:hover, .nav li a:focus {
-      background-color: transparent;
-      cursor: pointer; }
-.nav a.active:after {
-  top: 100%;
-  left: 35%;
-  border: solid transparent;
-  content: "";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-top-color: #ef7006;
-  border-width: 15px; }
+.nav {
+  /* active page triangle */ }
+  .nav li {
+    display: inline-block;
+    text-transform: uppercase;
+    background-color: #ef7006;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#ef7006));
+    background-image: -webkit-linear-gradient(bottom, transparent, #ef7006);
+    background-image: -moz-linear-gradient(bottom, transparent, #ef7006);
+    background-image: -o-linear-gradient(bottom, transparent, #ef7006);
+    border-top-left-radius: 25px; }
+    .nav li a {
+      color: #fff; }
+      .nav li a:hover, .nav li a:focus {
+        background-color: transparent;
+        cursor: pointer; }
+  .nav a.active:after {
+    top: 100%;
+    left: 31%;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-top-color: #ef7006;
+    border-width: 15px; }
 
+/* home page */
 .home {
   color: #000;
   margin: 0 auto;
@@ -109,6 +120,7 @@ a:hover {
     border-color: #ef7006;
     outline: none; }
 
+/* skills page */
 .skills {
   text-align: center;
   padding: 2em 0; }
@@ -134,6 +146,7 @@ table {
   table img {
     margin-bottom: 10px; }
 
+/* blog section */
 .blog_main {
   text-align: center;
   padding: 2em 0; }
@@ -160,6 +173,7 @@ table {
 #read_time {
   padding-bottom: 3em; }
 
+/* contact page */
 .contact_form {
   padding: 2em 0;
   text-align: center; }
@@ -183,6 +197,7 @@ table {
 .form-control:focus {
   border-color: #ffb92b; }
 
+/* footer section */
 .footer {
   text-align: center; }
   .footer .col-md-4 {
@@ -193,6 +208,9 @@ table {
     font-size: 1.3em;
     padding-bottom: 1.5em;
     margin: 0; }
+  .footer a {
+    color: #000;
+    text-decoration: none; }
 
 #connect a {
   color: #000;
@@ -205,6 +223,7 @@ table {
 #location_icon {
   margin-left: 10px; }
 
+/* icon spin effect */
 .hvr-icon-spin {
   display: inline-block;
   vertical-align: middle;
@@ -230,6 +249,7 @@ table {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); }
 
+/* Mobiles */
 @media (max-width: 425px) {
   #my_face {
     max-width: 150px;
@@ -248,6 +268,7 @@ table {
     table ul li img {
       width: 26px;
       height: 26px; } }
+/* Tablets */
 @media (max-width: 768px) {
   .header {
     display: none; }

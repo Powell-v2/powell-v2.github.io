@@ -1,5 +1,16 @@
 $primary_theme_color: #ef7006;
+$link_color: #ffc555;
 $std_top_bot_padding: 2em 0;
+
+@mixin box-shadow($type, $offset-x, $offset-y, $color) {
+  -webkit-box-shadow: $type $offset-x $offset-y $color;
+  box-shadow: $type $offset-x $offset-y $color;
+}
+
+@mixin transition($property, $duration, $timing-function) {
+  -webkit-transition: $property $duration $timing-function;
+  transition: $property $duration $timing-function;
+}
 
 body, html {
 	font-family: 'Source Code Pro', monospace;
@@ -11,11 +22,17 @@ p {
   margin-bottom: 1.5em;
 }
 
-a {
+a.link_underline {
+  color: #000;
+  text-decoration: none;
+  
+  @include box-shadow(inset, 0px, -4px, $link_color);
+  
+  @include transition(background, .5s, cubic-bezier(.35,.65,.65,1));
+  
   &:hover {
-    text-decoration: none;
-    color: $primary_theme_color;
-    cursor: pointer;
+    text-decoration: inherit;
+    background: $link_color; 
   }
 }
 
@@ -281,6 +298,11 @@ table {
     font-size: 1.3em;
     padding-bottom: 1.5em;
     margin: 0;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: none;
   }
 }
 

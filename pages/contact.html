@@ -16,7 +16,7 @@ navigation_weight: 4
         </p>
         <p>
           I'd love to hear from you. Drop me a line via the form below.<br>
-          <span><i class='glyphicon glyphicon-flash'></i></span> Alternatively, you can shoot me a message on <a class="link_underline" href='https://t.me/keepiteasy'>Telegram</a>.
+          <span><i class='glyphicon glyphicon-flash'></i></span> Alternatively, you can shoot me a message on <a class="link_underline" href='https://t.me/keepiteasy' target='_blank'>Telegram</a>.
         </p>
         <form action="//formspree.io/ermolinpv@gmail.com" method="POST">
           <div class="form-group">
@@ -27,13 +27,13 @@ navigation_weight: 4
               </div>    
               <div class="col-xs-6">
                 <label class="sr-only" for="inputEmail">Email</label>
-                <input type="email" autofocus required class="form-control" id='inputEmail' placeholder="Email" name='_replyto' />
+                <input type="email" autofocus required oninvalid="this.setCustomValidity('I need your email to respond')" class="form-control" id='inputEmail' placeholder="Email" name='_replyto' />
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <textarea required class="form-control" rows="4" placeholder="Your message: Hey Pavel, ..." name='Message'></textarea>
+              <textarea required oninvalid="this.setCustomValidity('Say something, empty messages are boring to read')" class="form-control" rows="4" id='inputMessage' placeholder="Your message: Hey Pavel, ..." name='Message'></textarea>
             </div>
           </div>
           <button type="submit" value='Send' class="btn btn-default">

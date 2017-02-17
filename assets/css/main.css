@@ -161,6 +161,11 @@ table {
   padding: 2em 0;
   text-align: justify; }
 
+.blog_post .img-responsive {
+  width: 100%;
+  margin-top: 2em;
+}
+
 .post-header {
   text-align: center; }
   .post-header h1 {

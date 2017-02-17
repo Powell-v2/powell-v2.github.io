@@ -9,5 +9,5 @@ For the time being, I intend to cover topics related to my coding journey: that 
 
 Alright. Let's spin it.
 
-<img class="img-responsive center-block" src="{% link images/blog/inception.png %}" />
+<img class="img-responsive center-block" src="{% link images/blog/spinner.gif %}" />
 

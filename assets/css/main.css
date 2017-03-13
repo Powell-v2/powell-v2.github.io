@@ -226,7 +226,9 @@ table {
   padding-bottom: 1em; }
 
 #location_icon {
-  margin-left: 10px; }
+  margin-left: 10px;
+  max-height: 32px;
+  max-width: 32px; }
 
 /* icon spin effect */
 .hvr-icon-spin {

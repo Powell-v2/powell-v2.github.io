@@ -26,8 +26,8 @@ navigation_weight: 4
                 <input type="text" class="form-control" id='inputSubject' placeholder="Subject (optional)" name='Subject' />
               </div>    
               <div class="col-xs-6">
-                <label class="sr-only" for="inputEmail">Email</label>
-                <input type="email" autofocus required oninvalid="this.setCustomValidity('I need your email to respond')" class="form-control" id='inputEmail' placeholder="Email" name='_replyto' />
+                <label class="sr-only" for="email">Email</label>
+                <input type="email" autofocus required oninvalid="this.setCustomValidity('I need your email to respond')" class="form-control" id='email' placeholder="Email" name='_replyto' />
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@ navigation_weight: 4
               <textarea required oninvalid="this.setCustomValidity('Write something, empty messages are boring to read')" oninput="setCustomValidity('')" class="form-control" rows="4" placeholder="Your message: Hey Pavel, ..." name='Message'></textarea>
             </div>
           </div>
-          <button type="submit" value='Send' class="btn btn-default">
+          <button type="submit" disabled id="submit" value='Send' class="btn btn-default">
             Submit <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
           </button>
           <input type="hidden" name="_subject" value="New form submission from your website" />

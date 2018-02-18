@@ -1,40 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
-
   {% include head.html %}
-
   <body>
-
-    {% include header.html %}
-
     {{ content }}
-
-    {% include footer.html %}
-
-    <!--JavaScript-->
-      <!--FontAwesome-->
-    <script src='https://use.fontawesome.com/865b1aa1a0.js'></script>
-      <!--jQuery-->
-    <script src='{% link assets/js/jquery-3.1.1.min.js %}'></script>
-      <!--jQuery UI-->
-    <script src='{% link assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.js %}'></script>
-      <!--SlickNav Responsive Menu-->
-    <script src='{% link assets/js/SlickNav/dist/jquery.slicknav.min.js %}'></script>
-      <!--SlickNav's Settings-->
-    <script>
-      $(function(){
-        $('#menu').slicknav({
-          label: '',
-          duration: 400,
-          easingOpen: "easeOutBack"
-        });
-      });
-    </script>
-      <!--Bootstrap JS-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-      <!--My Custom JS-->
-    <script src='{% link assets/js/main.js %}'></script>
-
+    <!-- GSAP tools -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/easing/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
+    <script src="{% link assets/js/main.js %}"></script>
   </body>
-
 </html>

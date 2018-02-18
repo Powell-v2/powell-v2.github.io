@@ -2,26 +2,19 @@
 layout: default
 ---
 
-<div class="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
-        <img id="my_face" class="img-responsive center-block img-circle" src='{% link images/portrait.jpg %}' alt="Pavel Ermolin" title="Pavel Ermolin">
-        <h1>
-          Hi, my name is Pavel Ermolin.<br>
-          Welcome to my personal website.
-        </h1><br>
-        <p>
-          In a nutshell, I am front-end web developer on a way to become a full-stack engineer (long live <a class="link_underline" href="http://media.steampowered.com/apps/valve/Valve_Handbook_LowRes.pdf" target="_blank" data-toggle="tooltip" data-placement="bottom" title="see page 46 ;o)">T-shaped people</a>).
-        </p>
-        <p>
-          My goals have never changed: have fun, do exceptional work, experiment, treat people right, tell the truth, have a positive impact on the world around me, give back and keep learning.
-        </p>
-        <p>
-          <i class='glyphicon glyphicon-asterisk'></i> Portfolio section is coming soon.
-        </p>
-        <a class="btn btn-default" id="my_skills" href="{% link pages/skills.html %}">My skills</a>
-      </div>
-    </div>
+<div class="main--container">
+  <div class="quote_face">
+    <img class="my_face" src="{% link assets/img/new_face.jpg %}" alt="Pavel Ermolin">
+    <p class="quote">Heyyo, I'm Pavel, creator of this website. Good job discovering this easter egg. I'll just hang out here for a while if you don't mind.</p>
   </div>
+  <div class="terminal">
+    <form action="index.html">
+      <label for="cmd_line"><i class="fas fa-angle-double-right"></i></label>
+      <input type="text" name="cmd_line" autofocus placeholder=""/>
+      <button type="submit">Run</button>
+      <button id="clear" type="button">Clear</button>
+    </form>
+    <div class="output"></div>
+  </div>
+  <canvas></canvas>
 </div>

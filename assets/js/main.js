@@ -3,6 +3,7 @@
   const mainContainer = document.querySelector('.main--container');
   const terminal      = document.querySelector('.terminal');
   const clearBtn      = document.querySelector('#clear');
+  const runBtn        = document.querySelector('#run');
   const input         = document.querySelector('input');
   const output        = document.querySelector('.output');
   const quote_face    = document.querySelector('.quote_face');
@@ -13,6 +14,11 @@
   let quoteFaceVisible = false;
   let quote = document.querySelector('.quote');
   let face  = document.querySelector('img');
+  // }}}
+
+  // detect device type {{{
+  const isMobile = window.navigator.userAgent.match(/Mobile/) &&
+                   window.navigator.userAgent.match(/Mobile/)[0] === "Mobile";
   // }}}
 
   // terminal's position {x,y} {{{
@@ -448,6 +454,57 @@
   // }
 
   /**
+   * Adds ripple effect to the button when pressed.
+   * @param {Object} e - Mouse event.
+   */
+  function sendRipple(e) {
+    const btn = e.target;
+    const rect = btn.getBoundingClientRect();
+    const btnWidth = rect.width;
+    let mousePosX = 0;
+    let mousePosY = 0;
+
+    if (isMobile) {
+    	mousePosX = e.changedTouches[0].pageX - rect.left;
+    	mousePosY = e.changedTouches[0].pageY - rect.top;
+    } else {
+      mousePosX = e.x - rect.left;
+      mousePosY = e.y - rect.top;
+    }
+
+    const initialCSS =  `position: absolute;
+                         top:${mousePosY - btnWidth}px;
+                         left:${mousePosX - btnWidth}px;
+                         width: ${btnWidth * 2}px;
+                         height: ${btnWidth * 2}px;
+                         border-radius: 50%;
+                         background: rgba(240, 240, 240, 0.6);
+                         transition: all linear .45s;
+                         transition-timing-function: ease-in;
+                         pointer-events: none;
+                         transform:scale(0)`
+
+    const ripple = document.createElement('span');
+    ripple.style.cssText = initialCSS;
+
+    // prevent circle from spreading across button's borders
+    btn.style.overflow = 'hidden';
+    btn.appendChild(ripple);
+
+    // add props necessary to kick off animation {{{
+    setTimeout(() => {
+      ripple.style.cssText += 'transform:scale(1); opacity: 0;';
+    }, 1);
+    // }}}
+
+    // self-destruct {{{
+    setTimeout(() => {
+      ripple.remove();
+    }, 450);
+    // }}}
+  }
+
+  /**
    * Intercepts submit event and processes the input.
    * @param {Object} e - Mouse event.
    */
@@ -518,7 +575,11 @@
     }
     // }}}
 
-    clearBtn.addEventListener('click', () => output.innerHTML = '');
+    clearBtn.addEventListener('click', (e) => {
+      sendRipple(e);
+      output.innerHTML = '';
+    });
+    runBtn.addEventListener('click', (e) => sendRipple(e));
 
     window.addEventListener('resize', resize);
     window.addEventListener('submit', handleSubmit);

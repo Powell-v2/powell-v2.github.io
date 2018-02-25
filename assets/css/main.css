@@ -237,6 +237,9 @@ img.my_face {
 .bold {
   font-weight: 700;
 }
+.blogpost--fetched {
+  margin-top: 1.75em;
+}
 @media (max-width: 320px) {
   form button {
     flex: 2;

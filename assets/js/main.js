@@ -54,15 +54,26 @@
   // }}}
 
   // content {{{
-  const about = `<p>I'm a skilled front end web dev branching out into full stack\
-  who is curious about adjacent disciplines - UX and design (long live\
-  <a class="link_underline" href="http://media.steampowered.com/apps/valve/Valve_Handbook_LowRes.pdf"\
-  target="_blank" data-toggle="tooltip" data-placement="bottom" title="see page 46">\
-  T-shaped people</a>). Putting on different hats isn't a problem for me, neither is\
-  collaboration as a part of a team. It is very clear to me that ultimately, any\
-  business is interested in reducing costs and increasing profits - and I always\
-  strive to do exactly that.</p>
+  const about = `
+  <p>
+    I'm a skilled front end web dev branching out into full stack\
+    who is curious about adjacent disciplines - UX and design (long live\
+    <a class="link_underline" href="http://media.steampowered.com/apps/valve/Valve_Handbook_LowRes.pdf"\
+    target="_blank" data-toggle="tooltip" data-placement="bottom" title="see page 46">\
+    T-shaped people</a>). Putting on different hats isn't a problem for me, neither is\
+    collaboration as a part of a team. I’m a strong collaborator thus always being\
+    transparent about progress on tasks, seeking feedback early and often. I believe\
+    that trust and respect are at the root of all great teamwork and welcome being challenged.
+  </p>
+
+  <p>
+    It is very clear to me that ultimately, any business is interested in reducing\
+    costs & increasing profits, and I always strive to do exactly that. But don’t expect\
+    me to cheat on customers - my moral compass is functioning and I take good care of it.
+  </p>
+
   <p>My personal goals have never changed:</p>
+
   <ul class="fa-ul">
       <li><span class="fa-li">${icons.sun}</span>Do exceptional work</li>
       <li><span class="fa-li">${icons.sun}</span>Have fun</li>
@@ -160,10 +171,17 @@
   <p>Among other things, I can:</p>
   <ul class="fa-ul">
     <li><span class="fa-li">${icons.sun}</span>Ride downhill on a bike and rapidly prototype in HTML/CSS</li>
-    <li><span class="fa-li">${icons.sun}</span>Speak 4 languages and write decent JavaScript</li>
-    <li><span class="fa-li">${icons.sun}</span>Travel without suitcase and master any framework required for the job in no time</li>
-    <li><span class="fa-li">${icons.sun}</span>Roll sushi and thoroughly test</li>
-  </ul>`
+    <li><span class="fa-li">${icons.sun}</span>Speak 4 languages (en, ru, es, cz) and write superb JavaScript</li>
+    <li><span class="fa-li">${icons.sun}</span>Pack light when travelling and master any framework required for the job in no time</li>
+    <li><span class="fa-li">${icons.sun}</span>Roll sushi and get shit done in general</li>
+  </ul>
+  <p>
+    I care deeply about frontend but don't be surprised to see me on the opposite side of the stack,\
+    tinkering with backend components. I'm empathetic towards customers and this naturally\
+    extends into my desire to deliver high-quality UX. New technologies rouse my curiosity\
+    and excite me. As a lifelong learner, I always seek out learning opportunities\
+    and enjoy teaching others about what I already know.
+  </p>`
 
   const tooltip = `<p>${icons.info} <span class="bold">\'powell -h\'</span> command reveals the list of all available\
   actions.</p>`

@@ -1,19 +1,21 @@
 (function() {
+  // DOM utils {{{
+  const $  = (selector) => document.querySelector(selector);
+  const $$ = (selector) => document.querySelectorAll(selector);
+  const on = (elem, type, listener) => elem.addEventListener(type, listener);
+  // }}}
+
   // DOM refs {{{
-  const mainContainer = document.querySelector('.main--container');
-  const terminal      = document.querySelector('.terminal');
-  const clearBtn      = document.querySelector('#clear');
-  const runBtn        = document.querySelector('#run');
-  const input         = document.querySelector('input');
-  const output        = document.querySelector('.output');
-  const quote_face    = document.querySelector('.quote_face');
-  // const quotes = [
-  //   'You never truly understand something until you can explain it to your grandma.',
-  //   '',
-  // ];
-  let quoteFaceVisible = false;
-  let quote = document.querySelector('.quote');
-  let face  = document.querySelector('img');
+  const canvas        = $('canvas');
+  const mainContainer = $('.main--container');
+  const terminal      = $('.terminal');
+  const clearBtn      = $('#clear');
+  const runBtn        = $('#run');
+  const input         = $('input');
+  const output        = $('.output');
+  const quote_face    = $('.quote_face');
+  const quote         = $('.quote');
+  const face          = $('.my_face');
   // }}}
 
   // detect device type {{{
@@ -26,17 +28,17 @@
   let tPositionLeft;
   // }}}
 
-  // switches for help blocks designed to avoid unnecessary DOM manipulation
-  // in case viewport is resized {{{
+  // switch for easter egg
+  let quoteFaceVisible = false;
+  // switches for help blocks - to avoid unnecessary DOM manipulation in case viewport is resized
   let setAsTable;
   let setAsParas;
   // }}}
 
   // scene related variables {{{
+  let ctx;
   let width;
   let height;
-  let canvas;
-  let ctx;
   let points;
   let target;
   // }}}
@@ -49,145 +51,145 @@
     telegram: '<i class="far fa-paper-plane">',
     email: '<i class="far fa-envelope"></i>',
     info: '<i class="fas fa-info-circle"></i>',
-    quote: '<i class="fas fa-quote-left fa-2x"></i>'
+    quote: '<i class="fas fa-quote-left fa-2x"></i>',
   }
   // }}}
 
-  // content {{{
-  const about = `
-  <p>
-    I'm a skilled front end web dev branching out into full stack\
-    who is curious about adjacent disciplines - UX and design (long live\
-    <a class="link_underline" href="http://media.steampowered.com/apps/valve/Valve_Handbook_LowRes.pdf"\
-    target="_blank" data-toggle="tooltip" data-placement="bottom" title="see page 46">\
-    T-shaped people</a>). Putting on different hats isn't a problem for me, neither is\
-    collaboration as a part of a team. I’m a strong collaborator thus always being\
-    transparent about progress on tasks, seeking feedback early and often. I believe\
-    that trust and respect are at the root of all great teamwork and welcome being challenged.
-  </p>
+  const content = {
+    about: `
+    <p>
+      I'm a skilled front end web dev branching out into full stack\
+      who is curious about adjacent disciplines - UX and design (long live\
+      <a class="link_underline" href="http://media.steampowered.com/apps/valve/Valve_Handbook_LowRes.pdf"\
+      target="_blank" data-toggle="tooltip" data-placement="bottom" title="see page 46">\
+      T-shaped people</a>). Putting on different hats isn't a problem for me, neither is\
+      collaboration as a part of a team. I’m a strong collaborator thus always being\
+      transparent about progress on tasks, seeking feedback early and often. I believe\
+      that trust and respect are at the root of all great teamwork and welcome being challenged.
+    </p>
 
-  <p>
-    It is very clear to me that ultimately, any business is interested in reducing\
-    costs & increasing profits, and I always strive to do exactly that. But don’t expect\
-    me to cheat on customers - my moral compass is functioning and I take good care of it.
-  </p>
+    <p>
+      It is very clear to me that ultimately, any business is interested in reducing\
+      costs & increasing profits, and I always strive to do exactly that. But don’t expect\
+      me to cheat on customers - my moral compass is functioning and I take good care of it.
+    </p>
 
-  <p>My personal goals have never changed:</p>
+    <p>My personal goals have never changed:</p>
 
-  <ul class="fa-ul">
-      <li><span class="fa-li">${icons.sun}</span>Do exceptional work</li>
-      <li><span class="fa-li">${icons.sun}</span>Have fun</li>
-      <li><span class="fa-li">${icons.sun}</span>Experiment</li>
-      <li><span class="fa-li">${icons.sun}</span>Treat people right</li>
-      <li><span class="fa-li">${icons.sun}</span>Tell the truth</li>
-      <li><span class="fa-li">${icons.sun}</span>Have a positive impact on the world around me</li>
-      <li><span class="fa-li">${icons.sun}</span>Give back</li>
-      <li><span class="fa-li">${icons.sun}</span>Keep learning</li>
-  </ul>`
+    <ul class="fa-ul">
+        <li><span class="fa-li">${icons.sun}</span>Do exceptional work</li>
+        <li><span class="fa-li">${icons.sun}</span>Have fun</li>
+        <li><span class="fa-li">${icons.sun}</span>Experiment</li>
+        <li><span class="fa-li">${icons.sun}</span>Treat people right</li>
+        <li><span class="fa-li">${icons.sun}</span>Tell the truth</li>
+        <li><span class="fa-li">${icons.sun}</span>Have a positive impact on the world around me</li>
+        <li><span class="fa-li">${icons.sun}</span>Give back</li>
+        <li><span class="fa-li">${icons.sun}</span>Keep learning</li>
+    </ul>`,
 
-  const blog = `<p>Latest posts:</p>
-                <ul class="fa-ul">
-                  <li><span class="fa-li">${icons.sun}</span><a class="blogpost" href="assets/posts/site_redesign.html">How I Redesigned My Website</a></li>
-                  <li><span class="fa-li">${icons.sun}</span><a class="blogpost" href="assets/posts/first_os_contrib.html">First Open Source Contrib</a></li>
-                  <li><span class="fa-li">${icons.sun}</span><a class="blogpost" href="assets/posts/inception.html">Inception</a></li>
-                </ul>`
+    blog: `<p>Latest posts:</p>
+           <ul class="fa-ul">
+             <li><span class="fa-li">${icons.sun}</span><a class="blogpost" href="assets/posts/site_redesign.html">How I Redesigned My Website</a></li>
+             <li><span class="fa-li">${icons.sun}</span><a class="blogpost" href="assets/posts/first_os_contrib.html">First Open Source Contrib</a></li>
+             <li><span class="fa-li">${icons.sun}</span><a class="blogpost" href="assets/posts/inception.html">Inception</a></li>
+           </ul>`,
 
-  const cmdNotRecognized = `<p>Sorry, but your command wasn't recognized. To see the full list of\
-  available commands, type <span class="bold">\'powell -h\'</span> into the command line and hit <span class='italic'>Run</span>.</p>`
+    cmdNotRecognized: `<p>Sorry, but your command wasn't recognized. To see the full list of\
+                          available commands, type <span class="bold">'powell -h'</span>\
+                          into the command line and hit <span class='italic'>Run</span>.</p>`,
 
-  const contact = `<p>Get in touch:</p>
-                   <ul class="fa-ul">
-                     <li><span class="fa-li">${icons.gh}</span><a href="https://github.com/Powell-v2" target="_blank">Github</a></li>
-                     <li><span class="fa-li">${icons.so}</span><a href="http://stackoverflow.com/story/powell-v2" target="_blank">StackOverflow</a></li>
-                     <li><span class="fa-li">${icons.telegram}</i></span><a href="https://t.me/keepiteasy" target="_blank">Telegram</a></li>
-                     <li><span class="fa-li">${icons.email}</span><a href="mailto:ermolinpv@gmail.com">Email</a></li>
-                   </ul>`
+    contact: `<p>Get in touch:</p>
+              <ul class="fa-ul">
+                <li><span class="fa-li">${icons.gh}</span><a href="https://github.com/Powell-v2" target="_blank">Github</a></li>
+                <li><span class="fa-li">${icons.so}</span><a href="http://stackoverflow.com/story/powell-v2" target="_blank">StackOverflow</a></li>
+                <li><span class="fa-li">${icons.telegram}</i></span><a href="https://t.me/keepiteasy" target="_blank">Telegram</a></li>
+                <li><span class="fa-li">${icons.email}</span><a href="mailto:ermolinpv@gmail.com">Email</a></li>
+              </ul>`,
 
-  const empty = `<p>Terminal expects a command to be entered. To see the full list of\
-  available commands, type <span class="bold">\'powell -h\'</span> into the command line and hit <span class='italic'>Run</span>.</p>`
+    empty: `<p>Terminal expects a command to be entered. To see the full list of\
+            available commands, type <span class="bold">'powell -h'</span> into\
+            the command line and hit <span class='italic'>Run</span>.</p>`,
 
-  const helpTable =  `<p><strong>Usage:</strong> powell [options]</p>
-                      <p><strong>Example:</strong> powell -a</p>
-                      <p><strong>Options:</strong></p>
-                      <table>
-                        <tr>
-                          <td>-a or --about</td>
-                          <td>Self-intro.</td>
-                        </tr>
-                        <tr>
-                          <td>-s or --skills</td>
-                          <td>My professional skills.</td>
-                        </tr>
-                        <tr>
-                          <td>-c or --contact</td>
-                          <td>Find out how to contact me.</td>
-                        </tr>
-                        <tr>
-                          <td>-b or --blog</td>
-                          <td>Shows most recent blog posts.</td>
-                        </tr>
-                        <tr>
-                          <td>-h or --help</td>
-                          <td>Displays list of all available commands.</td>
-                        </tr>
-                        <tr>
-                          <td>-v or --version</td>
-                          <td>Displays powell's version.</td>
-                        </tr>
-                        <tr>
-                          <td>-e or --emerge</td>
-                          <td>No description.</td>
-                        </tr>
-                      </table>`
+    helpTable: `<p><strong>Usage:</strong> powell [options]</p>
+                <p><strong>Example:</strong> powell -a</p>
+                <p><strong>Options:</strong></p>
+                <table>
+                  <tr>
+                    <td>-a or --about</td>
+                    <td>Self-intro.</td>
+                  </tr>
+                  <tr>
+                    <td>-s or --skills</td>
+                    <td>My professional skills.</td>
+                  </tr>
+                  <tr>
+                    <td>-c or --contact</td>
+                    <td>Find out how to contact me.</td>
+                  </tr>
+                  <tr>
+                    <td>-b or --blog</td>
+                    <td>Shows most recent blog posts.</td>
+                  </tr>
+                  <tr>
+                    <td>-h or --help</td>
+                    <td>Displays list of all available commands.</td>
+                  </tr>
+                  <tr>
+                    <td>-v or --version</td>
+                    <td>Displays powell's version.</td>
+                  </tr>
+                  <tr>
+                    <td>-e or --emerge</td>
+                    <td>No description.</td>
+                  </tr>
+                </table>`,
 
-  const helpParas = `<p><strong>Usage:</strong> powell [options]</p>
-                     <p><strong>Example:</strong> powell -a</p>
-                     <p><strong>Options:</strong></p>
-                     <p><span class='italic'>-a or --about</span></p>
-                     <p class="help--options__desc">Self-intro.</p>
-                     <p><span class='italic'>-s or --skills</span></p>
-                     <p class="help--options__desc">My professional skills.</p>
-                     <p><span class='italic'>-c or --contact</span></p>
-                     <p class="help--options__desc">Find out how to contact me.</p>
-                     <p><span class='italic'>-b or --blog</span></p>
-                     <p class="help--options__desc">Shows most recent blog posts.</p>
-                     <p><span class='italic'>-h or --help</span></p>
-                     <p class="help--options__desc">Lists all available commands.</p>
-                     <p><span class='italic'>-v or --version</span></p>
-                     <p class="help--options__desc">Displays powell's version.</p>
-                     <p><span class='italic'>-e or --emerge</span></p>
-                     <p class="help--options__desc">No description.</p>
-                     `
+     helpParas: `<p><strong>Usage:</strong> powell [options]</p>
+                 <p><strong>Example:</strong> powell -a</p>
+                 <p><strong>Options:</strong></p>
+                 <p><span class='italic'>-a or --about</span></p>
+                 <p class="help--options__desc">Self-intro.</p>
+                 <p><span class='italic'>-s or --skills</span></p>
+                 <p class="help--options__desc">My professional skills.</p>
+                 <p><span class='italic'>-c or --contact</span></p>
+                 <p class="help--options__desc">Find out how to contact me.</p>
+                 <p><span class='italic'>-b or --blog</span></p>
+                 <p class="help--options__desc">Shows most recent blog posts.</p>
+                 <p><span class='italic'>-h or --help</span></p>
+                 <p class="help--options__desc">Lists all available commands.</p>
+                 <p><span class='italic'>-v or --version</span></p>
+                 <p class="help--options__desc">Displays powell's version.</p>
+                 <p><span class='italic'>-e or --emerge</span></p>
+                 <p class="help--options__desc">No description.</p>`,
 
-  const skills = `<p>As the saying goes:</p>
-  <div class="saying">
-    <div>
-      ${icons.quote}
-    </div>
-    <div>
-      <p>A jack of all trades is a master of none ... but oftentimes better than a master of one.</p>
-    </div>
-  </div>
-  <p>Among other things, I can:</p>
-  <ul class="fa-ul">
-    <li><span class="fa-li">${icons.sun}</span>Ride downhill on a bike and rapidly prototype in HTML/CSS</li>
-    <li><span class="fa-li">${icons.sun}</span>Speak 4 languages (en, ru, es, cz) and write superb JavaScript</li>
-    <li><span class="fa-li">${icons.sun}</span>Pack light when travelling and master any framework required for the job in no time</li>
-    <li><span class="fa-li">${icons.sun}</span>Roll sushi and get shit done in general</li>
-  </ul>
-  <p>
-    I care deeply about frontend but don't be surprised to see me on the opposite side of the stack,\
-    tinkering with backend components. I'm empathetic towards customers and this naturally\
-    extends into my desire to deliver high-quality UX. New technologies rouse my curiosity\
-    and excite me. As a lifelong learner, I always seek out learning opportunities\
-    and enjoy teaching others about what I already know.
-  </p>`
+    skills: `<p>As the saying goes:</p>
+             <div class="saying">
+               <div>
+                 ${icons.quote}
+               </div>
+               <div>
+                 <p>A jack of all trades is a master of none ... but oftentimes better than a master of one.</p>
+               </div>
+             </div>
+             <p>Among other things, I can:</p>
+             <ul class="fa-ul">
+               <li><span class="fa-li">${icons.sun}</span>Ride downhill on a bike and rapidly prototype in HTML/CSS</li>
+               <li><span class="fa-li">${icons.sun}</span>Speak 4 languages (en, ru, es, cz) and write superb JavaScript</li>
+               <li><span class="fa-li">${icons.sun}</span>Pack light when travelling and master any framework required for the job in no time</li>
+               <li><span class="fa-li">${icons.sun}</span>Roll sushi and get shit done in general</li>
+             </ul>
+             <p>
+               I care deeply about frontend but don't be surprised to see me on the opposite side of the stack,\
+               tinkering with backend components. I'm empathetic towards customers and this naturally\
+               extends into my desire to deliver high-quality UX. New technologies rouse my curiosity\
+               and excite me. As a lifelong learner, I always seek out learning opportunities\
+               and enjoy teaching others about what I already know.
+             </p>`,
 
-  const tooltip = `<p>${icons.info} <span class="bold">\'powell -h\'</span> command reveals the list of all available\
-  actions.</p>`
+    tooltip: `<p>${icons.info} <span class="bold">'powell -h'</span> command reveals the list of all available actions.</p>`,
 
-  const version = '<p>Version 2.2.2.3</p>'
-  // }}}
+    version: '<p>Version 2.2.2.3</p>',
+  };
 
   /**
    * Constructs circles.
@@ -220,7 +222,7 @@
    * points, drawing dots.
    */
   function initMain() {
-    width = window.innerWidth;
+    width  = window.innerWidth;
     height = window.innerHeight;
     target = {
       x: width / 2,
@@ -233,9 +235,9 @@
     mainContainer.style.height = height + 'px';
     mainContainer.style.width  = width + 'px';
 
-    canvas = document.querySelector('canvas');
-    canvas.width = width;
+    canvas.width  = width;
     canvas.height = height;
+
     ctx = canvas.getContext('2d');
 
     // create points {{{
@@ -307,12 +309,12 @@
    * @param {integer} winWidth - Viewport's width.
    */
   function tailorInputPlaceholder(winWidth) {
-    if (winWidth < 360 || (winWidth >= 420 && winWidth < 480)) {
-      input.placeholder = 'Type command here';
-    } else if ((winWidth >= 360 && winWidth < 420) || (winWidth >= 480 && winWidth < 560)) {
-      input.placeholder = 'Type command here and tap \'Run\'';
-    } else if (winWidth >= 560) {
-      input.placeholder = 'Type command here and hit \'Run\' to execute it.';
+    if (winWidth < 375 || (winWidth > 420 && winWidth < 490)) {
+      input.placeholder = 'Type a command here';
+    } else if ((winWidth >= 375 && winWidth <= 420) || (winWidth >= 490 && winWidth < 580)) {
+      input.placeholder = 'Type a command here and hit \'Run\'';
+    } else if (winWidth >= 580) {
+      input.placeholder = 'Type a command here and hit \'Run\' to execute it';
     }
   }
 
@@ -321,11 +323,11 @@
    * separators, and for larger devices displays it as a table.
    */
   function tailorHelpBlocks() {
-    const helpBlocks = document.querySelectorAll('.help');
+    const helpBlocks = $$('.help');
     if (window.innerWidth < 645 && !setAsParas) {
-      if (document.querySelectorAll('.help').length !== 0) {
+      if ($$('.help').length !== 0) {
         for (let i = 0; i < helpBlocks.length; i++) {
-          helpBlocks[i].innerHTML = helpParas;
+          helpBlocks[i].innerHTML = content.helpParas;
           for (let j = 0; j < helpBlocks[i].childNodes.length; j++) {
             if ((helpBlocks[i].childNodes[j].nodeType === document.ELEMENT_NODE) &&
                 (helpBlocks[i].childNodes[j].className === 'help--options__desc')) {
@@ -341,7 +343,7 @@
     }
     else if (window.innerWidth >= 645 && !setAsTable) {
       for (let i = 0; i < helpBlocks.length; i++) {
-        helpBlocks[i].innerHTML = helpTable;
+        helpBlocks[i].innerHTML = content.helpTable;
         setAsTable = true;
         setAsParas = false;
       }
@@ -360,28 +362,28 @@
       terminal.style.height = window.innerHeight / 1.5 + 'px';
       terminal.style.width = window.innerWidth / 1.2 + 'px';
 
-      tPositionTop = (window.innerHeight - terminal.offsetHeight + face.offsetHeight) / 2;
+      tPositionTop  = (window.innerHeight - terminal.offsetHeight + face.offsetHeight) / 2;
       tPositionLeft = (window.innerWidth - terminal.offsetWidth) / 2;
 
-      terminal.style.top = tPositionTop + 'px';
+      terminal.style.top  = tPositionTop + 'px';
       terminal.style.left = tPositionLeft + 'px';
 
       let fPositionTop = (tPositionTop - face.offsetHeight) / 2;
 
       face.style.left = tPositionLeft + 'px';
-      face.style.top = fPositionTop + 'px';
+      face.style.top  = fPositionTop + 'px';
 
-      quote.style.left = tPositionLeft + face.offsetWidth + 'px';
-      quote.style.top = fPositionTop + face.offsetHeight / 5 + 'px';
+      quote.style.left        = tPositionLeft + face.offsetWidth + 'px';
+      quote.style.top         = fPositionTop + face.offsetHeight / 5 + 'px';
       quote.style.marginRight = tPositionLeft + 'px';
     } else {
       terminal.style.height = window.innerHeight / 1.5 + 'px';
-      terminal.style.width = window.innerWidth / 1.2 + 'px';
+      terminal.style.width  = window.innerWidth / 1.2 + 'px';
 
-      tPositionTop = (window.innerHeight - terminal.offsetHeight) / 2;
+      tPositionTop  = (window.innerHeight - terminal.offsetHeight) / 2;
       tPositionLeft = (window.innerWidth - terminal.offsetWidth) / 2;
 
-      terminal.style.top = tPositionTop + 'px';
+      terminal.style.top  = tPositionTop + 'px';
       terminal.style.left = tPositionLeft + 'px';
     }
   }
@@ -390,12 +392,15 @@
    * Resizes container, canvas and terminal based on viewport's dimensions.
    */
   function resize() {
-    width = window.innerWidth;
+    width  = window.innerWidth;
     height = window.innerHeight;
+
     mainContainer.style.height = height + 'px';
-    mainContainer.style.width = width + 'px';
-    canvas.width = width;
+    mainContainer.style.width  = width + 'px';
+
+    canvas.width  = width;
     canvas.height = height;
+
     resizeAndRecenterTerminal();
   }
 
@@ -415,9 +420,9 @@
    * Attaches onclick event listeners to every blog post link.
    */
   function transformLinksToFetchPosts() {
-    const blogposts = Array.from(document.querySelectorAll('.blogpost'));
+    const blogposts = Array.from($$('.blogpost'));
     blogposts.forEach((a) => {
-      a.addEventListener('click', fetchPost);
+      on(a, 'click', fetchPost);
     })
   }
 
@@ -427,8 +432,9 @@
    * @param {string|undefined} className - Optional CSS class.
    */
   function appendToOutputStream(html, className) {
-    const div = document.createElement('div');
+    const div  = document.createElement('div');
     let classN = 'output--block';
+
     if (className) {
       classN += ' ' + className;
     }
@@ -452,9 +458,10 @@
     quoteFaceVisible = true;
 
     tPositionTop = (window.innerHeight - terminal.offsetHeight + face.offsetHeight) / 2;
+
     let qPositionLeft = tPositionLeft + face.offsetWidth;
-    let fPositionTop = (tPositionTop - face.offsetHeight) / 2;
-    let qPositionTop = fPositionTop + face.offsetHeight / 5;
+    let fPositionTop  = (tPositionTop - face.offsetHeight) / 2;
+    let qPositionTop  = fPositionTop + face.offsetHeight / 5;
 
     if (window.innerWidth < 550) {
       quote.innerText = "Heyyo, I'm Pavel. Good job discovering this easter egg.";
@@ -477,9 +484,11 @@
    * @param {Object} e - Mouse event.
    */
   function sendRipple(e) {
-    const btn = e.target;
-    const rect = btn.getBoundingClientRect();
+    const btn      = e.target;
+    const rect     = btn.getBoundingClientRect();
     const btnWidth = rect.width;
+    const ripple   = document.createElement('span');
+
     let mousePosX = 0;
     let mousePosY = 0;
 
@@ -491,19 +500,18 @@
       mousePosY = e.y - rect.top;
     }
 
-    const initialCSS =  `position: absolute;
-                         top:${mousePosY - btnWidth}px;
-                         left:${mousePosX - btnWidth}px;
-                         width: ${btnWidth * 2}px;
-                         height: ${btnWidth * 2}px;
-                         border-radius: 50%;
-                         background: rgba(240, 240, 240, 0.6);
-                         transition: all linear .45s;
-                         transition-timing-function: ease-in;
-                         pointer-events: none;
-                         transform:scale(0)`
+    const initialCSS = `position: absolute;
+                        top:${mousePosY - btnWidth}px;
+                        left:${mousePosX - btnWidth}px;
+                        width: ${btnWidth * 2}px;
+                        height: ${btnWidth * 2}px;
+                        border-radius: 50%;
+                        background: rgba(240, 240, 240, 0.6);
+                        transition: all linear .45s;
+                        transition-timing-function: ease-in;
+                        pointer-events: none;
+                        transform:scale(0)`;
 
-    const ripple = document.createElement('span');
     ripple.style.cssText = initialCSS;
 
     // prevent circle from spreading across button's borders
@@ -533,43 +541,38 @@
 
     // empty string submitted {{{
     if (input.value.length === 0) {
-      appendToOutputStream(empty);
+      appendToOutputStream(content.empty);
     }
     // }}}
     else if (command === '--help' || command === '-h') {
       if (window.innerWidth < 570) {
-        appendToOutputStream(helpParas, 'help');
+        appendToOutputStream(content.helpParas, 'help');
         setAsParas = true;
       } else {
-        appendToOutputStream(helpTable, 'help');
+        appendToOutputStream(content.helpTable, 'help');
         setAsTable = true;
       }
     }
     else if (command === '--version' || command === '-v') {
-      appendToOutputStream(version);
+      appendToOutputStream(content.version);
     }
     else if (command === '--blog' || command === '-b') {
-      appendToOutputStream(blog, 'blogposts');
+      appendToOutputStream(content.blog, 'blogposts');
     }
     else if (command === '--contact' || command === '-c') {
-      appendToOutputStream(contact);
+      appendToOutputStream(content.contact);
     }
     else if (command === '--about' || command === '-a') {
-      appendToOutputStream(about);
+      appendToOutputStream(content.about);
     }
     else if (command === '--skills' || command === '-s') {
-      appendToOutputStream(skills);
+      appendToOutputStream(content.skills);
     }
     else if (command === '--emerge' || command === '-e') {
-      if (!quoteFaceVisible) {
-        flyFaceIn();
-      }
-      // else {
-      //   replaceQuote();
-      // }
+      if (!quoteFaceVisible) flyFaceIn();
     }
     else {
-      appendToOutputStream(cmdNotRecognized);
+      appendToOutputStream(content.cmdNotRecognized);
     }
 
     // Always scroll to the bottom of the terminal to show the result of the output {{{
@@ -585,25 +588,25 @@
   function initListeners() {
     // enable interaction with bg only on laptop/destop {{{
     if (!('ontouchstart' in window)) {
-      window.addEventListener('mousemove', mouseMove);
+      on(window, 'mousemove', mouseMove);
     }
     // }}}
     // wire up touch events for mobile devices {{{
     if ('ontouchstart' in window) {
-      clearBtn.addEventListener('touchstart', () => output.innerHTML = '');
+      on(clearBtn, 'touchstart', () => output.innerHTML = '');
     }
     // }}}
 
-    clearBtn.addEventListener('click', (e) => {
+    on(clearBtn, 'click', (e) => {
       sendRipple(e);
       output.innerHTML = '';
     });
-    runBtn.addEventListener('click', (e) => sendRipple(e));
+    on(runBtn, 'click', (e) => sendRipple(e));
 
-    window.addEventListener('resize', resize);
-    window.addEventListener('submit', handleSubmit);
-    window.addEventListener('load', () => {
-      appendToOutputStream(tooltip, 'tooltip');
+    on(window, 'resize', resize);
+    on(window, 'submit', handleSubmit);
+    on(window, 'load', () => {
+      appendToOutputStream(content.tooltip, 'tooltip');
     })
   }
 

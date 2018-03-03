@@ -432,15 +432,16 @@
    * @param {string|undefined} className - Optional CSS class.
    */
   function appendToOutputStream(html, className) {
-    const div  = document.createElement('div');
+    const article = document.createElement('article');
+    
     let classN = 'output--block';
 
     if (className) {
       classN += ' ' + className;
     }
-    div.className = classN;
-    div.innerHTML = html;
-    output.appendChild(div);
+    article.className = classN;
+    article.innerHTML = html;
+    output.appendChild(article);
     if (className === 'help') {
       tailorHelpBlocks();
     }

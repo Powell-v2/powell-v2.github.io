@@ -321,3 +321,44 @@ img.my_face {
     padding-bottom: .75rem;
   }
 }
+
+@supports (display: grid) {
+  .terminal {
+    display: grid;
+    grid-template-rows: 3.5rem 1fr;
+    grid-column-gap: 1vmax;
+  }
+  .controls {
+    align-self: center;
+  }
+  form {
+    display: grid;
+    grid-template-columns: 1rem 7fr minmax(4rem, 1fr) minmax(4rem, 1fr);
+    grid-column-gap: 1vmax;
+    grid-template-areas:
+      "label input btn-run btn-clear";
+  }
+  label {
+    grid-area: label;
+    padding-right: 0;
+  }
+  form input {
+    grid-area: input;
+  }
+  form button {
+    margin-left: 0;
+  }
+  #run {
+    grid-area: btn-run;
+  }
+  #clear {
+    grid-area: btn-clear;
+  }
+  @media (max-width: 420px) {
+    form {
+      grid-template-columns: 6fr 2fr;
+      grid-template-areas:
+        "input btn-run";
+    }
+  }
+}

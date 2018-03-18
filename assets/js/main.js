@@ -433,7 +433,7 @@
    */
   function appendToOutputStream(html, className) {
     const article = document.createElement('article');
-    
+
     let classN = 'output--block';
 
     if (className) {
@@ -464,8 +464,12 @@
     let fPositionTop  = (tPositionTop - face.offsetHeight) / 2;
     let qPositionTop  = fPositionTop + face.offsetHeight / 5;
 
+    let quoteText = 'Heyyo, I\'m Pavel, creator of this website. Good job discovering this easter egg!';
+
     if (window.innerWidth < 550) {
-      quote.innerText = "Heyyo, I'm Pavel. Good job discovering this easter egg.";
+      quote.innerText = quoteText;
+    } else {
+      quote.innerText = quoteText + ' I\'ll just hang out here for a while =)';
     }
 
     quote.style.marginRight = tPositionLeft + 'px';

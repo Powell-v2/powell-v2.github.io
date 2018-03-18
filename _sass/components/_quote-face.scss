@@ -1,0 +1,39 @@
+.quote_face {
+  display: none;
+}
+
+.my_face {
+  position: absolute;
+  left: -330rem;
+  max-height: 10rem;
+  max-width: 10rem;
+  @include border($color-grey);
+  box-shadow: 0 .2rem .7rem .2rem rgba(0, 0, 0, .4);
+  border-radius: 50%;
+}
+
+.quote {
+  max-width: 64rem;
+  top: -330rem;
+  font-size: 1.4rem;
+  font-style: italic;
+  display: block;
+  position: absolute;
+  margin: $size-m 0 0 $size-m * 1.5;
+  padding: $size-s;
+  border-radius: 1rem;
+  background-color: $color-quote;
+  color: $color-white;
+  &::after {
+    top: $size-m * 1.5;
+    left: -$size-xl;
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-width: $size-s $size-xl 0 0;
+    border-color: transparent $color-quote;
+    pointer-events: none;
+  }
+}

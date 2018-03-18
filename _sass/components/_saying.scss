@@ -1,0 +1,23 @@
+.saying {
+  display: flex;
+  margin: $size-s auto;
+  @include border($color-grey);
+  border-radius: .6rem;
+  & div:nth-child(1) {
+    color: brown;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: .1rem solid $color-grey;
+  }
+  & div:nth-child(2) {
+    flex: 9;
+    font-style: italic;
+  }
+  & div:nth-child(2) > p {
+    text-align: center;
+    margin: 0;
+    padding: $size-xs;
+  }
+}

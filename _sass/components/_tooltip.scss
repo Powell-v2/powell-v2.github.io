@@ -1,0 +1,9 @@
+.tooltip {
+  text-align: center;
+  & > p {
+    animation: fadein 2s ease-in-out;
+  }
+  & svg {
+    color: $color-info-help;
+  }
+}

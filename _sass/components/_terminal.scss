@@ -1,0 +1,10 @@
+.terminal {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-term-bg;
+  position: absolute;
+  @include border($color-grey);
+  border-radius: 12px;
+  box-shadow: inset -.4rem -.4rem fade-out(darken($color-term-bg, 70%), .5);
+  animation: fadein 1s ease-in-out;
+}

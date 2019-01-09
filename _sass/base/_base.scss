@@ -31,8 +31,18 @@ ul {
   margin: 0;
   padding: 0;
 }
+
 li {
   margin-top: $size-m / 4;
+}
+
+hr {
+  height: 5px;
+  width: 90%;
+  margin-top: 15px;
+  border: none;
+  border-top: 2px dashed #333;
+  overflow: visible;
 }
 
 .fa-ul {

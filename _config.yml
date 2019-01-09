@@ -18,8 +18,8 @@ email: oatto.paul@gmail.com
 author: Powell-v2
 permalink: /pages/blog/:year/:month/:day/:title/
 description: > # this means to ignore newlines until "baseurl:"
-  A cool website made by Powell-v2.
-  No critters were hurt during the making of this website.
+  A website made by Powell-v2.
+  No critters were hurt during the making of it.
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com

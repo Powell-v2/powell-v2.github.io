@@ -89,6 +89,7 @@
 
     blog: `<p>Latest posts:</p>
            <ul class="fa-ul">
+             <li><span class="fa-li">${icons.sun}</span><a class="blogpost" href="assets/posts/better_backup.html">A Better Backup Plan</a></li>
              <li><span class="fa-li">${icons.sun}</span><a class="blogpost" href="assets/posts/deep.html">Deep Work</a></li>
              <li><span class="fa-li">${icons.sun}</span><a class="blogpost" href="assets/posts/site_redesign.html">How I Redesigned My Website</a></li>
              <li><span class="fa-li">${icons.sun}</span><a class="blogpost" href="assets/posts/first_os_contrib.html">First Open Source Contrib</a></li>

@@ -190,7 +190,7 @@
 
     tooltip: `<p>${icons.info} <span class="bold">'powell -h'</span> command reveals the list of all available actions.</p>`,
 
-    version: '<p>Version 2.2.2.3</p>',
+    version: '<p>Version 2.3.0</p>',
   };
 
   /**

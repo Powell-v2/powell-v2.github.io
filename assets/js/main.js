@@ -58,20 +58,12 @@
   const content = {
     about: `
     <p>
-      I'm a skilled front end web dev branching out into full stack\
-      who is curious about adjacent disciplines - UX and design (long live\
-      <a class="link_underline" href="http://media.steampowered.com/apps/valve/Valve_Handbook_LowRes.pdf"\
-      target="_blank" data-toggle="tooltip" data-placement="bottom" title="see page 46">\
-      T-shaped people</a>). Putting on different hats isn't a problem for me, neither is\
-      collaboration as a part of a team. I’m a strong collaborator thus always being\
-      transparent about progress on tasks, seeking feedback early and often. I believe\
-      that trust and respect are at the root of all great teamwork and welcome being challenged.
-    </p>
-
-    <p>
-      It is very clear to me that ultimately, any business is interested in reducing\
-      costs & increasing profits, and I always strive to do exactly that. But don’t expect\
-      me to cheat on customers - my moral compass is functioning and I take good care of it.
+      Salute, my name is Pavel. I'm a versatile JavaScript engineer dedicated to
+      lifelong learning. Frontend, backend, everything in between - you can count
+      on me. I like working solo as much as playing on a team. You can always expect
+      me to be transparent about progress on tasks while seeking feedback early
+      and often. I enjoy exchanging knowledge with others and believe that trust
+      and respect are at the root of all great teamwork.
     </p>
 
     <p>My personal goals have never changed:</p>
@@ -175,17 +167,32 @@
              </div>
              <p>Among other things, I can:</p>
              <ul class="fa-ul">
-               <li><span class="fa-li">${icons.sun}</span>Ride downhill on a bike and rapidly prototype in HTML/CSS</li>
-               <li><span class="fa-li">${icons.sun}</span>Speak 4 languages (en, ru, es, cz) and write superb JavaScript</li>
-               <li><span class="fa-li">${icons.sun}</span>Pack light when travelling and master any framework required for the job in no time</li>
-               <li><span class="fa-li">${icons.sun}</span>Roll sushi and get shit done in general</li>
+               <li>
+                 <span class="fa-li">${icons.sun}</span>
+                 Swifly put together a working prototype of a feature/application
+               </li>
+               <li>
+                 <span class="fa-li">${icons.sun}</span>
+                 Learn a framework/library when it becomes necessary and adapt to new
+                 concepts as they are being introduced
+               </li>
+               <li>
+                 <span class="fa-li">${icons.sun}</span>
+                 Write clean, maintainable, thoroughly documented and well tested code
+               </li>
+               <li>
+                 <span class="fa-li">${icons.sun}</span>
+                 Get shit done while having fun along the way!
+               </li>
              </ul>
              <p>
-               I care deeply about frontend but don't be surprised to see me on the opposite side of the stack,\
-               tinkering with backend components. I'm empathetic towards customers and this naturally\
-               extends into my desire to deliver high-quality UX. New technologies rouse my curiosity\
-               and excite me. As a lifelong learner, I always seek out learning opportunities\
-               and enjoy teaching others about what I already know.
+               I'm empathetic towards customers and this naturally extends into my desire to
+               deliver high-quality UX. New technologies rouse my curiosity and excite me -
+               at least moderately :] I have tool-agnostic mentality when it comes to
+               choosing the most appropriate instrument(s) for the job which allows to
+               detach and clearly evaluate benefits and tradeoffs for the team as well
+               as for the project and its users. Above all else, being pragmatic enables
+               me to identify high-yielding areas to focus on and set clear priorities.
              </p>`,
 
     tooltip: `<p>${icons.info} <span class="bold">'powell -h'</span> command reveals the list of all available actions.</p>`,

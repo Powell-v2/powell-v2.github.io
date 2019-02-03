@@ -11,6 +11,17 @@
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "commitlint --env HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "dependencies": {
     "gatsby": "^2.0.105",
     "gatsby-image": "^2.0.20",
@@ -26,7 +37,11 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
-    "prettier": "^1.15.2"
+    "@commitlint/cli": "7.5.0",
+    "@commitlint/config-conventional": "7.5.0",
+    "husky": "1.3.1",
+    "prettier": "^1.15.2",
+    "pretty-quick": "1.10.0"
   },
   "keywords": [
     "gatsby",

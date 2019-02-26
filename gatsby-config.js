@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Dream.Code.Sleep.Repeat.`,
-    description: `A website made by Powell-v2. No critters were hurt during its making.`,
+    description: `A website made by Powell-v2. No critters were hurt during its creation.`,
     author: `@powell_v2`,
   },
   plugins: [
@@ -13,6 +13,14 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/src/posts`,
+      },
+    },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

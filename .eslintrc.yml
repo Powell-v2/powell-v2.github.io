@@ -1,4 +1,25 @@
-extends: airbnb
+extends: [airbnb]
+plugins: [react-hooks]
+env:
+  browser: true
+
 rules:
+
+  brace-style: off
+  consistent-return:
+    - error
+    - treatUndefinedAsUnspecified: true
+  no-nested-ternary: off
+  no-param-reassign:
+    - error
+    - props: false
+  no-plusplus:
+    - error
+    - allowForLoopAfterthoughts: true
   quotes: [error, backtick]
   semi: [error, never]
+
+  react-hooks/rules-of-hooks: error
+
+  jsx-a11y/label-has-associated-control: warn
+  jsx-a11y/label-has-for: off

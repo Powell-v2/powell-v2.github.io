@@ -6,6 +6,10 @@ env:
 rules:
 
   brace-style: off
+  comma-dangle:
+    - error
+    - only-multiline
+
   consistent-return:
     - error
     - treatUndefinedAsUnspecified: true
@@ -21,5 +25,6 @@ rules:
 
   react-hooks/rules-of-hooks: error
 
+  jsx-a11y/anchor-is-valid: warn
   jsx-a11y/label-has-associated-control: warn
   jsx-a11y/label-has-for: off

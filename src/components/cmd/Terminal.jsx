@@ -38,7 +38,11 @@ export default function Terminal() {
     } else if (flag === `--help` || flag === `-h`) {
       displayNextNode(<Help key={rand()} />)
     } else if (flag === `--version` || flag === `-v`) {
-      displayNextNode(<p>Version 2.3.0</p>)
+      displayNextNode(
+        <article className="output--block">
+          <p>Version 2.3.0</p>
+        </article>
+      )
     } else if (flag === `--blog` || flag === `-b`) {
       displayNextNode(
         <PostList key={rand()} displayNextNode={displayNextNode} />,

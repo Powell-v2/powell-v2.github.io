@@ -13,7 +13,7 @@ const extra = `
 `
 
 const Skills = () => (
-  <>
+  <article className="output--block">
     <p>As the saying goes:</p>
     <div className="saying">
       <div>
@@ -38,7 +38,7 @@ const Skills = () => (
       ))}
     </ul>
     <p>{extra}</p>
-  </>
+  </article>
 )
 
 export default Skills

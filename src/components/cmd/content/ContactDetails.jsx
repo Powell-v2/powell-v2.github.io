@@ -27,7 +27,7 @@ const mediums = [
 ]
 
 const ContactDetails = () => (
-  <>
+  <article className="output--block">
     <p>Get in touch:</p>
     <ul className="fa-ul">
       {mediums.map(({ icon, href, name }) => (
@@ -39,7 +39,7 @@ const ContactDetails = () => (
         </li>
       ))}
     </ul>
-  </>
+  </article>
 )
 
 export default ContactDetails

@@ -28,7 +28,7 @@ const content = [
 ]
 
 const Help = () => (
-  <>
+  <article className="output--block help">
     <p>
       <span className="bold">Usage:</span>
       {` `}
@@ -50,7 +50,7 @@ const Help = () => (
         ))}
       </tbody>
     </table>
-  </>
+  </article>
 )
 
 export default Help

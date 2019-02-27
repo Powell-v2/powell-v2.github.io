@@ -17,7 +17,7 @@ const goals = [
 ]
 
 const AboutMe = () => (
-  <>
+  <article className="output--block">
     <p>{intro}</p>
     <p>My personal goals have never changed:</p>
     <ul className="fa-ul">
@@ -31,7 +31,7 @@ const AboutMe = () => (
         </li>
       ))}
     </ul>
-  </>
+  </article>
 )
 
 export default AboutMe

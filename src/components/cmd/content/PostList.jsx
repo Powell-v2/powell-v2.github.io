@@ -47,7 +47,7 @@ const PostList = ({ displayNextNode }) => {
   `)
 
   return (
-    <article className="output-block blogposts">
+    <article className="output--block blogposts">
       <p>Latest posts:</p>
       <ul className="fa-ul">
         {data.allMarkdownRemark.edges
@@ -56,8 +56,9 @@ const PostList = ({ displayNextNode }) => {
               <span className="fa-li">
                 <FontAwesomeIcon icon={faSun} />
               </span>
-              <button
-                type="button"
+              <a
+                role="button"
+                tabIndex={0}
                 className="blogpost"
                 onClick={() => displayNextNode(
                   <Post html={html} date={frontmatter.date} />,
@@ -67,7 +68,7 @@ const PostList = ({ displayNextNode }) => {
                 )}
               >
                 {frontmatter.title}
-              </button>
+              </a>
             </li>
           ))}
       </ul>

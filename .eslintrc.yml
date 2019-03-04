@@ -2,14 +2,12 @@ extends: [airbnb]
 plugins: [react-hooks]
 env:
   browser: true
-
 rules:
-
+  arrow-parens: [error, always]
   brace-style: off
   comma-dangle:
     - error
     - only-multiline
-
   consistent-return:
     - error
     - treatUndefinedAsUnspecified: true

@@ -21,7 +21,7 @@ const AboutMe = () => (
     <p>{intro}</p>
     <p>My personal goals have never changed:</p>
     <ul className="fa-ul">
-      {goals.map(goal => (
+      {goals.map((goal) => (
         <li key={goal}>
           <span className="fa-li">
             <FontAwesomeIcon icon={faSun} />

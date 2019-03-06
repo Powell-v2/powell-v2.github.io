@@ -67,7 +67,7 @@ function Controls({ handleSubmit, clearOutputStream }) {
 
   return (
     <section className="controls">
-      <form onSubmit={e => handleSubmit(e, command)}>
+      <form onSubmit={(e) => handleSubmit(e, command)}>
         <label htmlFor="cmd_line">
           <FontAwesomeIcon icon={faAngleDoubleRight} />
         </label>
@@ -76,7 +76,7 @@ function Controls({ handleSubmit, clearOutputStream }) {
           id="cmd_line"
           name="cmd_line"
           value={command}
-          onChange={e => setCommand(e.target.value)}
+          onChange={(e) => setCommand(e.target.value)}
           placeholder={placeholder}
         />
         <button

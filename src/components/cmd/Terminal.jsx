@@ -22,7 +22,7 @@ export default function Terminal() {
   const outputStreamEl = useRef()
 
   function displayNextNode(component) {
-    setStreamNodes(prevStreamNodes => [...prevStreamNodes, component])
+    setStreamNodes((prevStreamNodes) => [...prevStreamNodes, component])
   }
 
   function clearOutputStream() {

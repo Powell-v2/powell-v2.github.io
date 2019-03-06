@@ -27,7 +27,7 @@ const Skills = () => (
     </div>
     <p>Among other things, I can:</p>
     <ul className="fa-ul">
-      {skills.map(skill => (
+      {skills.map((skill) => (
         <li key={skill}>
           <span className="fa-li">
             <FontAwesomeIcon icon={faSun} />

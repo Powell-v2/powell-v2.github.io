@@ -96,7 +96,7 @@ const IndexPage = () => {
           // Since values are stacked in a list, we have to lift them up to the
           // level of the first element. Multiply targetYForRest with respect to
           // word's position in the list and account for the baseline.
-          : - ((targetYForRest * idx) - baseline)
+          : -((targetYForRest * idx) - baseline)
 
         li.style.transform = `scale(${scale})`
         li.style.transformOrigin = `${x}% ${y}%`

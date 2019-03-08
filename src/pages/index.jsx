@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { css } from '@emotion/core'
 
+import randIdx from '../utils'
+
 import './index.css'
 
 const symbols = `!@#$%^&*()+-_=~<>,.?/{}[]|;:`
@@ -37,7 +39,6 @@ const undecoded = css`
   letter-spacing: 4rem;
 `
 
-const randIdx = ({ length }) => Math.floor(Math.random() * length)
 
 const IndexPage = () => {
   const [slogan, setSlogan] = useState([`††††††`, `∑∑∑∑∑`, `ΩΩΩΩΩΩ`, `ßßßßßßß`])

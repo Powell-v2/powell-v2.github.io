@@ -1,8 +1,10 @@
-import { css, keyframes } from '@emotion/core'
+import { Global, css, keyframes } from '@emotion/core'
 import { Link } from 'gatsby'
 import React from 'react'
 
 import Header from '../components/Header'
+
+import globalStyles from '../styles/global'
 
 const containerCss = css`
   display: grid;
@@ -99,20 +101,23 @@ const links = [
 ]
 
 const IndexPage = () => (
-  <div css={containerCss}>
-    <Header />
-    <main css={mainCss}>
-      <div css={cubeCss}>
-        {links.map(({ name, to }) => (
-          <figure key={Math.random()}>
-            <Link to={to}>
-              {name}
-            </Link>
-          </figure>
-        ))}
-      </div>
-    </main>
-  </div>
+  <>
+    <Global styles={globalStyles} />
+    <div css={containerCss}>
+      <Header />
+      <main css={mainCss}>
+        <div css={cubeCss}>
+          {links.map(({ name, to }) => (
+            <figure key={Math.random()}>
+              <Link to={to}>
+                {name}
+              </Link>
+            </figure>
+          ))}
+        </div>
+      </main>
+    </div>
+  </>
 )
 
 export default IndexPage

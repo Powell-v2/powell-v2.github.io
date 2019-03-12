@@ -19,7 +19,6 @@ const fadeIn = keyframes`
 
 const headerCss = css`
   display: grid;
-  border: 1px solid blue;
   color: gold;
   opacity: 1;
   animation: ${fadeIn} ${HEADER_TIMING}s ease-in-out;

@@ -5,8 +5,6 @@ import FloatingGridCanvas from '../components/cmd/FloatingGridCanvas'
 import Terminal from '../components/cmd/Terminal'
 import MainContainer from '../components/cmd/MainContainer'
 
-import './cmd.css'
-
 const CMD = () => (
   <>
     <SEO title="Page two" />

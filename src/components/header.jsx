@@ -95,7 +95,7 @@ const Header = () => {
   // decode slogan
   useEffect(() => {
     if (isHeaderReady) {
-      const timerId = setTimeout(() => {
+      setTimeout(() => {
         const sloganAdjusted = slogan.map((word, i) => (
           word.split(``).map((char, j) => {
             const letter = words[i][j]
@@ -115,7 +115,6 @@ const Header = () => {
       }, 50)
 
       if (slogan.every((el, i) => el === words[i])) {
-        clearTimeout(timerId)
         setIsSloganDecoded(true)
       }
     }

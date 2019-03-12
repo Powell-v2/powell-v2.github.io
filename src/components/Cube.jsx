@@ -12,11 +12,17 @@ const rotate = keyframes`
   }
 
   25% {
-    transform: rotate3d(1.1, 0.95, 0.05, 57deg);
+    transform:
+      rotate3d(1.1, 0.95, 0.05, 57deg)
+      scale3d(1.01, 1.02, 1.03)
+      translate3d(10px, 10px, -10px);
   }
 
-  55% {
-    transform: rotate3d(1, 0.85, 0.1, 55deg);
+  60% {
+    transform:
+      rotate3d(1, 0.85, 0.1, 55deg)
+      scale3d(1.03, 1.04, 1.05)
+      translate3d(-10px, 10px, 10px);
   }
 `
 
@@ -78,7 +84,7 @@ const cubeCss = css`
 
 const links = [
   // front
-  { name: `Home`, to: `/` },
+  { name: `About`, to: `/about` },
   // back
   { name: `Jurrasic`, to: `/404` },
   // right

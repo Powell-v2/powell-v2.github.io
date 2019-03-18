@@ -1,6 +1,5 @@
-import { Global, css } from '@emotion/core'
-
 import React from 'react'
+import { Global, css } from '@emotion/core'
 
 import Header from '../components/Header'
 import Cube from '../components/Cube'

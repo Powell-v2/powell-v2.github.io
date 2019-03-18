@@ -58,16 +58,6 @@ const flicker = keyframes`
   }
 `
 
-// const hover = keyframes`
-//   from {
-//     transform: skew(-15deg);
-//   }
-//
-//   to {
-//     transform: skew(15deg);
-//   }
-// `
-
 const addFlickeringCss = css`
   & li {
     text-shadow:
@@ -77,7 +67,6 @@ const addFlickeringCss = css`
     /* infinity sign */
     &:nth-of-type(3) {
       transform: scale(3) rotate(90deg) translateX(0.3rem);
-      ${``}
     }
   }
   /* TODO: add varying flickering animation to different letters, not the same one */

@@ -37,55 +37,75 @@ const h1Css = css`
 `
 
 const blink = keyframes`
-  from, 49.999%, 60%, to {
+  from, 19.999%, 25%, to {
     z-index: 0;
   }
 
-  50%, 59.999% {
+  20%, 24.999% {
     z-index: 11;
+  }
+`
+
+const distort = keyframes`
+  0.5%, 1.5%, 2.5% {
+    filter: contrast(150%) blur(1px) hue-rotate(-45deg);
+  }
+
+  1%, 3%, 5% {
+    filter: contrast(100%) blur(0) hue-rotate(0);
+  }
+
+  30%, 31.999%, 32.999% {
+    filter: saturate(200%);
+  }
+
+  29.999%, 32%, 44% {
+    filter: saturate(100%);
+  }
+
+  70% {
+    filter: hue-rotate(220deg);
+  }
+
+  69.999%, 73% {
+    filter: hue-rotate(0);
+  }
+
+  74%, from {
+    filter: sepia(0);
+  }
+
+  to {
+    filter: sepia(50%);
   }
 `
 
 const asideCss = css`
   position: relative;
   height: 100%;
-  &:hover .png {
+  &:hover .mask {
     z-index: 11;
     &:nth-of-type(1) {
-      animation-name: ${blink};
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
+      animation: ${blink} 2s infinite alternate;
     }
     &:nth-of-type(2) {
-      animation-name: ${blink};
-      animation-duration: 1s;
-      animation-delay: -100ms;
-      animation-iteration-count: infinite;
+      animation: ${blink} 2s -100ms infinite;
     }
     &:nth-of-type(3) {
-      animation-name: ${blink};
-      animation-duration: 1s;
-      animation-delay: -200ms;
-      animation-iteration-count: infinite;
+      animation: ${blink} 2s -200ms infinite;
     }
     &:nth-of-type(4) {
-      animation-name: ${blink};
-      animation-duration: 1s;
-      animation-delay: -300ms;
-      animation-iteration-count: infinite;
+      animation: ${blink} 2s -300ms infinite alternate;
     }
     &:nth-of-type(5) {
-      animation-name: ${blink};
-      animation-duration: 1s;
-      animation-delay: -400ms;
-      animation-iteration-count: infinite;
+      animation: ${blink} 2s -400ms infinite alternate;
     }
     &:nth-of-type(6) {
-      animation-name: ${blink};
-      animation-duration: 1s;
-      animation-delay: -500ms;
-      animation-iteration-count: infinite;
+      animation: ${blink} 2s -500ms infinite;
     }
+  }
+  &:hover :not(.mask) {
+    animation: ${distort} 10s infinite;
   }
 `
 

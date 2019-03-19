@@ -100,6 +100,7 @@ const AboutPage = () => {
             extension
             childImageSharp {
               fluid {
+                originalName
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -122,21 +123,23 @@ const AboutPage = () => {
         <aside css={asideCss}>
           {images.placeholderImage.edges.map(({ node }) => {
             const { fluid } = node.childImageSharp
+            const { originalName } = fluid
             const { extension } = node
 
             return (
               <Img
                 fluid={fluid}
-                alt="me"
+                alt={originalName}
                 style={{
                   height: `100%`,
-                  position: extension === `png` ? `absolute` : `initial`,
-                  width: extension === `png` ? `100%` : `initial`,
-                  filter: extension === `png`
-                    ? `brightness(90%) contrast(122%)`
-                    : ``,
+                  ...(extension === `png`)
+                  && {
+                    position: `absolute`,
+                    width: `100%`,
+                    filter: `brightness(90%) contrast(122%)`,
+                  }
                 }}
-                className={extension === `png` ? `png` : ``}
+                className={(extension === `png`) ? "mask" : ""}
               />
             )
           })}

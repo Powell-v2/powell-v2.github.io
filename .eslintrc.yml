@@ -18,7 +18,7 @@ rules:
   no-plusplus:
     - error
     - allowForLoopAfterthoughts: true
-  quotes: [error, backtick]
+  quotes: off
   semi: [error, never]
 
   jsx-a11y/anchor-is-valid: warn

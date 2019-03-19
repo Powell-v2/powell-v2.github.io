@@ -5,6 +5,9 @@ import Img from 'gatsby-image'
 
 import globalStyles from '../styles/global'
 
+import { intro } from '../components/cmd/content/AboutMe'
+import { extra } from '../components/cmd/content/Skills'
+
 const containerCss = css`
   display: grid;
   height: 100vh;
@@ -14,26 +17,49 @@ const containerCss = css`
 
 const mainCss = css`
   display: grid;
+  grid-auto-rows: minmax(min-content, max-content);
   color: white;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  &&::-webkit-scrollbar {
+    display: none;
+  }
 `
 
-const headerCss = css`
-  margin: auto;
+const sectionCss = css`
+  display: grid;
+  grid-template-rows: max-content auto;
+  grid-template-columns: 20% auto 1fr;
+  grid-template-areas:
+    ".       header  ."
+    "content content content";
+  padding-bottom: 5rem;
+  &:first-child {
+    padding-top: 5rem;
+  }
 `
 
 const h1Css = css`
+  align-self: end;
+  grid-area: header;
   position: relative;
-  left: -100%;
   &::before {
-    content: attr(data-about-me);
-    display: inline;
+    content: attr(data-shadow);
     position: absolute;
     bottom: -30%;
-    left: 10%;
+    left: 5%;
     font-size: 9rem;
     opacity: 0.2;
     white-space: nowrap;
   }
+`
+
+const pCss = css`
+  grid-area: content;
+  margin: auto;
+  margin-bottom: 5rem;
+  padding: 0 5rem;
+  line-height: 1.6;
 `
 
 const blink = keyframes`
@@ -135,10 +161,17 @@ const AboutPage = () => {
       <Global styles={globalStyles} />
       <div css={containerCss}>
         <main css={mainCss}>
-          <header css={headerCss}>
-            <h1 css={h1Css} data-about-me="About me">About me</h1>
-          </header>
-          <p css={css`margin-bottom: 2rem;`}>Get to know me better.</p>
+          <section css={sectionCss}>
+            <h1 css={h1Css} data-shadow="About me">About me</h1>
+            <p css={pCss}>{intro}</p>
+          </section>
+          <section css={sectionCss}>
+            <h1 css={h1Css} data-shadow="Skills">Skills</h1>
+            <p css={pCss}>
+              {extra}
+              {extra}
+            </p>
+          </section>
         </main>
         <aside css={asideCss}>
           {images.placeholderImage.edges.map(({ node }) => {
@@ -148,6 +181,7 @@ const AboutPage = () => {
 
             return (
               <Img
+                key={originalName}
                 fluid={fluid}
                 alt={originalName}
                 style={{

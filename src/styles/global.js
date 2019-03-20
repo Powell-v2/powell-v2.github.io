@@ -13,7 +13,7 @@ export default css`
   }
 
   body {
-    font-family: 'Source Code Pro', monospace;
+    font-family: serif;
     font-size: 1.6rem;
   }
 

@@ -15,6 +15,8 @@ const h1Css = css`
   position: absolute;
   top: -160px;
   left: 10rem;
+  top: -16rem;
+  transition: top 444ms ease-out;
   margin: 0;
   color: goldenrod;
   writing-mode: vertical-lr;
@@ -33,6 +35,15 @@ const BlogMainPage = () => {
 
   useEffect(() => {
     setHeaderCurrTopPos(headerRef.current.offsetTop)
+
+    const listener = (e) => {
+      if (!e.toElement && !e.relatedTarget) {
+        setIsGrabbing(false)
+      }
+    }
+
+    document.addEventListener('mouseout', listener)
+    return () => document.removeEventListener('mouseout', listener)
   }, [])
 
   function slideHeader(e) {
@@ -58,7 +69,7 @@ const BlogMainPage = () => {
         <h1
           role="presentation"
           ref={headerRef}
-          css={h1Css}
+          css={[h1Css, isGrabbing ? css`cursor: grabbing;` : null]}
           onMouseDown={(e) => {
             setIsGrabbing(true)
             setGrabStartY(e.clientY)

@@ -13,16 +13,21 @@ const containerCss = css`
 
 const h1Css = css`
   position: absolute;
-  top: -160px;
-  left: 10rem;
+  grid-area: hd;
+  justify-self: center;
   top: -16rem;
   transition: top 444ms ease-out;
+  background-image: url("https://source.unsplash.com/1_CMoFsPfso/1600x900");
+  background-size: cover;
+  background-position: 20%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   margin: 0;
-  color: goldenrod;
   writing-mode: vertical-lr;
   text-transform: uppercase;
   font-size: 35rem;
-  line-height: 25rem;
   cursor: grab;
   user-select: none;
 `

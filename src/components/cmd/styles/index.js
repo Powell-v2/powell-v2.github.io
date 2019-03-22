@@ -69,10 +69,10 @@ export default css`
   table {
     margin-bottom: 1.2rem; }
 
-  td:first-child {
+  td:first-of-type {
     border-right: 0.2rem solid #1e90ff;
     padding-right: 1.6rem; }
-  td:nth-child(2) {
+  td:nth-of-type(2) {
     padding-left: 1.6rem; }
 
   .separator {
@@ -173,7 +173,7 @@ export default css`
   .output--block {
     margin: 3.2rem auto; }
 
-  .output--block:first-child {
+  .output--block:first-of-type {
     margin-top: -1.2rem; }
 
   .tooltip {
@@ -188,17 +188,17 @@ export default css`
     margin: 1.2rem auto;
     border: #ccc 1px solid;
     border-radius: .6rem; }
-    .saying div:nth-child(1) {
+    .saying div:nth-of-type(1) {
       color: brown;
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       border-right: 0.1rem solid #ccc; }
-    .saying div:nth-child(2) {
+    .saying div:nth-of-type(2) {
       flex: 9;
       font-style: italic; }
-    .saying div:nth-child(2) > p {
+    .saying div:nth-of-type(2) > p {
       text-align: center;
       margin: 0;
       padding: 0.8rem; }
@@ -270,9 +270,9 @@ export default css`
     .output--block:last-child {
       padding-bottom: 1.2rem; } }
   @media (min-width: 1200px) {
-    .saying div:nth-child(2) {
+    .saying div:nth-of-type(2) {
       padding: 0.8rem; }
-      .saying div:nth-child(2) > p {
+      .saying div:nth-of-type(2) > p {
         padding: 0.8rem;
         text-align: center; } }
   @supports (display: grid) {

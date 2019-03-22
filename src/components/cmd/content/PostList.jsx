@@ -41,6 +41,9 @@ const PostList = ({
       ) {
         edges {
           node {
+            fields {
+              slug
+            }
             id
             frontmatter {
               title
@@ -56,11 +59,15 @@ const PostList = ({
   return (
     <ul className={className}>
       {posts.allMarkdownRemark.edges
-        .map(({ node: { frontmatter, html, id } }) => (
+        .map(({
+          node: {
+            fields, frontmatter, html, id
+          }
+        }) => (
           <li key={id}>
             {customBulletPoint}
             <Link
-              to="/blog"
+              to={fields.slug}
               cmd={cmd}
               tabIndex={0}
               onClick={(e) => onItemSelect(

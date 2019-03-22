@@ -102,9 +102,7 @@ const BlogMainPage = () => {
           Blog
         </h1>
         <section css={postsListCss}>
-          <PostList
-            onItemSelect={(...args) => console.log(args)}
-          />
+          <PostList />
         </section>
       </div>
     </>

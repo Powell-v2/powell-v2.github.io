@@ -21,7 +21,7 @@ const Link = ({
 
 Link.propTypes = {
   to: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.string,
   cmd: PropTypes.bool,
 }
 

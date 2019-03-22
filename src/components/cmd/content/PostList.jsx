@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSun } from '@fortawesome/free-solid-svg-icons'
+
+import Link from '../../Link'
+
+import { randInt } from '../../../utils'
 
 const Post = ({ html, date }) => (
   <>
@@ -23,8 +25,13 @@ Post.propTypes = {
   date: PropTypes.string.isRequired,
 }
 
-const PostList = ({ displayNextNode }) => {
-  const data = useStaticQuery(graphql`
+const PostList = ({
+  onItemSelect,
+  customBulletPoint,
+  className,
+  cmd,
+}) => {
+  const posts = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
         sort: {
@@ -47,37 +54,48 @@ const PostList = ({ displayNextNode }) => {
   `)
 
   return (
-    <article className="output--block blogposts">
-      <p>Latest posts:</p>
-      <ul className="fa-ul">
-        {data.allMarkdownRemark.edges
-          .map(({ node: { frontmatter, html, id } }) => (
-            <li key={id}>
-              <span className="fa-li">
-                <FontAwesomeIcon icon={faSun} />
-              </span>
-              <a
-                role="button"
-                tabIndex={0}
-                className="blogpost"
-                onClick={() => displayNextNode(
-                  <Post html={html} date={frontmatter.date} />,
-                )}
-                onKeyDown={() => displayNextNode(
-                  <Post html={html} date={frontmatter.date} />,
-                )}
-              >
-                {frontmatter.title}
-              </a>
-            </li>
-          ))}
-      </ul>
-    </article>
+    <ul className={className}>
+      {posts.allMarkdownRemark.edges
+        .map(({ node: { frontmatter, html, id } }) => (
+          <li key={id}>
+            {customBulletPoint}
+            <Link
+              to="/blog"
+              cmd={cmd}
+              tabIndex={0}
+              onClick={(e) => onItemSelect(
+                <Post key={randInt()} html={html} date={frontmatter.date} />,
+                e
+              )}
+              onKeyDown={(e) => {
+                // enter and space, respectively
+                if (e.keyCode === 13 || e.keyCode === 32) {
+                  onItemSelect(
+                    <Post key={randInt()} html={html} date={frontmatter.date} />
+                  )
+                }
+              }}
+            >
+              {frontmatter.title}
+            </Link>
+          </li>
+        ))}
+    </ul>
   )
 }
 
 PostList.propTypes = {
-  displayNextNode: PropTypes.func.isRequired,
+  onItemSelect: PropTypes.func,
+  customBulletPoint: PropTypes.element,
+  className: PropTypes.string,
+  cmd: PropTypes.bool,
+}
+
+PostList.defaultProps = {
+  onItemSelect: () => {},
+  customBulletPoint: <></>,
+  className: ``,
+  cmd: false,
 }
 
 export default PostList

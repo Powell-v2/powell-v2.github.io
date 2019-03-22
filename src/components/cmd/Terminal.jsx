@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSun } from '@fortawesome/free-solid-svg-icons'
 
 import Controls from './Controls'
 
@@ -12,11 +14,10 @@ import Skills from './content/Skills'
 import Tooltip from './content/Tooltip'
 
 import useWindowSize from '../custom_hooks/useWindowSize'
-
-const rand = () => Math.random() * 10000
+import { randInt } from '../../utils'
 
 export default function Terminal() {
-  const [streamNodes, setStreamNodes] = useState([<Tooltip key={rand()} />])
+  const [streamNodes, setStreamNodes] = useState([<Tooltip key={randInt()} />])
   const { windowWidth, windowHeight } = useWindowSize()
   const terminalEl = useRef()
   const outputStreamEl = useRef()
@@ -34,9 +35,9 @@ export default function Terminal() {
     const flag = command.toLowerCase().split(` `).filter(Boolean)[1]
 
     if (command === ``) {
-      displayNextNode(<CmdEmpty key={rand()} />)
+      displayNextNode(<CmdEmpty key={randInt()} />)
     } else if (flag === `--help` || flag === `-h`) {
-      displayNextNode(<Help key={rand()} />)
+      displayNextNode(<Help key={randInt()} />)
     } else if (flag === `--version` || flag === `-v`) {
       displayNextNode(
         <article className="output--block">
@@ -45,16 +46,31 @@ export default function Terminal() {
       )
     } else if (flag === `--blog` || flag === `-b`) {
       displayNextNode(
-        <PostList key={rand()} displayNextNode={displayNextNode} />,
+        <article
+          key={randInt()}
+          className="output--block"
+        >
+          <p>Latest posts:</p>
+          <PostList
+            cmd
+            onItemSelect={displayNextNode}
+            customBulletPoint={(
+              <span className="fa-li">
+                <FontAwesomeIcon icon={faSun} />
+              </span>
+            )}
+            className="fa-ul"
+          />
+        </article>
       )
     } else if (flag === `--contact` || flag === `-c`) {
-      displayNextNode(<ContactDetails key={rand()} />)
+      displayNextNode(<ContactDetails key={randInt()} />)
     } else if (flag === `--about` || flag === `-a`) {
-      displayNextNode(<AboutMe key={rand()} />)
+      displayNextNode(<AboutMe key={randInt()} />)
     } else if (flag === `--skills` || flag === `-s`) {
-      displayNextNode(<Skills key={rand()} />)
+      displayNextNode(<Skills key={randInt()} />)
     } else {
-      displayNextNode(<CmdNotRecognized key={rand()} />)
+      displayNextNode(<CmdNotRecognized key={randInt()} />)
     }
   }
 

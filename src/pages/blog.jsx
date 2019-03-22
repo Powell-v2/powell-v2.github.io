@@ -1,11 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Global, css } from '@emotion/core'
 
+import PostList from '../components/cmd/content/PostList'
+
 import globalStyles from '../styles/global'
 
 const containerCss = css`
   position: relative;
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "hd ."
+    "hd posts"
+    "hd .";
   height: 100vh;
   background-color: black;
   overflow-y: hidden;
@@ -30,6 +38,12 @@ const h1Css = css`
   font-size: 35rem;
   cursor: grab;
   user-select: none;
+`
+
+const postsListCss = css`
+  grid-area: posts;
+  margin: auto;
+  color: white;
 `
 
 const BlogMainPage = () => {
@@ -87,6 +101,11 @@ const BlogMainPage = () => {
         >
           Blog
         </h1>
+        <section css={postsListCss}>
+          <PostList
+            onItemSelect={(...args) => console.log(args)}
+          />
+        </section>
       </div>
     </>
   )

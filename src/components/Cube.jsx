@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { css, keyframes } from '@emotion/core'
 
+const EDGE_LEN = `25rem`
+
 const containerCss = css`
   display: grid;
   overflow-y: hidden;
@@ -28,8 +30,8 @@ const float = keyframes`
 `
 const cubeCss = css`
   margin-bottom: 2.5rem;
-  width: 25rem;
-  height: 25rem;
+  width: ${EDGE_LEN};
+  height: ${EDGE_LEN};
   transform-style: preserve-3d;
   animation: ${float} 15s linear infinite;
 `
@@ -37,9 +39,9 @@ const facetCss = css`
   border: 1px solid white;
   font-size: 3rem;
   position: absolute;
-  height: 25rem;
-  line-height: 25rem;
-  width: 25rem;
+  height: ${EDGE_LEN};
+  line-height: ${EDGE_LEN};
+  width: ${EDGE_LEN};
   margin: 0;
   text-align: center;
   transition: transform .5s ease-out;
@@ -50,7 +52,7 @@ const facetCss = css`
   &:nth-of-type(1) {
     box-shadow: 0 0 100px rgba(210,0,210,1);
     background-color: rgba(210,0,210,1);
-    transform: translateZ(12.5rem);
+    transform: translateZ(calc(${EDGE_LEN} / 2));
     &:hover ~ figure:nth-of-type(2) {
       transform: rotateY(180deg) translateZ(20rem);
     }
@@ -58,13 +60,13 @@ const facetCss = css`
   /* back */
   &:nth-of-type(2) {
     background-color: rgba(0,0,210,.7);
-    transform: rotateY(180deg) translateZ(12.5rem);
+    transform: rotateY(180deg) translateZ(calc(${EDGE_LEN} / 2));
   }
   /* left */
   &:nth-of-type(3) {
     box-shadow: 0 0 100px rgba(0,210,210,1);
     background-color: rgba(0,210,210,1);
-    transform: rotateY(270deg) translateZ(12.5rem);
+    transform: rotateY(270deg) translateZ(calc(${EDGE_LEN} / 2));
     &:hover ~ figure:nth-of-type(4) {
       transform: rotateY(90deg) translateZ(20rem);
     }
@@ -72,13 +74,13 @@ const facetCss = css`
   /* right */
   &:nth-of-type(4) {
     background-color: rgba(210,0,0,.7);
-    transform: rotateY(90deg) translateZ(12.5rem);
+    transform: rotateY(90deg) translateZ(calc(${EDGE_LEN} / 2));
   }
   /* bottom */
   &:nth-of-type(5) {
     box-shadow: 0 0 100px rgba(210,210,210,1);
     background-color: rgba(210,210,210,1);
-    transform: rotateX(270deg) translateZ(12.5rem);
+    transform: rotateX(270deg) translateZ(calc(${EDGE_LEN} / 2));
     &:hover ~ figure:nth-of-type(6) {
       transform: rotateX(90deg) translateZ(20rem);
     }
@@ -86,7 +88,7 @@ const facetCss = css`
   /* top */
   &:nth-of-type(6) {
     background-color: rgba(210,210,0,.7);
-    transform: rotateX(90deg) translateZ(12.5rem);
+    transform: rotateX(90deg) translateZ(calc(${EDGE_LEN} / 2));
   }
 `
 

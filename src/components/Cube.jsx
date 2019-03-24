@@ -36,22 +36,22 @@ const cubeCss = css`
   animation: ${float} 15s linear infinite;
 `
 const facetCss = css`
-  border: 1px solid white;
-  font-size: 3rem;
   position: absolute;
   height: ${EDGE_LEN};
   line-height: ${EDGE_LEN};
   width: ${EDGE_LEN};
   margin: 0;
+  border: 1px solid #c29f6e;
+  background-color: blanchedalmond;
+  box-shadow: 0 0 10rem blanchedalmond;
+  font-size: 3rem;
   text-align: center;
   transition: transform .5s ease-out;
   & a, & p {
-    color: white;
+    color: sienna;
   }
   /* front */
   &:nth-of-type(1) {
-    box-shadow: 0 0 100px rgba(210,0,210,1);
-    background-color: rgba(210,0,210,1);
     transform: translateZ(calc(${EDGE_LEN} / 2));
     &:hover ~ figure:nth-of-type(2) {
       transform: rotateY(180deg) translateZ(20rem);
@@ -59,13 +59,10 @@ const facetCss = css`
   }
   /* back */
   &:nth-of-type(2) {
-    background-color: rgba(0,0,210,.7);
     transform: rotateY(180deg) translateZ(calc(${EDGE_LEN} / 2));
   }
   /* left */
   &:nth-of-type(3) {
-    box-shadow: 0 0 100px rgba(0,210,210,1);
-    background-color: rgba(0,210,210,1);
     transform: rotateY(270deg) translateZ(calc(${EDGE_LEN} / 2));
     &:hover ~ figure:nth-of-type(4) {
       transform: rotateY(90deg) translateZ(20rem);
@@ -73,13 +70,10 @@ const facetCss = css`
   }
   /* right */
   &:nth-of-type(4) {
-    background-color: rgba(210,0,0,.7);
     transform: rotateY(90deg) translateZ(calc(${EDGE_LEN} / 2));
   }
   /* bottom */
   &:nth-of-type(5) {
-    box-shadow: 0 0 100px rgba(210,210,210,1);
-    background-color: rgba(210,210,210,1);
     transform: rotateX(270deg) translateZ(calc(${EDGE_LEN} / 2));
     &:hover ~ figure:nth-of-type(6) {
       transform: rotateX(90deg) translateZ(20rem);
@@ -87,7 +81,6 @@ const facetCss = css`
   }
   /* top */
   &:nth-of-type(6) {
-    background-color: rgba(210,210,0,.7);
     transform: rotateX(90deg) translateZ(calc(${EDGE_LEN} / 2));
   }
 `

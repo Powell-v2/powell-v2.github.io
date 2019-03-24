@@ -42,6 +42,7 @@ const facetCss = css`
   width: 25rem;
   margin: 0;
   text-align: center;
+  transition: transform .5s ease-out;
   & a, & p {
     color: white;
   }
@@ -51,40 +52,41 @@ const facetCss = css`
     background-color: rgba(210,0,210,1);
     transform: translateZ(12.5rem);
     &:hover ~ figure:nth-of-type(2) {
-      transform: translateZ(-30rem);
+      transform: rotateY(180deg) translateZ(20rem);
     }
   }
   /* back */
   &:nth-of-type(2) {
     background-color: rgba(0,0,210,.7);
-    transform: translateZ(-12.5rem);
-    transition: transform .5s ease-out;
-  }
-  /* right */
-  &:nth-of-type(3) {
-    background-color: rgba(210,0,0,.7);
-    transform: rotateY(90deg) translateZ(12.5rem);
-    transition: transform .5s ease-out;
+    transform: rotateY(180deg) translateZ(12.5rem);
   }
   /* left */
-  &:nth-of-type(4) {
+  &:nth-of-type(3) {
     box-shadow: 0 0 100px rgba(0,210,210,1);
     background-color: rgba(0,210,210,1);
     transform: rotateY(270deg) translateZ(12.5rem);
-    &:hover ~ figure:nth-of-type(3) {
-      transform: rotateY(270deg) translateZ(30rem);
+    &:hover ~ figure:nth-of-type(4) {
+      transform: rotateY(90deg) translateZ(20rem);
     }
   }
-  /* top */
-  &:nth-of-type(5) {
-    background-color: rgba(210,210,0,.7);
-    transform: rotateX(90deg) translateZ(12.5rem);
+  /* right */
+  &:nth-of-type(4) {
+    background-color: rgba(210,0,0,.7);
+    transform: rotateY(90deg) translateZ(12.5rem);
   }
   /* bottom */
-  &:nth-of-type(6) {
+  &:nth-of-type(5) {
     box-shadow: 0 0 100px rgba(210,210,210,1);
     background-color: rgba(210,210,210,1);
     transform: rotateX(270deg) translateZ(12.5rem);
+    &:hover ~ figure:nth-of-type(6) {
+      transform: rotateX(90deg) translateZ(20rem);
+    }
+  }
+  /* top */
+  &:nth-of-type(6) {
+    background-color: rgba(210,210,0,.7);
+    transform: rotateX(90deg) translateZ(12.5rem);
   }
 `
 
@@ -93,14 +95,14 @@ const notations = [
   { text: `About`, to: `/about` },
   // back
   { text: `Get to know me` },
-  // right
-  { text: `Something to read` },
   // left
   { text: `Blog`, to: `/blog` },
-  // top
-  { text: `Terminal view` },
+  // right
+  { text: `Something to read` },
   // bottom
   { text: `Switch to cmd`, to: `/cmd` },
+  // top
+  { text: `Terminal view` },
 ]
 
 const Cube = () => (
@@ -111,14 +113,11 @@ const Cube = () => (
           key={Math.random()}
           css={facetCss}
         >
-          {to
-            ? (
-              <Link to={to}>
-                {text}
-              </Link>
-            ) : (
-              <p>{text}</p>
-            )}
+          {to && (
+            <Link to={to}>
+              {text}
+            </Link>
+          )}
         </figure>
       ))}
     </div>

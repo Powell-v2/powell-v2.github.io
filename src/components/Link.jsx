@@ -1,6 +1,12 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
+import { css } from '@emotion/core'
+
+const buttonCss = css`
+  color: white;
+  text-decoration: none;
+`
 
 const Link = ({
   to, children, cmd, ...other
@@ -11,6 +17,7 @@ const Link = ({
     </button>
   ) : (
     <GatsbyLink
+      css={buttonCss}
       to={to}
       {...other}
     >

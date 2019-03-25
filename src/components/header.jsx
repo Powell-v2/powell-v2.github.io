@@ -6,7 +6,7 @@ import { randIdx } from '../utils'
 const HEADER_TIMING = 2
 
 const symbols = `!@#$%^&*()+-_=~<>,.?/{}[]|;:`
-const words = [`Dream.`, `Code.`, `8`, `Sleep.`, `Repeat.`]
+const words = [`Dream.`, `Code.`, ``, `Sleep.`, `Repeat.`]
 
 const fadeIn = keyframes`
   from {
@@ -26,7 +26,7 @@ const headerCss = css`
 
 const sloganCss = css`
   display: grid;
-  grid-template-columns: repeat(5, max-content);
+  grid-template-columns: repeat(5, minmax(10rem, max-content));
   margin: auto;
   font-size: 3rem;
   font-weight: 700;
@@ -34,12 +34,32 @@ const sloganCss = css`
   letter-spacing: .5rem;
   & li {
     margin-top: 0;
+    height: 5rem;
+    line-height: 5rem;
     transition: all 2s;
     /* infinity sign */
     &:nth-of-type(3) {
-      text-shadow: none;
-      color: firebrick;
-      padding: 0 4rem;
+      position: relative;
+      opacity: 0;
+      width: 10rem;
+      &::after, &::before {
+        content: "";
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        width: 1.5rem;
+        height: 1.5rem;
+        border: 1rem solid red;
+        border-radius: 0 50% 50% 50%;
+        transform: rotate(-45deg);
+        /* box-sizing: content-box; */
+      }
+      &::before {
+        top: 10%;
+        left: 15%;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-135deg);
+      }
     }
   }
 `
@@ -64,19 +84,19 @@ const addFlickeringCss = css`
       0 0 8px gold,
       0 0 44px whitesmoke,
       0 0 88px navajowhite;
-    /* infinity sign */
     &:nth-of-type(3) {
-      transform: scale(3) rotate(90deg) translateX(0.3rem);
+      animation: ${fadeIn} ${HEADER_TIMING}s ease-in-out both;
     }
   }
+
   /* TODO: add varying flickering animation to different letters, not the same one */
   & span {
-    animation: ${flicker} 15s ${HEADER_TIMING}s linear infinite;
+    animation: ${flicker} 15s linear ${HEADER_TIMING}s infinite;
   }
 `
 
 const Header = () => {
-  const [slogan, setSlogan] = useState([`††††††`, `∑∑∑∑∑`, `#`, `ΩΩΩΩΩΩ`, `ßßßßßßß`])
+  const [slogan, setSlogan] = useState([`††††††`, `∑∑∑∑∑`, ``, `ΩΩΩΩΩΩ`, `ßßßßßßß`])
   const [isSloganDecoded, setIsSloganDecoded] = useState(false)
   const [isHeaderReady, setIsHeaderReady] = useState(false)
 

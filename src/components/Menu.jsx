@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 
-import Link from "./Link"
+import Link from './Link'
 
 const pages = [
   {
@@ -40,19 +40,48 @@ const menuCss = css`
   position: absolute;
   display: grid;
   place-items: center;
-  align-content: space-evenly;
+  align-content: center;
   height: 75vh;
   width: 75vw;
   top: 50%;
   left: 50%;
-  font-size: 3.3rem;
   border: 1px solid gold;
   background-color: black;
   z-index: 12;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 0 50rem rgba(0, 0, 0, 0.9);
-  & li {
-    cursor: pointer;
+`
+const liCss = css`
+  height: 5rem;
+  line-height: 5rem;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  & span {
+    display: inline-block;
+    line-height: 5rem;
+    width: 5rem;
+    margin-left: -1rem;
+    background-color: grey;
+    text-align: center;
+    vertical-align: middle;
+    transition:
+      width .2s,
+      margin .2s;
+    &:first-of-type {
+      border-top-left-radius: .5rem;
+      border-bottom-left-radius: .5rem;
+    }
+    &:last-of-type {
+      border-top-right-radius: .5rem;
+      border-bottom-right-radius: .5rem;
+    }
+  }
+  &:hover span {
+    width: 6rem;
+    margin: 0 .5rem;
   }
 `
 
@@ -89,13 +118,16 @@ const Menu = () => {
         <section css={menuCss}>
           {pages.map(({ name, to }) => (
             <nav>
-              <ul>
-                <li>
+              <ul css={css`display: grid;`}>
+                <li css={liCss}>
                   <Link
                     to={to}
                     css={css`color: gold;`}
                   >
-                    {name}
+                    {name
+                      .split(``)
+                      .map((char) => <span>{char}</span>)
+                    }
                   </Link>
                 </li>
               </ul>

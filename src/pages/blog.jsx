@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Global, css } from '@emotion/core'
 
+import Menu from '../components/Menu'
 import PostList from '../components/cmd/content/PostList'
 
 import globalStyles from '../styles/global'
@@ -77,6 +78,7 @@ const BlogMainPage = () => {
   return (
     <>
       <Global styles={globalStyles} />
+      <Menu />
       <div
         role="presentation"
         css={containerCss}

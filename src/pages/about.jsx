@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 
 import globalStyles from '../styles/global'
 
+import Menu from '../components/Menu'
 import { intro } from '../components/cmd/content/AboutMe'
 import { extra } from '../components/cmd/content/Skills'
 
@@ -159,6 +160,7 @@ const AboutPage = () => {
   return (
     <>
       <Global styles={globalStyles} />
+      <Menu />
       <div css={containerCss}>
         <main css={mainCss}>
           <section css={sectionCss}>

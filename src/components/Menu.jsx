@@ -116,13 +116,17 @@ const Menu = () => {
       </button>
       {isMenuOpen && (
         <section css={menuCss}>
-          {pages.map(({ name, to }) => (
-            <nav>
-              <ul css={css`display: grid;`}>
+          <nav>
+            <ul css={css`display: grid;`}>
+              {pages.map(({ name, to }) => (
+
                 <li css={liCss}>
                   <Link
                     to={to}
-                    css={css`color: gold;`}
+                    css={css`
+                      color: gold;
+                      display: inline-block;
+                    `}
                   >
                     {name
                       .split(``)
@@ -130,9 +134,9 @@ const Menu = () => {
                     }
                   </Link>
                 </li>
-              </ul>
-            </nav>
-          ))}
+              ))}
+            </ul>
+          </nav>
         </section>
       )}
     </>

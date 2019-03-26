@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { css, keyframes } from '@emotion/core'
+import Link from './Link'
 
 const EDGE_LEN = `25rem`
+const DETACH_DIST = `20rem`
 
 const containerCss = css`
   display: grid;
@@ -34,6 +35,41 @@ const cubeCss = css`
   height: ${EDGE_LEN};
   transform-style: preserve-3d;
   animation: ${float} 15s linear infinite;
+  .cube__front, .cube__back, .cube__left,
+  .cube__right, .cube__bottom, .cube__top {
+    background-color: rgb(57,46,182);
+    box-shadow: 0 0 10rem 1.5rem rgb(69,86,223);
+  }
+  .cube__front {
+    transform: translateZ(calc(${EDGE_LEN} / 2));
+    &:hover ~ .cube__back {
+      box-shadow: 0 0 10rem 3rem rgb(69,86,223);
+      transform: rotateY(180deg) rotateZ(90deg) translateZ(${DETACH_DIST});
+    }
+  }
+  .cube__back {
+    transform: rotateY(180deg) translateZ(calc(${EDGE_LEN} / 2));
+  }
+  .cube__left {
+    transform: rotateY(270deg) translateZ(calc(${EDGE_LEN} / 2));
+    &:hover ~ .cube__right {
+      box-shadow: 0 0 10rem 3rem rgb(69,86,223);
+      transform: rotateY(90deg) translateZ(${DETACH_DIST});
+    }
+  }
+  .cube__right {
+    transform: rotateY(90deg) translateZ(calc(${EDGE_LEN} / 2));
+  }
+  .cube__bottom {
+    transform: rotateX(270deg) translateZ(calc(${EDGE_LEN} / 2));
+    &:hover ~ .cube__top {
+      box-shadow: 0 0 10rem 3rem rgb(69,86,223);
+      transform: rotateX(90deg) rotateY(180deg) translateZ(-${DETACH_DIST});
+    }
+  }
+  .cube__top {
+    transform: rotateX(90deg) translateZ(calc(${EDGE_LEN} / 2));
+  }
 `
 const facetCss = css`
   position: absolute;
@@ -41,75 +77,40 @@ const facetCss = css`
   line-height: ${EDGE_LEN};
   width: ${EDGE_LEN};
   margin: 0;
-  border: 1px solid #c29f6e;
-  background-color: blanchedalmond;
-  box-shadow: 0 0 10rem blanchedalmond;
-  font-size: 3rem;
+  border: 2px solid blanchedalmond;
+  text-transform: uppercase;
+  font-size: 3.3rem;
   text-align: center;
   transition: transform .5s ease-out;
-  & a, & p {
-    color: sienna;
-  }
-  /* front */
-  &:nth-of-type(1) {
-    transform: translateZ(calc(${EDGE_LEN} / 2));
-    &:hover ~ figure:nth-of-type(2) {
-      transform: rotateY(180deg) translateZ(20rem);
-    }
-  }
-  /* back */
-  &:nth-of-type(2) {
-    transform: rotateY(180deg) translateZ(calc(${EDGE_LEN} / 2));
-  }
-  /* left */
-  &:nth-of-type(3) {
-    transform: rotateY(270deg) translateZ(calc(${EDGE_LEN} / 2));
-    &:hover ~ figure:nth-of-type(4) {
-      transform: rotateY(90deg) translateZ(20rem);
-    }
-  }
-  /* right */
-  &:nth-of-type(4) {
-    transform: rotateY(90deg) translateZ(calc(${EDGE_LEN} / 2));
-  }
-  /* bottom */
-  &:nth-of-type(5) {
-    transform: rotateX(270deg) translateZ(calc(${EDGE_LEN} / 2));
-    &:hover ~ figure:nth-of-type(6) {
-      transform: rotateX(90deg) translateZ(20rem);
-    }
-  }
-  /* top */
-  &:nth-of-type(6) {
-    transform: rotateX(90deg) translateZ(calc(${EDGE_LEN} / 2));
-  }
 `
 
 const notations = [
-  // front
-  { text: `About`, to: `/about` },
-  // back
-  { text: `Get to know me` },
-  // left
-  { text: `Blog`, to: `/blog` },
-  // right
-  { text: `Something to read` },
-  // bottom
-  { text: `Switch to cmd`, to: `/cmd` },
-  // top
-  { text: `Terminal view` },
+  { text: `About`, to: `/about`, side: `front` },
+  { text: `Get to know me`, side: `back` },
+  { text: `Blog`, to: `/blog`, side: `left` },
+  { text: `Something to read`, side: `right` },
+  { text: `Terminal`, to: `/cmd`, side: `bottom` },
+  { text: `Switch to cmd`, side: `top` },
 ]
 
 const Cube = () => (
   <div css={containerCss}>
     <div css={cubeCss}>
-      {notations.map(({ text, to }) => (
+      {notations.map(({ text, to, side }) => (
         <figure
           key={Math.random()}
+          className={`cube__${side}`}
           css={facetCss}
         >
           {to && (
-            <Link to={to}>
+            <Link
+              to={to}
+              css={css`
+                color: black;
+                display: inline-block;
+                width: 100%;
+              `}
+            >
               {text}
             </Link>
           )}

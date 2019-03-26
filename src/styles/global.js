@@ -13,7 +13,7 @@ export default css`
   }
 
   body {
-    font-family: serif;
+    font-family: "Quicksand", sans-serif, serif, monospace;
     font-size: 1.6rem;
   }
 

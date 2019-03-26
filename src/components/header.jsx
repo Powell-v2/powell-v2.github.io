@@ -28,6 +28,7 @@ const sloganCss = css`
   display: grid;
   grid-template-columns: repeat(5, minmax(10rem, max-content));
   margin: auto;
+  font-family: "Audiowide";
   font-size: 3rem;
   font-weight: 700;
   text-transform: uppercase;

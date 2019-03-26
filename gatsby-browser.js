@@ -5,3 +5,4 @@
  */
 
 import 'normalize.css/normalize.css'
+import './src/styles/meta.css'

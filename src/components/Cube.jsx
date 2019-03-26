@@ -64,7 +64,7 @@ const cubeCss = css`
     transform: rotateX(270deg) translateZ(calc(${EDGE_LEN} / 2));
     &:hover ~ .cube__top {
       box-shadow: 0 0 10rem 3rem rgb(69,86,223);
-      transform: rotateX(90deg) rotateY(180deg) translateZ(-${DETACH_DIST});
+      transform: rotateX(90deg) rotateZ(-90deg) translateZ(${DETACH_DIST});
     }
   }
   .cube__top {

@@ -1,5 +1,5 @@
 ---
-date: January 09, 2019
+date: 2019-01-09T00:00:00.000Z
 title: Deep Work
 ---
 

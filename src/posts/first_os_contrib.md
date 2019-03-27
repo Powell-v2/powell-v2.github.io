@@ -1,5 +1,5 @@
 ---
-date: January 05, 2017
+date: 2017-01-05T00:00:00.000Z
 title: First Open Source Contribution
 ---
 

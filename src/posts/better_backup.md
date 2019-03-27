@@ -1,5 +1,5 @@
 ---
-date: January 30, 2019
+date: 2019-01-30T00:00:00.000Z
 title: A Better Backup Plan
 ---
 

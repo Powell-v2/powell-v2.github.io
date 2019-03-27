@@ -83,7 +83,7 @@ export const blogPostQuery = graphql`
       html
       frontmatter {
         title
-        date
+        date(formatString: "MMMM DD, YYYY")
       }
     }
   }

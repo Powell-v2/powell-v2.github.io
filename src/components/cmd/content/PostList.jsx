@@ -47,7 +47,7 @@ const PostList = ({
             id
             frontmatter {
               title
-              date
+              date(formatString: "MMMM DD, YYYY")
             }
             html
           }

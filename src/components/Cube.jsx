@@ -39,6 +39,7 @@ const cubeCss = css`
   .cube__right, .cube__bottom, .cube__top {
     background-color: rgb(57,46,182);
     box-shadow: 0 0 10rem 1.5rem rgb(69,86,223);
+    transition: transform .5s ease-out;
   }
   .cube__front {
     transform: translateZ(calc(${EDGE_LEN} / 2));
@@ -77,11 +78,19 @@ const facetCss = css`
   line-height: ${EDGE_LEN};
   width: ${EDGE_LEN};
   margin: 0;
-  border: 2px solid blanchedalmond;
+  border: 1px solid blanchedalmond;
   text-transform: uppercase;
   font-size: 3.3rem;
   text-align: center;
-  transition: transform .5s ease-out;
+`
+const linkCss = css`
+  color: blanchedalmond;
+  display: inline-block;
+  border: 1px solid blanchedalmond;
+  width: 100%;
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(23,117,138); }
 `
 
 const notations = [
@@ -105,11 +114,7 @@ const Cube = () => (
           {to && (
             <Link
               to={to}
-              css={css`
-                color: black;
-                display: inline-block;
-                width: 100%;
-              `}
+              css={linkCss}
             >
               {text}
             </Link>

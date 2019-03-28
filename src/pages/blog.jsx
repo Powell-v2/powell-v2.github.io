@@ -19,7 +19,6 @@ const containerCss = css`
   background-color: black;
   overflow-y: hidden;
 `
-
 const h1Css = css`
   position: absolute;
   grid-area: hd;
@@ -40,11 +39,21 @@ const h1Css = css`
   cursor: grab;
   user-select: none;
 `
-
 const postsListCss = css`
   grid-area: posts;
   margin: auto;
   color: white;
+`
+const listItemCss = css`
+  padding: .5rem 0;
+`
+const linkCss = css`
+  transition: box-shadow .3s;
+  font-size: 1.8rem;
+  &:hover {
+    box-shadow: 0 .3rem #ffc555;
+    text-decoration: inherit;
+  }
 `
 
 const BlogMainPage = () => {
@@ -104,7 +113,10 @@ const BlogMainPage = () => {
           Blog
         </h1>
         <section css={postsListCss}>
-          <PostList />
+          <PostList
+            liStyle={[listItemCss]}
+            linkStyle={[linkCss]}
+          />
         </section>
       </div>
     </>

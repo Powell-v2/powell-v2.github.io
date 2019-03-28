@@ -20,7 +20,7 @@ const mainCss = css`
   display: grid;
   grid-auto-rows: minmax(min-content, max-content);
   color: white;
-  overflow-y: scroll;
+  overflow-y: hidden;
   scrollbar-width: none;
   &&::-webkit-scrollbar {
     display: none;
@@ -58,7 +58,7 @@ const pCss = css`
   grid-area: content;
   margin: auto;
   margin-bottom: 5rem;
-  padding: 0 5rem;
+  padding: 0 8rem;
   line-height: 1.6;
 `
 

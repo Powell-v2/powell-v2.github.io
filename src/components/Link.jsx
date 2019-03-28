@@ -4,20 +4,34 @@ import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
 const buttonCss = css`
-  color: white;
+  /* reset default button styles */
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  text-transform: none;
+  background: none;
+`
+const linkCss = css`
   text-decoration: none;
+  color: white;
 `
 
 const Link = ({
   to, children, cmd, ...other
 }) => (
   cmd ? (
-    <button type="button" {...other}>
+    <button
+      type="button"
+      css={buttonCss}
+      {...other}
+    >
       {children}
     </button>
   ) : (
     <GatsbyLink
-      css={buttonCss}
+      css={linkCss}
       to={to}
       {...other}
     >
@@ -28,7 +42,10 @@ const Link = ({
 
 Link.propTypes = {
   to: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.oneOfType(
+    PropTypes.string,
+    PropTypes.array,
+  ),
   cmd: PropTypes.bool,
 }
 

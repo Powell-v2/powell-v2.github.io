@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 
+import { randInt } from '../utils'
+
 import Link from './Link'
 
 const pages = [
@@ -90,6 +92,7 @@ const Menu = () => {
 
   useEffect(() => {
     const listener = (e) => {
+      // close on Enter
       if (e.keyCode === 27) {
         setIsMenuOpen(false)
       }
@@ -119,8 +122,10 @@ const Menu = () => {
           <nav>
             <ul css={css`display: grid;`}>
               {pages.map(({ name, to }) => (
-
-                <li css={liCss}>
+                <li
+                  key={name}
+                  css={liCss}
+                >
                   <Link
                     to={to}
                     css={css`
@@ -130,7 +135,7 @@ const Menu = () => {
                   >
                     {name
                       .split(``)
-                      .map((char) => <span>{char}</span>)
+                      .map((char) => <span key={randInt()}>{char}</span>)
                     }
                   </Link>
                 </li>

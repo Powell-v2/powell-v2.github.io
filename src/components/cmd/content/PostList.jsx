@@ -30,6 +30,7 @@ const PostList = ({
   customBulletPoint,
   listClassName,
   linkStyle,
+  liStyle,
   cmd,
   ...other
 }) => {
@@ -66,16 +67,18 @@ const PostList = ({
             fields, frontmatter, html, id
           }
         }) => (
-          <li key={id}>
+          <li
+            css={[...liStyle]}
+            key={id}
+          >
             {customBulletPoint}
             <Link
               to={fields.slug}
               cmd={cmd}
               tabIndex={0}
               css={[...linkStyle]}
-              onClick={(e) => onItemSelect(
-                <Post key={randInt()} html={html} date={frontmatter.date} />,
-                e
+              onClick={() => onItemSelect(
+                <Post key={randInt()} html={html} date={frontmatter.date} />
               )}
               onKeyDown={(e) => {
                 // enter and space, respectively
@@ -101,6 +104,7 @@ PostList.propTypes = {
   listClassName: PropTypes.string,
   cmd: PropTypes.bool,
   linkStyle: PropTypes.arrayOf(PropTypes.object),
+  liStyle: PropTypes.arrayOf(PropTypes.object),
 }
 
 PostList.defaultProps = {
@@ -109,6 +113,7 @@ PostList.defaultProps = {
   listClassName: ``,
   cmd: false,
   linkStyle: [],
+  liStyle: [],
 }
 
 export default PostList

@@ -37,6 +37,7 @@ const menuIconCss = css`
   border-radius: 50%;
   cursor: pointer;
   z-index: 555;
+  outline: none;
 `
 const menuCss = css`
   position: absolute;
@@ -54,8 +55,8 @@ const menuCss = css`
   box-shadow: 0 0 0 50rem rgba(0, 0, 0, 0.9);
 `
 const liCss = css`
-  height: 5rem;
-  line-height: 5rem;
+  height: 4rem;
+  line-height: 4rem;
   margin: 2rem auto;
   padding: 0 1.5rem;
   font-size: 2.5rem;
@@ -63,8 +64,8 @@ const liCss = css`
   text-transform: uppercase;
   & span {
     display: inline-block;
-    line-height: 5rem;
-    width: 5rem;
+    line-height: 4rem;
+    width: 4rem;
     margin-left: -1rem;
     background-color: grey;
     text-align: center;
@@ -72,7 +73,7 @@ const liCss = css`
     transition:
       width .2s,
       margin .2s;
-    &:first-of-type {
+    &:first-of-type  {
       border-top-left-radius: .5rem;
       border-bottom-left-radius: .5rem;
     }
@@ -82,7 +83,7 @@ const liCss = css`
     }
   }
   &:hover span {
-    width: 6rem;
+    width: 4.5rem;
     margin: 0 .5rem;
   }
 `
@@ -107,7 +108,7 @@ const Menu = () => {
       <button
         type="button"
         css={menuIconCss}
-        onClick={() => setIsMenuOpen(true)}
+        onClick={() => setIsMenuOpen(() => !isMenuOpen)}
         onKeyDown={(e) => {
           // enter and space, respectively
           if (e.keyCode === 13 || e.keyCode === 32) {

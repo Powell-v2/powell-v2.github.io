@@ -33,41 +33,39 @@ const sloganCss = css`
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .5rem;
-  & li {
-    margin-top: 0;
-    height: 5rem;
-    line-height: 5rem;
-    transition: all 2s;
-    /* infinity sign */
-    &:nth-of-type(3) {
-      position: relative;
-      opacity: 0;
-      width: 10rem;
-      &::after, &::before {
-        content: "";
-        position: absolute;
-        top: 10%;
-        left: 50%;
-        width: 1.5rem;
-        height: 1.5rem;
-        border: 1rem solid red;
-        border-radius: 0 50% 50% 50%;
-        transform: rotate(-45deg);
-        /* box-sizing: content-box; */
-      }
-      &::before {
-        top: 10%;
-        left: 15%;
-        border-radius: 50% 50% 50% 0;
-        transform: rotate(-135deg);
-      }
-    }
-  }
+`
+
+const sloganPartCss = css`
+  margin-top: 0;
+  height: 5rem;
+  line-height: 5rem;
+  transition: all 2s;
+  /* infinity sign */
+  &:nth-of-type(3) {
+    position: relative;
+    opacity: 0;
+    width: 10rem;
+    &::after, &::before {
+      content: "";
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 1rem solid red;
+      border-radius: 0 50% 50% 50%;
+      transform: rotate(-45deg);
+      /* box-sizing: content-box; */ }
+    &::before {
+      top: 15%;
+      left: 10%;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-135deg); }}
 `
 
 const flicker = keyframes`
   0%, 8.999%, 16%, 31.999%, 47%, 69.999%, 73%, 74.999%, 76%, 83.999%, 85%, 100% {
-    opacity: .99;
+    opacity: 1;
     text-shadow:
       0 0 8px gold,
       0 0 44px whitesmoke,
@@ -80,17 +78,13 @@ const flicker = keyframes`
 `
 
 const addFlickeringCss = css`
-  & li {
-    text-shadow:
-      0 0 8px gold,
-      0 0 44px whitesmoke,
-      0 0 88px navajowhite;
-    &:nth-of-type(3) {
-      animation: ${fadeIn} ${HEADER_TIMING}s ease-in-out both;
-    }
-  }
-
-  /* TODO: add varying flickering animation to different letters, not the same one */
+  text-shadow:
+    0 0 8px gold,
+    0 0 44px whitesmoke,
+    0 0 88px navajowhite;
+  /* fade in infinity sign */
+  &:nth-of-type(3) {
+    animation: ${fadeIn} ${HEADER_TIMING}s ease-in-out both; }
   & span {
     animation: ${flicker} 15s linear ${HEADER_TIMING}s infinite;
   }
@@ -137,12 +131,15 @@ const Header = () => {
       onAnimationStart={() => setIsHeaderReady(true)}
     >
       <ul
-        css={[sloganCss, isSloganDecoded ? addFlickeringCss : null]}
+        css={sloganCss}
       >
         {slogan.map((part) => (
-          <li key={part}>
+          <li
+            css={[sloganPartCss, isSloganDecoded ? addFlickeringCss : null]}
+            key={part}
+          >
             {part.split(``).map((symbol) => (
-              symbol.toLowerCase() === `c` || symbol.toLowerCase() === `t`
+              symbol.toLowerCase() === `m` || symbol.toLowerCase() === `t`
                 ? <span key={part + symbol}>{symbol}</span>
                 : symbol
             ))}

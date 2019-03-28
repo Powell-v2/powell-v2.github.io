@@ -28,8 +28,10 @@ Post.propTypes = {
 const PostList = ({
   onItemSelect,
   customBulletPoint,
-  className,
+  listClassName,
+  linkStyle,
   cmd,
+  ...other
 }) => {
   const posts = useStaticQuery(graphql`
     query {
@@ -57,7 +59,7 @@ const PostList = ({
   `)
 
   return (
-    <ul className={className}>
+    <ul className={listClassName}>
       {posts.allMarkdownRemark.edges
         .map(({
           node: {
@@ -70,6 +72,7 @@ const PostList = ({
               to={fields.slug}
               cmd={cmd}
               tabIndex={0}
+              css={[...linkStyle]}
               onClick={(e) => onItemSelect(
                 <Post key={randInt()} html={html} date={frontmatter.date} />,
                 e
@@ -82,6 +85,7 @@ const PostList = ({
                   )
                 }
               }}
+              {...other}
             >
               {frontmatter.title}
             </Link>
@@ -94,15 +98,17 @@ const PostList = ({
 PostList.propTypes = {
   onItemSelect: PropTypes.func,
   customBulletPoint: PropTypes.element,
-  className: PropTypes.string,
+  listClassName: PropTypes.string,
   cmd: PropTypes.bool,
+  linkStyle: PropTypes.arrayOf(PropTypes.object),
 }
 
 PostList.defaultProps = {
   onItemSelect: () => {},
   customBulletPoint: <></>,
-  className: ``,
+  listClassName: ``,
   cmd: false,
+  linkStyle: [],
 }
 
 export default PostList

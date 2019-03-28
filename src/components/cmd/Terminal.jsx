@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun } from '@fortawesome/free-solid-svg-icons'
 
@@ -15,6 +16,8 @@ import Tooltip from './content/Tooltip'
 
 import useWindowSize from '../custom_hooks/useWindowSize'
 import { randInt } from '../../utils'
+
+import { linkHighlighted } from '../../styles/shared'
 
 export default function Terminal() {
   const [streamNodes, setStreamNodes] = useState([<Tooltip key={randInt()} />])
@@ -53,13 +56,14 @@ export default function Terminal() {
           <p>Latest posts:</p>
           <PostList
             cmd
+            linkStyle={[linkHighlighted, css`color: black;`]}
             onItemSelect={displayNextNode}
             customBulletPoint={(
               <span className="fa-li">
                 <FontAwesomeIcon icon={faSun} />
               </span>
             )}
-            className="fa-ul"
+            listClassName="fa-ul"
           />
         </article>
       )

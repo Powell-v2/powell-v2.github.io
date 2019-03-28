@@ -35,9 +35,8 @@ const sectionCss = css`
     ".       header  ."
     "content content content";
   padding-bottom: 5rem;
-  &:first-child {
-    padding-top: 5rem;
-  }
+  &:first-of-type {
+    padding-top: 5rem; }
 `
 
 const h1Css = css`
@@ -170,7 +169,6 @@ const AboutPage = () => {
           <section css={sectionCss}>
             <h1 css={h1Css} data-shadow="Skills">Skills</h1>
             <p css={pCss}>
-              {extra}
               {extra}
             </p>
           </section>

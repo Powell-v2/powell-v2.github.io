@@ -5,13 +5,17 @@ import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 
 import useWindowSize from '../custom_hooks/useWindowSize'
 
-const isMobile = (
-  window.navigator.userAgent.match(/Mobile/)
-  && window.navigator.userAgent.match(/Mobile/)[0] === `Mobile`)
+let isMobile
+
+if (typeof window !== `undefined`) {
+  isMobile = (
+    window.navigator.userAgent.match(/Mobile/)
+    && window.navigator.userAgent.match(/Mobile/)[0] === `Mobile`)
+}
 
 function Controls({ handleSubmit, clearOutputStream }) {
   const [command, setCommand] = useState(``)
-  const [placeholder, setPlaceholder] = useState(`\`Type a command here\``)
+  const [placeholder, setPlaceholder] = useState(`Type a command here`)
   const { windowWidth } = useWindowSize()
 
   useEffect(() => {

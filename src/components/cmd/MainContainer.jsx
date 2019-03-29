@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Global } from '@emotion/core'
 
 import useWindowSize from '../custom_hooks/useWindowSize'
+
 import cmdStyles from './styles'
 
 const MainContainer = ({ children }) => {

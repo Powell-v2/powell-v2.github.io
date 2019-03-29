@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { css, keyframes } from '@emotion/core'
 
-import { randIdx } from '../utils'
+import { randIdx, randInt } from '../utils'
 
 const HEADER_TIMING = 2
 
@@ -39,30 +39,41 @@ const sloganPartCss = css`
   margin-top: 0;
   height: 5rem;
   line-height: 5rem;
-  transition: all 2s;
-  /* infinity sign */
-  &:nth-of-type(3) {
-    position: relative;
-    opacity: 0;
-    width: 10rem;
-    &::after, &::before {
-      content: "";
-      position: absolute;
-      top: 15%;
-      left: 50%;
-      width: 1.5rem;
-      height: 1.5rem;
-      border: 1rem solid red;
-      border-radius: 0 50% 50% 50%;
-      transform: rotate(-45deg);
-      /* box-sizing: content-box; */ }
-    &::before {
-      top: 15%;
-      left: 10%;
-      border-radius: 50% 50% 50% 0;
-      transform: rotate(-135deg); }}
+  transition: text-shadow 2s ease-out;
+  .slogan__letter, .slogan__letter--flickering {
+    display: inline-block;
+    width: 3rem;
+    text-align: center;
+  }
+  .slogan__letter:last-of-type {
+    text-align: left;
+  }
+  /* first dot */
+  &:first-of-type .slogan__letter:last-of-type {
+    padding-left: .5rem;
+  }
 `
-
+const infinityCss = css`
+  position: relative;
+  opacity: 0;
+  width: 10rem;
+  &::after, &::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    left: 43%;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1rem solid red;
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(-45deg);
+    /* box-sizing: content-box; */ }
+  &::before {
+    top: 15%;
+    left: 3%;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-135deg); }
+`
 const flicker = keyframes`
   0%, 8.999%, 16%, 31.999%, 47%, 69.999%, 73%, 74.999%, 76%, 83.999%, 85%, 100% {
     opacity: 1;
@@ -78,14 +89,20 @@ const flicker = keyframes`
 `
 
 const addFlickeringCss = css`
-  text-shadow:
-    0 0 8px gold,
-    0 0 44px whitesmoke,
-    0 0 88px navajowhite;
-  /* fade in infinity sign */
-  &:nth-of-type(3) {
-    animation: ${fadeIn} ${HEADER_TIMING}s ease-in-out both; }
-  & span {
+  .slogan__part {
+    text-shadow:
+      0 0 8px gold,
+      0 0 44px whitesmoke,
+      0 0 88px navajowhite; }
+  .infinity {
+    animation: ${fadeIn} ${HEADER_TIMING}s ease-in-out both;
+    &::before, &::after {
+      box-shadow:
+        inset 0 0 5px red,
+        0 0 44px firebrick,
+        0 0 88px saddlebrown; }
+  }
+  .slogan__letter--flickering {
     animation: ${flicker} 15s linear ${HEADER_TIMING}s infinite;
   }
 `
@@ -93,11 +110,10 @@ const addFlickeringCss = css`
 const Header = () => {
   const [slogan, setSlogan] = useState([`††††††`, `∑∑∑∑∑`, ``, `ΩΩΩΩΩΩ`, `ßßßßßßß`])
   const [isSloganDecoded, setIsSloganDecoded] = useState(false)
-  const [isHeaderReady, setIsHeaderReady] = useState(false)
 
   // decode slogan
   useEffect(() => {
-    if (isHeaderReady) {
+    if (!isSloganDecoded) {
       const timerId = setTimeout(() => {
         const sloganAdjusted = slogan.map((word, i) => (
           word.split(``).map((char, j) => {
@@ -123,28 +139,43 @@ const Header = () => {
 
       return () => clearTimeout(timerId)
     }
-  }, [isHeaderReady, slogan])
+  }, [isSloganDecoded, slogan])
 
   return (
     <header
       css={headerCss}
-      onAnimationStart={() => setIsHeaderReady(true)}
     >
       <ul
-        css={sloganCss}
+        css={[sloganCss, isSloganDecoded && addFlickeringCss]}
       >
-        {slogan.map((part) => (
-          <li
-            css={[sloganPartCss, isSloganDecoded ? addFlickeringCss : null]}
-            key={part}
-          >
-            {part.split(``).map((symbol) => (
-              symbol.toLowerCase() === `m` || symbol.toLowerCase() === `t`
-                ? <span key={part + symbol}>{symbol}</span>
-                : symbol
-            ))}
-          </li>
-        ))}
+        {slogan.map((part, partIdx) => {
+          const isInfinity = (partIdx === 2)
+
+          return (
+            <li
+              css={[sloganPartCss, isInfinity && infinityCss]}
+              className={isInfinity ? `infinity` : `slogan__part`}
+              key={part}
+            >
+              {part.split(``).map((symbol) => {
+                const isFlickeringLetter = (
+                  symbol.toLowerCase() === `c`
+                  || symbol.toLowerCase() === `o`)
+
+                return (
+                  <span
+                    className={
+                      isFlickeringLetter
+                        ? `slogan__letter--flickering`
+                        : `slogan__letter`}
+                    key={randInt()}
+                  >
+                    {symbol}
+                  </span>
+                )
+              })}
+            </li>
+          ) })}
       </ul>
     </header>
   )

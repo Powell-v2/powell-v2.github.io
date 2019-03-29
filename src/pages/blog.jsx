@@ -45,7 +45,15 @@ const postsListCss = css`
   color: white;
 `
 const listItemCss = css`
+  position: relative;
   padding: .5rem 0;
+  &:hover::before {
+    content: '👉';
+    position: absolute;
+    top: 15%;
+    left: -11%;
+    font-size: 2rem;
+  }
 `
 const linkCss = css`
   transition: box-shadow .3s;

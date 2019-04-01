@@ -24,20 +24,87 @@ const pages = [
   },
 ]
 
-const menuIconCss = css`
+const menuButton = css`
   position: absolute;
-  display: grid;
-  place-items: center;
-  top: 1rem;
-  left: 1rem;
+  top: 4.5rem;
+  left: 1.5rem;
   width: 5rem;
-  height: 5rem;
+  height: 3rem;
   color: white;
   background-color: red;
-  border-radius: 50%;
+  font-size: 1.5rem;
   cursor: pointer;
   z-index: 555;
-  outline: none;
+  transition: transform .444s ease-out;
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    border-left: 2.5rem solid transparent;
+    border-right: 2.5rem solid transparent; }
+  &:before {
+    top: -1.5rem;
+    border-bottom: 1.5rem solid red; }
+  &:after {
+    bottom: -1.5rem;
+    border-top: 1.5rem solid red; }
+  &:hover {
+    transform: rotate(-180deg);
+  }
+`
+const burgerOnHover = css`
+  &:hover > span {
+    &::before {
+      transform: scaleX(1);
+      transform-origin: right;
+    }
+    &::after {
+      transform: scaleX(.8);
+      transform-origin: right;
+    }
+    & span {
+      transform-origin: right;
+      transform: scaleX(.6);
+    }
+  }
+`
+const burger = css`
+  display: block;
+  padding: 0 .9rem;
+  &::before, &::after {
+    content: "";
+    display: block;
+    height: calc(3rem / 6);
+    background-color: white;
+    transition: all .444s ease-out;
+  }
+  &::before, &::after {
+    transform-origin: center;
+    transform: scaleX(.55);
+  }
+  & span {
+    display: block;
+    height: calc(3rem / 6);
+    margin: calc(3rem / 6) 0;
+    background-color: white;
+    transform-origin: center;
+    transform: scaleX(1);
+    transition: all .444s ease-out;
+  }
+`
+const cross = css`
+  &::before, &::after {
+    transform-origin: center;
+  }
+  &::before {
+    transform: scaleX(1) translateY(1rem) rotate(-45deg);
+  }
+  &::after {
+    transform: scaleX(1) translateY(-1rem) rotate(45deg);
+  }
+  & span {
+    transform: scaleX(0);
+  }
 `
 const menuCss = css`
   position: absolute;
@@ -54,7 +121,7 @@ const menuCss = css`
   transform: translate(-50%, -50%);
   box-shadow: 0 0 0 50rem rgba(0, 0, 0, 0.9);
 `
-const liCss = css`
+const menuItemCss = css`
   height: 4rem;
   line-height: 4rem;
   margin: 2rem auto;
@@ -62,30 +129,27 @@ const liCss = css`
   font-size: 2.5rem;
   cursor: pointer;
   text-transform: uppercase;
-  & span {
-    display: inline-block;
-    line-height: 4rem;
-    width: 4rem;
-    margin-left: -1rem;
-    background-color: grey;
-    text-align: center;
-    vertical-align: middle;
-    transition:
-      width .2s,
-      margin .2s;
-    &:first-of-type  {
-      border-top-left-radius: .5rem;
-      border-bottom-left-radius: .5rem;
-    }
-    &:last-of-type {
-      border-top-right-radius: .5rem;
-      border-bottom-right-radius: .5rem;
-    }
-  }
   &:hover span {
     width: 4.5rem;
-    margin: 0 .5rem;
-  }
+    margin: 0 .5rem; }
+`
+const letterCss = css`
+  display: inline-block;
+  line-height: 4rem;
+  width: 4rem;
+  margin-left: -1rem;
+  background-color: grey;
+  text-align: center;
+  vertical-align: middle;
+  transition:
+    width .2s,
+    margin .2s;
+  &:first-of-type {
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem; }
+  &:last-of-type {
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem; }
 `
 
 const Menu = () => {
@@ -107,7 +171,7 @@ const Menu = () => {
     <>
       <button
         type="button"
-        css={menuIconCss}
+        css={[menuButton, !isMenuOpen ? burgerOnHover : null]}
         onClick={() => setIsMenuOpen(() => !isMenuOpen)}
         onKeyDown={(e) => {
           // enter and space, respectively
@@ -116,7 +180,9 @@ const Menu = () => {
           }
         }}
       >
-        Menu
+        <span css={[burger, isMenuOpen ? cross : null]}>
+          <span />
+        </span>
       </button>
       {isMenuOpen && (
         <section css={menuCss}>
@@ -125,7 +191,7 @@ const Menu = () => {
               {pages.map(({ name, to }) => (
                 <li
                   key={name}
-                  css={liCss}
+                  css={menuItemCss}
                 >
                   <Link
                     to={to}
@@ -136,7 +202,14 @@ const Menu = () => {
                   >
                     {name
                       .split(``)
-                      .map((char) => <span key={randInt()}>{char}</span>)
+                      .map((char) => (
+                        <span
+                          key={randInt()}
+                          css={letterCss}
+                        >
+                          {char}
+                        </span>
+                      ))
                     }
                   </Link>
                 </li>

@@ -34,6 +34,7 @@ const menuButton = css`
   background-color: red;
   font-size: 1.5rem;
   cursor: pointer;
+  outline: none;
   z-index: 555;
   transition: transform .444s ease-out;
   &:before, &:after {

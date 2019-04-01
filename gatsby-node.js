@@ -9,7 +9,7 @@ const onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: `slug`,
-      value: `blog${slug}`,
+      value: `/blog${slug}`,
     })
   }
 }

@@ -66,8 +66,7 @@ const infinityCss = css`
     height: 1.5rem;
     border: 1rem solid red;
     border-radius: 0 50% 50% 50%;
-    transform: rotate(-45deg);
-    /* box-sizing: content-box; */ }
+    transform: rotate(-45deg); }
   &::before {
     top: 15%;
     left: 3%;
@@ -99,8 +98,8 @@ const addFlickeringCss = css`
     &::before, &::after {
       box-shadow:
         inset 0 0 5px red,
-        0 0 44px firebrick,
-        0 0 88px saddlebrown; }
+        0 0 44px red,
+        0 0 88px red; }
   }
   .slogan__letter--flickering {
     animation: ${flicker} 15s linear ${HEADER_TIMING}s infinite;

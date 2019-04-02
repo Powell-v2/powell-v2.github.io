@@ -69,7 +69,7 @@ const letter = css`
     border-bottom-right-radius: .5rem; }
 `
 
-const Menu = () => (
+const MenuBody = () => (
   <section css={menuContainer}>
     <nav>
       <ul css={menuList}>
@@ -104,4 +104,4 @@ const Menu = () => (
   </section>
 )
 
-export default Menu
+export default MenuBody

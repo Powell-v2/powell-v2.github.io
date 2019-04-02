@@ -5,6 +5,8 @@ import { randInt } from '../../utils'
 
 import Link from '../Link'
 
+import { palette } from '../../styles/meta'
+
 const pages = [
   {
     name: `Home`,
@@ -55,7 +57,7 @@ const letter = css`
   line-height: 4rem;
   width: 4rem;
   margin-left: -1rem;
-  background-color: firebrick;
+  background-color: ${palette.purple};
   text-align: center;
   vertical-align: middle;
   transition:
@@ -67,6 +69,10 @@ const letter = css`
   &:last-of-type {
     border-top-right-radius: .5rem;
     border-bottom-right-radius: .5rem; }
+`
+const link = css`
+  color: ${palette.beige};
+  display: inline-block;
 `
 
 const MenuBody = () => (
@@ -80,10 +86,7 @@ const MenuBody = () => (
           >
             <Link
               to={to}
-              css={css`
-              color: gold;
-              display: inline-block;
-            `}
+              css={link}
             >
               {name
                 .split(``)

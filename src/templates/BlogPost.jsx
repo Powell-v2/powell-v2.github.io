@@ -6,6 +6,7 @@ import { Global, css } from '@emotion/core'
 import Menu from '../components/Menu'
 
 import globalStyles from '../styles/global'
+import { palette } from '../styles/meta'
 
 const wrapperCss = css`
   display: grid;
@@ -18,8 +19,8 @@ const wrapperCss = css`
   min-height: 100vh;
   font-family: "Special Elite";
   letter-spacing: .05rem;
-  color: whitesmoke;
-  background-color: black;
+  color: ${palette.beige};
+  background-color: ${palette.black};
 `
 const headerCss = css`
   grid-area: hd;

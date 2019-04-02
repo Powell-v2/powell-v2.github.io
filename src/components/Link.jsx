@@ -3,6 +3,8 @@ import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
+import { palette } from '../styles/meta'
+
 const buttonCss = css`
   /* reset default button styles */
   height: auto;
@@ -15,7 +17,7 @@ const buttonCss = css`
 `
 const linkCss = css`
   text-decoration: none;
-  color: white;
+  color: ${palette.beige};
 `
 
 const Link = ({

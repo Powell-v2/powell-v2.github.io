@@ -5,12 +5,13 @@ import Header from '../components/Header'
 import Cube from '../components/Cube'
 
 import globalStyles from '../styles/global'
+import { palette } from '../styles/meta'
 
 const containerCss = css`
   display: grid;
   height: 100vh;
   grid-template-rows: 1fr 7fr;
-  background-color: black;
+  background-color: ${palette.black};
 `
 
 const IndexPage = () => (

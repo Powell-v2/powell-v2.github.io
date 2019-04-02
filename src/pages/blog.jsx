@@ -5,6 +5,7 @@ import Menu from '../components/Menu'
 import PostList from '../components/cmd/content/PostList'
 
 import globalStyles from '../styles/global'
+import { palette } from '../styles/meta'
 
 const containerCss = css`
   position: relative;
@@ -16,7 +17,7 @@ const containerCss = css`
     "hd posts"
     "hd .";
   height: 100vh;
-  background-color: black;
+  background-color: ${palette.black};
   overflow-y: hidden;
 `
 const h1Css = css`
@@ -42,7 +43,6 @@ const h1Css = css`
 const postsListCss = css`
   grid-area: posts;
   margin: auto;
-  color: white;
 `
 const listItemCss = css`
   position: relative;
@@ -58,10 +58,13 @@ const listItemCss = css`
 const linkCss = css`
   transition: box-shadow .3s;
   font-size: 1.8rem;
+  color: ${palette.beige};
   &:hover {
-    box-shadow: 0 .3rem #ffc555;
-    text-decoration: inherit;
-  }
+    box-shadow: 0 .3rem ${palette.gold};
+    text-decoration: inherit; }
+`
+const grabbing = css`
+  cursor: grabbing;
 `
 
 const BlogMainPage = () => {
@@ -107,7 +110,7 @@ const BlogMainPage = () => {
         <h1
           role="presentation"
           ref={headerRef}
-          css={[h1Css, isGrabbing ? css`cursor: grabbing;` : null]}
+          css={[h1Css, isGrabbing && grabbing]}
           onMouseDown={(e) => {
             setIsGrabbing(true)
             setGrabStartY(e.clientY)

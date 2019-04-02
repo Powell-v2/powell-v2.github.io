@@ -3,27 +3,20 @@ import { css, keyframes } from '@emotion/core'
 
 import { randIdx, randInt } from '../utils'
 
+import { palette } from '../styles/meta'
+import { animations } from '../styles/shared'
+
 const HEADER_TIMING = 2
 
 const symbols = `!@#$%^&*()+-_=~<>,.?/{}[]|;:`
 const words = [`Dream.`, `Code.`, ``, `Sleep.`, `Repeat.`]
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
-
 const headerCss = css`
   display: grid;
-  color: gold;
+  color: ${palette.gold};
   opacity: 1;
-  animation: ${fadeIn} ${HEADER_TIMING}s ease-in-out;
+  animation: ${animations.fadeIn} ${HEADER_TIMING}s ease-in-out;
 `
-
 const sloganCss = css`
   display: grid;
   grid-template-columns: repeat(5, minmax(10rem, max-content));
@@ -34,12 +27,11 @@ const sloganCss = css`
   text-transform: uppercase;
   letter-spacing: .5rem;
 `
-
 const sloganPartCss = css`
   margin-top: 0;
   height: 5rem;
   line-height: 5rem;
-  transition: text-shadow 2s ease-out;
+  transition: text-shadow ${HEADER_TIMING}s ease-out;
   .slogan__letter, .slogan__letter--flickering {
     display: inline-block;
     width: 3rem;
@@ -64,7 +56,7 @@ const infinityCss = css`
     left: 43%;
     width: 1.5rem;
     height: 1.5rem;
-    border: 1rem solid red;
+    border: 1rem solid ${palette.red};
     border-radius: 0 50% 50% 50%;
     transform: rotate(-45deg); }
   &::before {
@@ -77,29 +69,27 @@ const flicker = keyframes`
   0%, 8.999%, 16%, 31.999%, 47%, 69.999%, 73%, 74.999%, 76%, 83.999%, 85%, 100% {
     opacity: 1;
     text-shadow:
-      0 0 8px gold,
-      0 0 44px whitesmoke,
-      0 0 88px navajowhite;
-  }
+      0 0 .8rem ${palette.gold},
+      0 0 4.4rem ${palette.gold},
+      0 0 6.6rem ${palette.white}; }
   9%, 15.999%, 32%, 46.999%, 70%, 72.999%, 75%, 75.999%, 84%, 84.999% {
     opacity: .55;
-    text-shadow: none;
-  }
+    text-shadow: none; }
 `
 
 const addFlickeringCss = css`
   .slogan__part {
     text-shadow:
-      0 0 8px gold,
-      0 0 44px whitesmoke,
-      0 0 88px navajowhite; }
+      0 0 .8rem ${palette.gold},
+      0 0 4.4rem ${palette.gold},
+      0 0 7.7rem ${palette.white}; }
   .infinity {
-    animation: ${fadeIn} ${HEADER_TIMING}s ease-in-out both;
+    animation: ${animations.fadeIn} ${HEADER_TIMING}s ease-in-out both;
     &::before, &::after {
       box-shadow:
-        inset 0 0 5px red,
-        0 0 44px red,
-        0 0 88px red; }
+        inset 0 0 .5rem ${palette.red},
+        0 0 3.3rem ${palette.red},
+        0 0 7.7rem ${palette.red}; }
   }
   .slogan__letter--flickering {
     animation: ${flicker} 15s linear ${HEADER_TIMING}s infinite;

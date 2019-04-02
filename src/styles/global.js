@@ -1,5 +1,7 @@
 import { css } from '@emotion/core'
 
+import { palette } from "./meta"
+
 export default css`
   * {
     margin: 0;
@@ -15,7 +17,7 @@ export default css`
   body {
     font-family: "Quicksand", sans-serif, serif, monospace;
     font-size: 1.6rem;
-    background: black;
+    background: ${palette.black};
   }
 
   ul {

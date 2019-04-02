@@ -2,14 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
+import { palette } from '../../styles/meta'
+
 const menuButton = css`
   position: absolute;
   top: 4.5rem;
   left: 1.5rem;
   width: 5rem;
   height: 3rem;
-  color: white;
-  background-color: rgb(48,15,143);
+  background-color: ${palette.purple};
   font-size: 1.5rem;
   cursor: pointer;
   outline: none;
@@ -23,29 +24,24 @@ const menuButton = css`
     border-right: 2.5rem solid transparent; }
   &:before {
     top: -1.5rem;
-    border-bottom: 1.5rem solid rgb(48,15,143); }
+    border-bottom: 1.5rem solid ${palette.purple}; }
   &:after {
     bottom: -1.5rem;
-    border-top: 1.5rem solid rgb(48,15,143); }
+    border-top: 1.5rem solid ${palette.purple}; }
   &:hover {
-    transform: rotate(-180deg);
-  }
+    transform: rotate(-180deg); }
 `
 const burgerOnHover = css`
   &:hover > span {
     &::before {
       transform: scaleX(1);
-      transform-origin: right;
-    }
+      transform-origin: right; }
     &::after {
       transform: scaleX(.8);
-      transform-origin: right;
-    }
+      transform-origin: right; }
     & span {
       transform-origin: right;
-      transform: scaleX(.6);
-    }
-  }
+      transform: scaleX(.6); }}
 `
 const burger = css`
   display: block;
@@ -54,51 +50,44 @@ const burger = css`
     content: "";
     display: block;
     height: calc(3rem / 6);
-    background-color: white;
-    transition: all .444s ease-out;
-  }
+    background-color: ${palette.beige};
+    transition: all .444s ease-out; }
   &::before, &::after {
     transform-origin: center;
-    transform: scaleX(.55);
-  }
+    transform: scaleX(.55); }
   & span {
     display: block;
     height: calc(3rem / 6);
     margin: calc(3rem / 6) 0;
-    background-color: white;
+    background-color: ${palette.beige};
     transform-origin: center;
     transform: scaleX(1);
-    transition: all .444s ease-out;
-  }
+    transition: all .444s ease-out; }
 `
 const cross = css`
   &::before, &::after {
-    transform-origin: center;
-  }
+    transform-origin: center; }
   &::before {
-    transform: scaleX(1) translateY(1rem) rotate(-45deg);
-  }
+    transform: scaleX(1) translateY(1rem) rotate(-45deg); }
   &::after {
-    transform: scaleX(1) translateY(-1rem) rotate(45deg);
-  }
+    transform: scaleX(1) translateY(-1rem) rotate(45deg); }
   & span {
-    transform: scaleX(0);
-  }
+    transform: scaleX(0); }
 `
 
 const MenuButton = ({ isOpen, setIsOpen }) => (
   <button
     type="button"
-    css={[menuButton, !isOpen ? burgerOnHover : null]}
+    css={[menuButton, !isOpen && burgerOnHover]}
     onClick={() => setIsOpen((prevState) => !prevState)}
     onKeyDown={(e) => {
-      // enter and space, respectively
+      // Enter and Space, respectively
       if (e.keyCode === 13 || e.keyCode === 32) {
         setIsOpen(true)
       }
     }}
   >
-    <span css={[burger, isOpen ? cross : null]}>
+    <span css={[burger, isOpen && cross]}>
       <span />
     </span>
   </button>

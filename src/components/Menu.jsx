@@ -31,7 +31,7 @@ const menuButton = css`
   width: 5rem;
   height: 3rem;
   color: white;
-  background-color: red;
+  background-color: rgb(48,15,143);
   font-size: 1.5rem;
   cursor: pointer;
   outline: none;
@@ -45,10 +45,10 @@ const menuButton = css`
     border-right: 2.5rem solid transparent; }
   &:before {
     top: -1.5rem;
-    border-bottom: 1.5rem solid red; }
+    border-bottom: 1.5rem solid rgb(48,15,143); }
   &:after {
     bottom: -1.5rem;
-    border-top: 1.5rem solid red; }
+    border-top: 1.5rem solid rgb(48,15,143); }
   &:hover {
     transform: rotate(-180deg);
   }

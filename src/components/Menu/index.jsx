@@ -14,10 +14,8 @@ const Menu = ({ setIsMenuOpen }) => {
 
   useEffect(() => {
     const listener = (e) => {
-      // close on Enter
-      if (e.keyCode === 27) {
-        setIsOpen(false)
-      }
+      // toggle on Escape
+      if (e.keyCode === 27) setIsOpen((prevState) => !prevState)
     }
 
     window.addEventListener('keydown', listener)

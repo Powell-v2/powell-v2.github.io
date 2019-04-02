@@ -107,22 +107,25 @@ const cross = css`
     transform: scaleX(0);
   }
 `
-const menuCss = css`
+const menuContainer = css`
   position: absolute;
   display: grid;
   place-items: center;
-  align-content: center;
-  height: 75vh;
-  width: 75vw;
+  height: 65vh;
+  width: 65vw;
   top: 50%;
   left: 50%;
-  border: 1px solid gold;
-  background-color: black;
   z-index: 12;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 0 50rem rgba(0, 0, 0, 0.9);
 `
-const menuItemCss = css`
+const overlay = css`
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 12;
+  background-color: rgba(0,0,0,0.93);
+`
+const menuItem = css`
   height: 4rem;
   line-height: 4rem;
   margin: 2rem auto;
@@ -134,12 +137,12 @@ const menuItemCss = css`
     width: 4.5rem;
     margin: 0 .5rem; }
 `
-const letterCss = css`
+const letter = css`
   display: inline-block;
   line-height: 4rem;
   width: 4rem;
   margin-left: -1rem;
-  background-color: grey;
+  background-color: firebrick;
   text-align: center;
   vertical-align: middle;
   transition:
@@ -186,38 +189,41 @@ const Menu = () => {
         </span>
       </button>
       {isMenuOpen && (
-        <section css={menuCss}>
-          <nav>
-            <ul css={css`display: grid;`}>
-              {pages.map(({ name, to }) => (
-                <li
-                  key={name}
-                  css={menuItemCss}
-                >
-                  <Link
-                    to={to}
-                    css={css`
+        <>
+          <div css={overlay} />
+          <section css={menuContainer}>
+            <nav>
+              <ul css={css`display: grid;`}>
+                {pages.map(({ name, to }) => (
+                  <li
+                    key={name}
+                    css={menuItem}
+                  >
+                    <Link
+                      to={to}
+                      css={css`
                       color: gold;
                       display: inline-block;
                     `}
-                  >
-                    {name
-                      .split(``)
-                      .map((char) => (
-                        <span
-                          key={randInt()}
-                          css={letterCss}
-                        >
-                          {char}
-                        </span>
-                      ))
-                    }
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </section>
+                    >
+                      {name
+                        .split(``)
+                        .map((char) => (
+                          <span
+                            key={randInt()}
+                            css={letter}
+                          >
+                            {char}
+                          </span>
+                        ))
+                      }
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </section>
+        </>
       )}
     </>
   )

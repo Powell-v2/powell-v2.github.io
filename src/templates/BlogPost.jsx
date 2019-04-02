@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import { Global, css } from '@emotion/core'
@@ -37,15 +37,21 @@ const bodyCss = css`
     line-height: 1.6;
   }
 `
+const disableScroll = css`
+  height: 100vh;
+  overflow-y: hidden;
+`
 
 const BlogPost = ({ data }) => {
   const { html, frontmatter } = data.markdownRemark
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <>
       <Global styles={globalStyles} />
-      <Menu />
-      <section css={wrapperCss}>
+      <Menu setIsMenuOpen={setIsMenuOpen} />
+      <section css={[wrapperCss, isMenuOpen ? disableScroll : null]}>
         <h1 css={headerCss}>
           {frontmatter.title}
         </h1>

@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 import MenuButton from './MenuButton'
 import Overlay from './Overlay'
 import MenuBody from './MenuBody'
 
-const Menu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+const Menu = ({ setIsMenuOpen }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (setIsMenuOpen) setIsMenuOpen(isOpen)
+  }, [isOpen, setIsMenuOpen])
 
   useEffect(() => {
     const listener = (e) => {
       // close on Enter
       if (e.keyCode === 27) {
-        setIsMenuOpen(false)
+        setIsOpen(false)
       }
     }
 
     window.addEventListener('keydown', listener)
     return () => window.removeEventListener('keydown', listener)
-  })
+  }, [])
 
   return (
     <>
       <MenuButton
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
       />
-      {isMenuOpen && (
+      {isOpen && (
         <>
           <Overlay />
           <MenuBody />
@@ -33,6 +38,14 @@ const Menu = () => {
       )}
     </>
   )
+}
+
+Menu.propTypes = {
+  setIsMenuOpen: PropTypes.func,
+}
+
+Menu.defaultProps = {
+  setIsMenuOpen: null,
 }
 
 export default Menu

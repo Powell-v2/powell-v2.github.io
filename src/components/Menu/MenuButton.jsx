@@ -86,27 +86,27 @@ const cross = css`
   }
 `
 
-const MenuButton = ({ isMenuOpen, setIsMenuOpen }) => (
+const MenuButton = ({ isOpen, setIsOpen }) => (
   <button
     type="button"
-    css={[menuButton, !isMenuOpen ? burgerOnHover : null]}
-    onClick={() => setIsMenuOpen((prevState) => !prevState)}
+    css={[menuButton, !isOpen ? burgerOnHover : null]}
+    onClick={() => setIsOpen((prevState) => !prevState)}
     onKeyDown={(e) => {
       // enter and space, respectively
       if (e.keyCode === 13 || e.keyCode === 32) {
-        setIsMenuOpen(true)
+        setIsOpen(true)
       }
     }}
   >
-    <span css={[burger, isMenuOpen ? cross : null]}>
+    <span css={[burger, isOpen ? cross : null]}>
       <span />
     </span>
   </button>
 )
 
 MenuButton.propTypes = {
-  isMenuOpen: PropTypes.bool.isRequired,
-  setIsMenuOpen: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
 }
 
 export default MenuButton

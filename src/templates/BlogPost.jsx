@@ -23,7 +23,7 @@ const wrapperCss = css`
 `
 const headerCss = css`
   grid-area: hd;
-  justify-self: center;
+  text-align: center;
 `
 const detailsCss = css`
   grid-area: details;

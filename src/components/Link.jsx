@@ -5,7 +5,7 @@ import { css } from '@emotion/core'
 
 import { palette } from '../styles/meta'
 
-const buttonCss = css`
+const button = css`
   /* reset default button styles */
   height: auto;
   margin: 0;
@@ -15,32 +15,47 @@ const buttonCss = css`
   text-transform: none;
   background: none;
 `
-const linkCss = css`
+const link = css`
   text-decoration: none;
   color: ${palette.beige};
 `
 
 const Link = ({
-  to, children, cmd, ...other
-}) => (
-  cmd ? (
-    <button
-      type="button"
-      css={buttonCss}
-      {...other}
-    >
-      {children}
-    </button>
-  ) : (
+  to, children, cmd, href, ...other
+}) => {
+  if (cmd) {
+    return (
+      <button
+        type="button"
+        css={button}
+        {...other}
+      >
+        {children}
+      </button>
+    )
+  }
+  if (href) {
+    return (
+      <a
+        href={href}
+        css={link}
+        {...other}
+      >
+        {children}
+      </a>
+    )
+  }
+
+  return (
     <GatsbyLink
-      css={linkCss}
       to={to}
+      css={link}
       {...other}
     >
       {children}
     </GatsbyLink>
   )
-)
+}
 
 Link.propTypes = {
   to: PropTypes.string,
@@ -49,12 +64,14 @@ Link.propTypes = {
     PropTypes.array,
   ),
   cmd: PropTypes.bool,
+  href: PropTypes.string,
 }
 
 Link.defaultProps = {
   to: `/`,
   children: `This is nothing but a placholder link text`,
   cmd: false,
+  href: null,
 }
 
 export default Link

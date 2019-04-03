@@ -12,14 +12,14 @@ import { palette } from '../styles/meta'
 
 const containerCss = css`
   display: grid;
-  height: 100vh;
+  min-height: 100vh;
   grid-template-columns: 2fr 1fr;
-  background-color: ${palette.black};
 `
 
 const mainCss = css`
   display: grid;
-  grid-auto-rows: minmax(min-content, max-content);
+  grid-template-rows: repeat(2, 1fr);
+  grid-row-gap: 5rem;
   color: ${palette.beige};
   overflow-y: hidden;
   scrollbar-width: none;
@@ -34,7 +34,8 @@ const sectionCss = css`
   grid-template-areas:
     ".       header  ."
     "content content content";
-  padding-bottom: 5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
   &:first-of-type {
     padding-top: 5rem; }
 `

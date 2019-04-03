@@ -7,11 +7,6 @@ import { palette } from '../styles/meta'
 const EDGE_LEN = `25rem`
 const DETACH_DIST = `20rem`
 
-const containerCss = css`
-  display: grid;
-  overflow-y: hidden;
-  place-items: center;
-`
 const float = keyframes`
   from, to {
     transform: rotate3d(1, 1, 0, 55deg); }
@@ -28,8 +23,7 @@ const float = keyframes`
       scale3d(1.04, 1.04, 1.04)
       translate3d(-10px, 20px, 10px); }
 `
-const cubeCss = css`
-  margin-bottom: 1rem;
+const cube = css`
   width: ${EDGE_LEN};
   height: ${EDGE_LEN};
   transform-style: preserve-3d;
@@ -61,7 +55,7 @@ const cubeCss = css`
   .cube__top {
     transform: rotateX(90deg) translateZ(calc(${EDGE_LEN} / 2)); }
 `
-const facetCss = css`
+const facet = css`
   position: absolute;
   height: ${EDGE_LEN};
   line-height: ${EDGE_LEN};
@@ -72,7 +66,7 @@ const facetCss = css`
   font-size: 3.3rem;
   text-align: center;
 `
-const linkCss = css`
+const link = css`
   color: ${palette.beige};
   display: inline-block;
   width: 100%;
@@ -92,25 +86,23 @@ const notations = [
 ]
 
 const Cube = () => (
-  <div css={containerCss}>
-    <div css={cubeCss}>
-      {notations.map(({ text, to, side }) => (
-        <figure
-          key={Math.random()}
-          className={`cube__${side}`}
-          css={facetCss}
-        >
-          {to && (
-            <Link
-              to={to}
-              css={linkCss}
-            >
-              {text}
-            </Link>
-          )}
-        </figure>
-      ))}
-    </div>
+  <div css={cube}>
+    {notations.map(({ text, to, side }) => (
+      <figure
+        key={Math.random()}
+        className={`cube__${side}`}
+        css={facet}
+      >
+        {to && (
+          <Link
+            to={to}
+            css={link}
+          >
+            {text}
+          </Link>
+        )}
+      </figure>
+    ))}
   </div>
 )
 

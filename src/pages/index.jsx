@@ -7,19 +7,26 @@ import Cube from '../components/Cube'
 import globalStyles from '../styles/global'
 import { palette } from '../styles/meta'
 
-const containerCss = css`
+const pageContainer = css`
   display: grid;
   height: 100vh;
-  grid-template-rows: 1fr 7fr;
+  grid-template-rows: 13% 87%;
   background-color: ${palette.black};
+`
+const cubeContainer = css`
+  display: grid;
+  overflow-y: hidden;
+  place-items: center;
 `
 
 const IndexPage = () => (
   <>
     <Global styles={globalStyles} />
-    <div css={containerCss}>
+    <div css={pageContainer}>
       <Header />
-      <Cube />
+      <div css={cubeContainer}>
+        <Cube />
+      </div>
     </div>
   </>
 )

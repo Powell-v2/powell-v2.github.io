@@ -6,7 +6,7 @@ import { palette } from '../../styles/meta'
 
 const menuButton = css`
   position: absolute;
-  top: 4.5rem;
+  top: 3rem;
   left: 1.5rem;
   width: 5rem;
   height: 3rem;

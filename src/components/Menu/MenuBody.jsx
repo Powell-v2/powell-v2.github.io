@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 import { randInt } from '../../utils'
 
 import Link from '../Link'
+import ContactLinks from '../ContactLinks'
 
 import { palette } from '../../styles/meta'
 
@@ -30,6 +31,7 @@ const menuContainer = css`
   position: absolute;
   display: grid;
   place-items: center;
+  grid-gap: 1.5rem;
   height: 65vh;
   width: 65vw;
   top: 50%;
@@ -74,6 +76,11 @@ const link = css`
   color: ${palette.beige};
   display: inline-block;
 `
+const contactSection = css`
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 4rem;
+`
 
 const MenuBody = () => (
   <section css={menuContainer}>
@@ -104,6 +111,12 @@ const MenuBody = () => (
         ))}
       </ul>
     </nav>
+    <section>
+      <ContactLinks
+        iconSize="2x"
+        listStyle={[contactSection]}
+      />
+    </section>
   </section>
 )
 

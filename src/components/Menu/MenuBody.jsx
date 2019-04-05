@@ -30,14 +30,18 @@ const pages = [
 const menuContainer = css`
   position: absolute;
   display: grid;
-  place-items: center;
-  grid-gap: 1.5rem;
-  height: 65vh;
-  width: 65vw;
+  justify-items: center;
+  grid-template-rows: 7fr 3fr;
+  grid-gap: 2rem;
+  height: 100vh;
+  width: 100vw;
   top: 50%;
   left: 50%;
   z-index: 12;
   transform: translate(-50%, -50%);
+  & nav {
+    align-self: end;
+  }
 `
 const menuList = css`
   display: grid;

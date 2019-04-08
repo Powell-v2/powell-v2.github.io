@@ -195,10 +195,13 @@ const asideCss = css`
 `
 
 const AboutPage = () => {
-  const images = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-      placeholderImage: allFile(
-        filter: { sourceInstanceName: { eq: "images" } }
+      images: allFile(
+        filter: {
+          sourceInstanceName: { eq: "images" }
+          relativeDirectory: { eq: "about" }
+        }
       ) {
         edges {
           node {
@@ -233,7 +236,7 @@ const AboutPage = () => {
           </section>
         </main>
         <aside css={asideCss}>
-          {images.placeholderImage.edges.map(({ node }) => {
+          {data.images.edges.map(({ node }) => {
             const { fluid } = node.childImageSharp
             const { originalName } = fluid
             const { extension } = node

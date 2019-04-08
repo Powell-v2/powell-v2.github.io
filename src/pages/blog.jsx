@@ -8,26 +8,25 @@ import PostList from '../components/cmd/content/PostList'
 import globalStyles from '../styles/global'
 import { palette } from '../styles/meta'
 
-const containerCss = css`
+const container = css`
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-areas:
-    "hd ."
-    "hd posts"
-    "hd .";
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${palette.black};
   overflow-y: hidden;
+  @media (max-width: 925px) {
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, 1fr);
+  }
 `
-const h1Css = css`
+const headerWrapper = css`
+  display: grid;
+  place-items: center;
+`
+const mainHeader = css`
   position: absolute;
-  grid-area: hd;
-  justify-self: center;
-  top: -14rem;
-  left: 4rem;
-  transition: top 444ms ease-out;
+  transition: top 444ms cubic-bezier(0,1,1,1);
   -webkit-text-fill-color: transparent;
   color: transparent;
   -webkit-background-clip: text;
@@ -38,29 +37,53 @@ const h1Css = css`
   font-size: 35rem;
   cursor: grab;
   user-select: none;
+  @media (max-width: 425px) {
+    font-size: 10rem;
+  }
+  @media (min-width: 425px) and (max-width: 575px) {
+    font-size: 15rem;
+  }
+  @media (min-width: 575px) and (max-width: 750px) {
+    font-size: 20rem;
+  }
+  @media (min-width: 750px) and (max-width: 925px) {
+    font-size: 25rem;
+  }
+  @media (max-width: 925px) {
+    align-self: end;
+    writing-mode: lr;
+    cursor: auto;
+  }
 `
-const postsListCss = css`
-  grid-area: posts;
-  margin: auto;
+const postsList = css`
+  align-self: center;
+  @media (max-width: 925px) {
+    justify-self: center;
+  }
 `
-const listItemCss = css`
+const listItem = css`
   position: relative;
   padding: .5rem 0;
   &:hover::before {
     content: '👉';
     position: absolute;
-    top: 15%;
-    left: -11%;
+    top: .75rem;
+    left: -3rem;
     font-size: 2rem;
   }
 `
-const linkCss = css`
+const link = css`
   transition: box-shadow .3s;
   font-size: 1.8rem;
   color: ${palette.beige};
   &:hover {
     box-shadow: 0 .3rem ${palette.gold};
-    text-decoration: inherit; }
+    text-decoration: inherit;
+  }
+  @media (max-width: 925px) {
+    justify-self: center;
+    font-size: 1.6rem;
+  }
 `
 const grabbing = css`
   cursor: grabbing;
@@ -82,11 +105,15 @@ const BlogMainPage = () => {
   const [isGrabbing, setIsGrabbing] = useState(false)
   const [grabStartY, setGrabStartY] = useState(0)
   const [headerCurrTopPos, setHeaderCurrTopPos] = useState(0)
+  const [isHeaderVertical, setIsHeaderVertical] = useState(false)
   const headerRef = useRef(null)
 
-  // Set header's background pattern.
+  // Set header's background pattern and detect writing direction.
   useEffect(() => {
-    headerRef.current.style.cssText = `
+    if (getComputedStyle(headerRef.current)[`writing-mode`].startsWith(`vertical`)) {
+      setIsHeaderVertical(true)
+    }
+    headerRef.current.style.cssText += `
       background-image: url(${headerImg.publicURL});
       background-color: ${palette.gold};
     `
@@ -120,32 +147,44 @@ const BlogMainPage = () => {
       <Menu />
       <div
         role="presentation"
-        css={containerCss}
+        css={container}
         onMouseUp={() => {
-          setIsGrabbing(false)
-          setHeaderCurrTopPos(headerRef.current.offsetTop)
-        }}
-      >
-        <h1
-          role="presentation"
-          ref={headerRef}
-          css={[h1Css, isGrabbing && grabbing]}
-          onMouseDown={(e) => {
-            setIsGrabbing(true)
-            setGrabStartY(e.clientY)
-          }}
-          onMouseUp={() => {
+          if (isHeaderVertical) {
             setIsGrabbing(false)
             setHeaderCurrTopPos(headerRef.current.offsetTop)
-          }}
-          onMouseMove={slideHeader}
-        >
-          Blog
-        </h1>
-        <section css={postsListCss}>
+          }
+        }}
+      >
+        <header css={headerWrapper}>
+          <h1
+            role="presentation"
+            ref={headerRef}
+            css={[
+              mainHeader,
+              isGrabbing && grabbing,
+              !isHeaderVertical && css`position: relative;`
+            ]}
+            onMouseDown={(e) => {
+              if (isHeaderVertical) {
+                setIsGrabbing(true)
+                setGrabStartY(e.clientY)
+              }
+            }}
+            onMouseUp={() => {
+              if (isHeaderVertical) {
+                setIsGrabbing(false)
+                setHeaderCurrTopPos(headerRef.current.offsetTop)
+              }
+            }}
+            onMouseMove={isHeaderVertical ? slideHeader : null}
+          >
+            Blog
+          </h1>
+        </header>
+        <section css={postsList}>
           <PostList
-            liStyle={[listItemCss]}
-            linkStyle={[linkCss]}
+            liStyle={[listItem]}
+            linkStyle={[link]}
           />
         </section>
       </div>

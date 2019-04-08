@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Global, css } from '@emotion/core'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import Menu from '../components/Menu'
 import PostList from '../components/cmd/content/PostList'
@@ -24,15 +25,13 @@ const h1Css = css`
   position: absolute;
   grid-area: hd;
   justify-self: center;
-  top: -16rem;
+  top: -14rem;
+  left: 4rem;
   transition: top 444ms ease-out;
-  background-image: url("https://source.unsplash.com/1_CMoFsPfso/1600x900");
-  background-size: cover;
-  background-position: 20%;
-  -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
   margin: 0;
   writing-mode: vertical-lr;
   text-transform: uppercase;
@@ -68,10 +67,30 @@ const grabbing = css`
 `
 
 const BlogMainPage = () => {
+  const { headerImg } = useStaticQuery(graphql`
+    {
+      headerImg: file(
+        sourceInstanceName: { eq: "images" }
+        relativeDirectory: { eq: "blog" }
+        extension: { eq: "svg" }
+      ) {
+        publicURL
+      }
+    }
+  `)
+
   const [isGrabbing, setIsGrabbing] = useState(false)
   const [grabStartY, setGrabStartY] = useState(0)
   const [headerCurrTopPos, setHeaderCurrTopPos] = useState(0)
   const headerRef = useRef(null)
+
+  // Set header's background pattern.
+  useEffect(() => {
+    headerRef.current.style.cssText = `
+      background-image: url(${headerImg.publicURL});
+      background-color: ${palette.gold};
+    `
+  }, [headerImg.publicURL])
 
   useEffect(() => {
     setHeaderCurrTopPos(headerRef.current.offsetTop)

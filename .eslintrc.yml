@@ -1,0 +1,29 @@
+extends: [airbnb]
+plugins: [react-hooks]
+env:
+  browser: true
+rules:
+  arrow-parens: [error, always]
+  brace-style: off
+  comma-dangle:
+    - error
+    - only-multiline
+  consistent-return: off
+  no-nested-ternary: off
+  no-param-reassign:
+    - error
+    - props: false
+  no-plusplus:
+    - error
+    - allowForLoopAfterthoughts: true
+  quotes: off
+  semi: [error, never]
+
+  jsx-a11y/anchor-is-valid: warn
+  jsx-a11y/label-has-associated-control: warn
+  jsx-a11y/label-has-for: off
+
+  import/prefer-default-export: off
+
+  react-hooks/rules-of-hooks: error
+  react-hooks/exhaustive-deps: warn

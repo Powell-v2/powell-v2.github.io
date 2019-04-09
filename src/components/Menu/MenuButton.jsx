@@ -10,6 +10,7 @@ const buttonWrapper = css`
   left: 2.5rem;
   width: 5rem;
   height: 3rem;
+  z-index: 555;
   @media (max-width: 499px) {
     transform: scale(.75);
     top: 2.5rem;
@@ -23,7 +24,6 @@ const button = css`
   font-size: 1.5rem;
   cursor: pointer;
   outline: none;
-  z-index: 555;
   transition: transform .444s ease-out;
   &:before, &:after {
     content: "";

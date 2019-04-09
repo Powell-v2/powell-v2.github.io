@@ -31,10 +31,9 @@ const menuContainer = css`
   position: absolute;
   display: grid;
   justify-items: center;
-  grid-template-rows: 7fr 3fr;
-  grid-gap: 2rem;
-  height: 100vh;
-  width: 100vw;
+  grid-template-rows: repeat(2, max-content);
+  grid-gap: 2.5rem;
+  width: 100%;
   top: 50%;
   left: 50%;
   z-index: 12;
@@ -45,6 +44,12 @@ const menuContainer = css`
 `
 const menuList = css`
   display: grid;
+  @media (max-width: 375px) {
+    transform: scale(.8);
+  }
+  @media (min-width: 375px) and (max-width: 500px) {
+    transform: scale(.9);
+  }
 `
 const menuItem = css`
   height: 4rem;
@@ -54,9 +59,12 @@ const menuItem = css`
   font-size: 2.5rem;
   cursor: pointer;
   text-transform: uppercase;
+`
+const expandOnHover = css`
   &:hover span {
     width: 4.5rem;
-    margin: 0 .5rem; }
+    margin: 0 .5rem;
+  }
 `
 const letter = css`
   display: inline-block;
@@ -71,10 +79,12 @@ const letter = css`
     margin .2s;
   &:first-of-type {
     border-top-left-radius: .5rem;
-    border-bottom-left-radius: .5rem; }
+    border-bottom-left-radius: .5rem;
+  }
   &:last-of-type {
     border-top-right-radius: .5rem;
-    border-bottom-right-radius: .5rem; }
+    border-bottom-right-radius: .5rem;
+  }
 `
 const link = css`
   color: ${palette.beige};
@@ -84,6 +94,9 @@ const contactSection = css`
   display: grid;
   grid-auto-flow: column;
   grid-gap: 4rem;
+  @media (max-width: 374px) {
+    grid-gap: 2rem;
+  }
 `
 
 const MenuBody = () => (
@@ -93,7 +106,7 @@ const MenuBody = () => (
         {pages.map(({ name, to }) => (
           <li
             key={name}
-            css={menuItem}
+            css={[menuItem, !navigator.maxTouchPoints && expandOnHover]}
           >
             <Link
               to={to}

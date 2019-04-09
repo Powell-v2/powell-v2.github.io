@@ -67,7 +67,7 @@ const infinity = css`
   position: relative;
   opacity: 0;
   width: 10rem;
-  animation: ${animations.fadeIn} ${HEADER_TIMING + 2}s ease-in-out both;
+  animation: ${animations.fadeIn} ${HEADER_TIMING}s ease-in-out both;
   &::after, &::before {
     content: "";
     position: absolute;
@@ -78,6 +78,7 @@ const infinity = css`
     border: 1rem solid ${palette.red};
     border-radius: 0 50% 50% 50%;
     transform: rotate(-45deg);
+    transition: box-shadow ${HEADER_TIMING}s ease-out;
   }
   &::before {
     top: 15%;

@@ -20,7 +20,6 @@ const container = css`
   @media (max-width: 1100px) {
     grid-template-columns: none;
     grid-template-rows: 1fr minmax(60vh, 80vh);
-    overflow-x: hidden;
   }
 `
 
@@ -182,7 +181,7 @@ const asideCss = css`
     position: relative;
     width: 80vw;
     max-height: 80vh;
-    padding-top: 5rem;
+    padding-top: 7.5rem;
     clip-path: polygon(11% 0, 100% 0, 89% 100%, 0 100%);
     &:not(.mask) {
       animation: ${distort} 10s infinite;

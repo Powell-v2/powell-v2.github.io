@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
+
+import AppContext from '../../context/AppContext'
 
 import MenuButton from './MenuButton'
 import Overlay from './Overlay'
@@ -7,6 +9,8 @@ import MenuBody from './MenuBody'
 
 const Menu = ({ setIsMenuOpen }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const { toggleMenuState } = useContext(AppContext)
+  toggleMenuState(isOpen)
 
   useEffect(() => {
     if (setIsMenuOpen) setIsMenuOpen(isOpen)

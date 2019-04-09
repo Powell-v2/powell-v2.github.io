@@ -1,8 +1,13 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+/* eslint-disable */
+import React from "react"
+
+import { AppContextProvider } from './src/context/AppContext'
 
 import 'normalize.css/normalize.css'
 import './src/styles/meta.css'
+
+export const wrapRootElement = ({ element }) => (
+  <AppContextProvider>
+    {element}
+  </AppContextProvider>
+)

@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import { Global, css } from '@emotion/core'
+
+import AppContext from '../context/AppContext'
 
 import Menu from '../components/Menu'
 
@@ -53,14 +55,13 @@ const disableScroll = css`
 
 const BlogPost = ({ data }) => {
   const { html, frontmatter } = data.markdownRemark
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { isMenuOpen } = useContext(AppContext)
 
   return (
     <>
       <Global styles={globalStyles} />
-      <Menu setIsMenuOpen={setIsMenuOpen} />
-      <section css={[wrapperCss, isMenuOpen ? disableScroll : null]}>
+      <Menu />
+      <section css={[wrapperCss, isMenuOpen && disableScroll]}>
         <h1 css={headerCss}>
           {frontmatter.title}
         </h1>

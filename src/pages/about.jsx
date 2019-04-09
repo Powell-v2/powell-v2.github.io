@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Global, css, keyframes } from '@emotion/core'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
+
+import AppContext from '../context/AppContext'
 
 import Menu from '../components/Menu'
 import { intro } from '../components/cmd/content/AboutMe'
@@ -193,6 +195,10 @@ const asideCss = css`
     }
   }
 `
+const disableScroll = css`
+  height: 100vh;
+  overflow-y: hidden;
+`
 
 const AboutPage = () => {
   const data = useStaticQuery(graphql`
@@ -218,11 +224,13 @@ const AboutPage = () => {
     }
   `)
 
+  const { isMenuOpen } = useContext(AppContext)
+
   return (
     <>
       <Global styles={globalStyles} />
       <Menu />
-      <div css={container}>
+      <div css={[container, isMenuOpen && disableScroll]}>
         <main css={main}>
           <section css={section}>
             <h1 css={h1} data-shadow="About me">About me</h1>

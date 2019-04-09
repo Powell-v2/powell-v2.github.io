@@ -10,17 +10,24 @@ import { palette } from '../styles/meta'
 
 const wrapperCss = css`
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 20% 60% 20%;
   grid-template-rows: repeat(2, max-content) auto;
   grid-template-areas:
     ". hd      ."
     ". details ."
     ". body    .";
   min-height: 100vh;
+  padding-top: 3rem;
   font-family: "Special Elite";
   letter-spacing: .05rem;
   color: ${palette.beige};
   background-color: ${palette.black};
+  @media(max-width: 425px) {
+    grid-template-columns: 12.5% 75% 12.5%;
+  }
+  @media(min-width: 425px) and (max-width: 768px) {
+    grid-template-columns: 15% 70% 15%;
+  }
 `
 const headerCss = css`
   grid-area: hd;
@@ -33,6 +40,7 @@ const detailsCss = css`
 const bodyCss = css`
   grid-area: body;
   padding-bottom: 3rem;
+  text-align: justify;
   & p {
     padding: 1rem 0;
     line-height: 1.6;

@@ -8,7 +8,7 @@
     "build": "gatsby build",
     "start": "gatsby develop",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
-    "deploy": "gatsby build && gh-pages -d public -b master"
+    "deploy": "gatsby build && npx gh-pages -d public -b master"
   },
   "husky": {
     "hooks": {

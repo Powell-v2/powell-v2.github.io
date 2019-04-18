@@ -47,6 +47,7 @@ const ContactLinks = ({
           alt={name}
         />
       )
+      const isEmail = href.startsWith(`mailto`)
 
       return (
         <li key={name}>
@@ -55,7 +56,8 @@ const ContactLinks = ({
             key={name}
             css={linkStyle}
             href={href}
-            target={href.startsWith(`mailto`) ? null : `_blank`}
+            target={isEmail ? null : `_blank`}
+            rel={isEmail ? null : `noopener noreferrer`}
           >
             {displayName ? name : iconComp}
           </Link>

@@ -1,6 +1,7 @@
 ---
 date: 2019-01-30T00:00:00.000Z
 title: A Better Backup Plan
+published: true
 ---
 
 Things do not always go as planned - future has a tendency to surprise in many unexpected ways. While accounting for every possible outcome is simply beyond human abilities, it's no reason to skip on planning and let things slide. Having a fallback option is vital as it eliminates fear of failure which severely bogs down and, in worst cases, kills aspirations.

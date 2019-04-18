@@ -1,6 +1,7 @@
 ---
 date: 2019-01-09T00:00:00.000Z
 title: Deep Work
+published: true
 ---
 
 Let's face it - it's extremely hard to keep your mind at some particular target for prolonged stretch of time without getting your attention diverted. Even if you take measures to protect yourself - by retreating to some hushed place, for instance - the mind keeps racing, only just you are being distracted from within.

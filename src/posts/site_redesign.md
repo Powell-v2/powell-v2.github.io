@@ -1,6 +1,7 @@
 ---
 date: 2018-02-25T00:00:00.000Z
 title: How I Redesigned My Website
+published: true
 ---
 
 As a "frontender" who is paving his way towards fullstack, I tend to work a lot with CLI tools. They are an essential part of my workflow, and console has become a reliable companion over the past couple of years. One day, an odd idea sprang up in my mind - to redesign my personal website, which was a typical collection of webpages with a navbar, as a terminal window. Many people not familiar with programming dread even a glimpse of thought of having to interact with it, and that's understandable. We are all hardwired to fear the unknown. In reality, interacting with command line becomes a breeze once you get familiar with its mechanics - it only takes a little bit of practice.

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
+import MDXRenderer from "gatsby-mdx/mdx-renderer"
 import PropTypes from 'prop-types'
 import { Global, css } from '@emotion/core'
 
@@ -54,7 +55,7 @@ const disableScroll = css`
 `
 
 const BlogPost = ({ data }) => {
-  const { html, frontmatter } = data.markdownRemark
+  const { frontmatter, code } = data.mdx
   const { isMenuOpen } = useContext(AppContext)
 
   return (
@@ -72,8 +73,9 @@ const BlogPost = ({ data }) => {
         </span>
         <article
           css={bodyCss}
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        >
+          <MDXRenderer>{code.body}</MDXRenderer>
+        </article>
       </section>
     </>
   )
@@ -90,16 +92,17 @@ BlogPost.propTypes = {
 }
 
 export const blogPostQuery = graphql`
-  query BlogPostQuery($slug: String!) {
-    markdownRemark(
-      fields: {
-        slug: { eq: $slug }
-      }
+  query BlogPostQuery($id: String!) {
+    mdx(
+      id: { eq: $id }
     ) {
-      html
+      id
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+      }
+      code {
+        body
       }
     }
   }

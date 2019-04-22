@@ -20,7 +20,6 @@ const sectionStyle = css`
     ". body    .";
   min-height: 100vh;
   padding-top: 3rem;
-  font-family: "Special Elite";
   letter-spacing: .05rem;
   color: ${palette.beige};
   background-color: ${palette.black};

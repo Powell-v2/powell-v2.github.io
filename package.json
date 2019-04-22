@@ -46,7 +46,6 @@
     "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-plugin-sharp": "^2.0.19",
     "gatsby-source-filesystem": "^2.0.8",
-    "gatsby-transformer-remark": "2.2.5",
     "gatsby-transformer-sharp": "^2.1.13",
     "gsap": "2.0.2",
     "normalize.css": "8.0.1",

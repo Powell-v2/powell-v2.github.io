@@ -35,7 +35,8 @@ const sectionStyle = css`
     text-align: center;
     & p {
       grid-area: details;
-      padding: 2rem 0;
+      padding-bottom: 3rem;
+      padding-top: 1rem;
     }
   }
   & article {

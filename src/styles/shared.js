@@ -4,10 +4,11 @@ import { palette } from './meta'
 
 export const linkHighlighted = css`
   box-shadow: inset 0px -2px ${palette.gold};
-  transition: background 0.5s cubic-bezier(0.35, 0.65, 0.65, 1);
+  transition: background 0.33s cubic-bezier(0.35, 0.65, 0.65, 1);
   &:hover {
     text-decoration: inherit;
-    background: ${palette.gold}; }}
+    background-color: ${palette.gold};
+  }
 `
 
 export const animations = {

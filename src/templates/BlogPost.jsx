@@ -1,17 +1,16 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
-import MDXRenderer from "gatsby-mdx/mdx-renderer"
 import PropTypes from 'prop-types'
 import { Global, css } from '@emotion/core'
 
-import AppContext from '../context/AppContext'
-
 import Menu from '../components/Menu'
+import Post from '../components/Post'
 
 import globalStyles from '../styles/global'
+
 import { palette } from '../styles/meta'
 
-const wrapperCss = css`
+const sectionStyle = css`
   display: grid;
   grid-template-columns: 20% 60% 20%;
   grid-template-rows: repeat(2, max-content) auto;
@@ -31,52 +30,38 @@ const wrapperCss = css`
   @media(min-width: 425px) and (max-width: 768px) {
     grid-template-columns: 15% 70% 15%;
   }
-`
-const headerCss = css`
-  grid-area: hd;
-  text-align: center;
-`
-const detailsCss = css`
-  grid-area: details;
-  padding: 2rem 0;
-`
-const bodyCss = css`
-  grid-area: body;
-  padding-bottom: 3rem;
-  text-align: justify;
-  & p {
-    padding: 1rem 0;
-    line-height: 1.6;
+  & header {
+    grid-area: hd;
+    text-align: center;
+    & p {
+      grid-area: details;
+      padding: 2rem 0;
+    }
   }
-`
-const disableScroll = css`
-  height: 100vh;
-  overflow-y: hidden;
+  & article {
+    grid-area: body;
+    padding-bottom: 3rem;
+    text-align: justify;
+    & p {
+      padding: 1rem 0;
+      line-height: 1.6;
+    }
+  }
 `
 
 const BlogPost = ({ data }) => {
   const { frontmatter, code } = data.mdx
-  const { isMenuOpen } = useContext(AppContext)
 
   return (
     <>
       <Global styles={globalStyles} />
       <Menu />
-      <section css={[wrapperCss, isMenuOpen && disableScroll]}>
-        <h1 css={headerCss}>
-          {frontmatter.title}
-        </h1>
-        <span css={detailsCss}>
-          Date:
-          {' '}
-          {frontmatter.date}
-        </span>
-        <article
-          css={bodyCss}
-        >
-          <MDXRenderer>{code.body}</MDXRenderer>
-        </article>
-      </section>
+      <Post
+        title={frontmatter.title}
+        date={frontmatter.date}
+        body={code.body}
+        sectionStyle={[sectionStyle]}
+      />
     </>
   )
 }

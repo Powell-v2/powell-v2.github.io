@@ -3,27 +3,9 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import Link from '../../Link'
+import Post from '../../Post'
 
 import { randInt } from '../../../utils'
-
-const Post = ({ html, date }) => (
-  <>
-    <span className="bold">
-      Date:
-      {` `}
-      {date}
-    </span>
-    <article
-      dangerouslySetInnerHTML={{ __html: html }}
-      className="blogpost--fetched"
-    />
-  </>
-)
-
-Post.propTypes = {
-  html: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-}
 
 const PostList = ({
   onItemSelect,
@@ -36,10 +18,13 @@ const PostList = ({
 }) => {
   const posts = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(
+      allMdx(
         sort: {
           fields: frontmatter___date,
           order: DESC
+        }
+        filter: {
+          frontmatter: { published: { eq: true }}
         }
       ) {
         edges {
@@ -52,7 +37,9 @@ const PostList = ({
               title
               date(formatString: "MMMM DD, YYYY")
             }
-            html
+            code {
+              body
+            }
           }
         }
       }
@@ -61,10 +48,10 @@ const PostList = ({
 
   return (
     <ul className={listClassName}>
-      {posts.allMarkdownRemark.edges
+      {posts.allMdx.edges
         .map(({
           node: {
-            fields, frontmatter, html, id
+            fields, frontmatter, code, id
           }
         }) => (
           <li
@@ -77,15 +64,33 @@ const PostList = ({
               cmd={cmd}
               tabIndex={0}
               css={[...linkStyle]}
-              onClick={() => onItemSelect(
-                <Post key={randInt()} html={html} date={frontmatter.date} />
-              )}
+              onClick={() => {
+                if (cmd) {
+                  onItemSelect(
+                    <Post
+                      key={randInt()}
+                      body={code.body}
+                      date={frontmatter.date}
+                      title={frontmatter.title}
+                      articleClassName="blogpost--fetched"
+                    />
+                  )
+                }
+              }}
               onKeyDown={(e) => {
                 // enter and space, respectively
                 if (e.keyCode === 13 || e.keyCode === 32) {
-                  onItemSelect(
-                    <Post key={randInt()} html={html} date={frontmatter.date} />
-                  )
+                  if (cmd) {
+                    onItemSelect(
+                      <Post
+                        key={randInt()}
+                        body={code.body}
+                        date={frontmatter.date}
+                        title={frontmatter.title}
+                        articleClassName="blogpost--fetched"
+                      />
+                    )
+                  }
                 }
               }}
               {...other}

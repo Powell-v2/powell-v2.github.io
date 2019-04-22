@@ -57,7 +57,6 @@ const ContactLinks = ({
             css={linkStyle}
             href={href}
             target={isEmail ? null : `_blank`}
-            rel={isEmail ? null : `noopener noreferrer`}
           >
             {displayName ? name : iconComp}
           </Link>

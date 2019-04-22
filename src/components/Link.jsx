@@ -21,7 +21,7 @@ const link = css`
 `
 
 const Link = ({
-  to, children, cmd, href, ...other
+  to, children, cmd, href, target, ...other
 }) => {
   if (cmd) {
     return (
@@ -39,6 +39,8 @@ const Link = ({
       <a
         href={href}
         css={link}
+        target={target}
+        rel={(target === `_blank`) ? `noopener noreferrer` : null}
         {...other}
       >
         {children}
@@ -62,9 +64,11 @@ Link.propTypes = {
   children: PropTypes.oneOfType(
     PropTypes.string,
     PropTypes.array,
+    PropTypes.element
   ),
   cmd: PropTypes.bool,
   href: PropTypes.string,
+  target: PropTypes.string,
 }
 
 Link.defaultProps = {
@@ -72,6 +76,7 @@ Link.defaultProps = {
   children: `This is nothing but a placholder link text`,
   cmd: false,
   href: null,
+  target: null,
 }
 
 export default Link

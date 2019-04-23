@@ -29,6 +29,12 @@ const components = {
       language={props.className && props.className.split(`-`)[1]}
       code={props.children}
     />
+  ),
+  inlineCode: ({ children }) => (
+    <HighlightCode
+      inline
+      code={children}
+    />
   )
 }
 

@@ -7,40 +7,67 @@ const pre = css`
   padding: 2rem;
   margin: 2rem auto;
 `
+const codeCss = css`
+  padding: .25rem .5rem;
+`
 
-const HighlightCode = ({ language, code }) => (
-  <Highlight
-    language={language}
-    code={code}
-    {...defaultProps}
-  >
-    {({
-      className, style, tokens, getLineProps, getTokenProps
-    }) => (
-      <pre
-        css={pre}
-        className={className}
-        style={style}
+const HighlightCode = ({ language, code, inline }) => {
+  if (inline) {
+    return (
+      <Highlight
+        code={code}
+        {...defaultProps}
       >
-        {tokens.map((line, i) => (
-          <div {...getLineProps({ line, key: i })}>
-            {line.map((token, key) => (
-              token.content && <span {...getTokenProps({ token, key })} />
-            ))}
-          </div>
-        ))}
-      </pre>
-    )}
-  </Highlight>
-)
+        {({ className, style }) => (
+          <code
+            css={codeCss}
+            className={className}
+            style={style}
+          >
+            {code}
+          </code>
+        )
+        }
+      </Highlight>
+    )
+  }
+
+  return (
+    <Highlight
+      language={language}
+      code={code}
+      {...defaultProps}
+    >
+      {({
+        className, style, tokens, getLineProps, getTokenProps
+      }) => (
+        <pre
+          css={pre}
+          className={className}
+          style={style}
+        >
+          {tokens.map((line, i) => (
+            <div {...getLineProps({ line, key: i })}>
+              {line.map((token, key) => (
+                token.content && <span {...getTokenProps({ token, key })} />
+              ))}
+            </div>
+          ))}
+        </pre>
+      )}
+    </Highlight>
+  )
+}
 
 HighlightCode.propTypes = {
   language: PropTypes.string,
   code: PropTypes.string.isRequired,
+  inline: PropTypes.string,
 }
 
 HighlightCode.defaultProps = {
   language: `bash`,
+  inline: false,
 }
 
 export default HighlightCode

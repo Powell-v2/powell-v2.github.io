@@ -3,7 +3,7 @@ import { Global, css } from '@emotion/core'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import Menu from '../components/Menu'
-import PostList from '../components/cmd/content/PostList'
+import PostList from '../components/PostList'
 
 import globalStyles from '../styles/global'
 import { palette } from '../styles/meta'

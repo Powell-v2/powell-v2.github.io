@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import Link from '../../Link'
-import Post from '../../Post'
+import Link from './Link'
+import Post from './Post'
 
-import { randInt } from '../../../utils'
+import { randInt } from '../utils'
 
 const PostList = ({
   onItemSelect,

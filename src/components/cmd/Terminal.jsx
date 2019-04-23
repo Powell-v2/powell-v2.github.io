@@ -10,7 +10,7 @@ import CmdEmpty from './content/Empty'
 import CmdNotRecognized from './content/CmdNotRecognized'
 import ContactDetails from './content/ContactDetails'
 import Help from './content/Help'
-import PostList from './content/PostList'
+import PostList from '../PostList'
 import Skills from './content/Skills'
 import Tooltip from './content/Tooltip'
 

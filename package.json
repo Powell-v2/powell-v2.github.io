@@ -49,6 +49,7 @@
     "gatsby-transformer-sharp": "^2.1.13",
     "gsap": "2.0.2",
     "normalize.css": "8.0.1",
+    "prism-react-renderer": "0.1.6",
     "prop-types": "^15.6.2",
     "react": "16.8.1",
     "react-dom": "16.8.1",

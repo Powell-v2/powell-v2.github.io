@@ -10,6 +10,11 @@ const pre = css`
 const codeCss = css`
   padding: .25rem .5rem;
 `
+const lineWrapper = css`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
 
 const HighlightCode = ({ language, code, inline }) => {
   if (inline) {
@@ -47,7 +52,10 @@ const HighlightCode = ({ language, code, inline }) => {
           style={style}
         >
           {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
+            <div
+              css={lineWrapper}
+              {...getLineProps({ line, key: i })}
+            >
               {line.map((token, key) => (
                 token.content && <span {...getTokenProps({ token, key })} />
               ))}

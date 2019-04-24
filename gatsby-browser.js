@@ -6,7 +6,7 @@ import { css } from "@emotion/core"
 import { AppContextProvider } from './src/context/AppContext'
 
 import Link from './src/components/Link'
-import HighlightCode from './src/components/HighlightCode'
+import HighlightCode from './src/components/markdown/HighlightCode'
 
 import 'normalize.css/normalize.css'
 import './src/styles/meta.css'

@@ -62,7 +62,7 @@ const HighlightCode = ({ language, code, inline }) => {
 HighlightCode.propTypes = {
   language: PropTypes.string,
   code: PropTypes.string.isRequired,
-  inline: PropTypes.string,
+  inline: PropTypes.bool,
 }
 
 HighlightCode.defaultProps = {

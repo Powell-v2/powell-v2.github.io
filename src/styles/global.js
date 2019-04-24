@@ -16,7 +16,7 @@ export default css`
 
   body {
     font-family: "Quicksand", sans-serif, serif, monospace;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     background: ${palette.black};
   }
 

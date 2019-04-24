@@ -35,7 +35,48 @@ const components = {
       inline
       code={children}
     />
-  )
+  ),
+  h2: (props) => (
+    <h2
+      css={css`
+        font-size: 2.6rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+      `}
+      {...props}
+    />
+  ),
+  h3: (props) => (
+    <h3
+      css={css`
+        font-size: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      `}
+      {...props}
+    />
+  ),
+  ul: (props) => (
+    <ul
+      css={css`margin: 2rem auto;`}
+      {...props}
+    />
+  ),
+  ol: (props) => (
+    <ol
+      css={css`padding-left: 2rem;`}
+      {...props}
+    />
+  ),
+  li: (props) => (
+    <li
+      css={css`
+        margin: 1rem auto;
+        line-height: 1.6;
+      `}
+      {...props}
+    />
+  ),
 }
 
 export const wrapRootElement = ({ element }) => (

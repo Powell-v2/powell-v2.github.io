@@ -34,6 +34,7 @@ module.exports = {
       options: {
         name: `Dream.Code.Sleep.Repeat.`,
         short_name: `D.C.S.R.`,
+        description: `A blog and personal website of powell_v2`,
         start_url: `/`,
         background_color: `#000`,
         theme_color: `#fc0`,

@@ -29,12 +29,12 @@ const mainHeader = css`
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
+  background-color: ${palette.gold};
   margin: 0;
   writing-mode: vertical-lr;
   text-transform: uppercase;
   font-size: 35rem;
   user-select: none;
-  cursor: default;
   @media (max-width: 425px) {
     font-size: 10rem;
   }
@@ -85,11 +85,10 @@ const link = css`
 
 const BlogMainPage = () => {
   const { headerImg } = useStaticQuery(graphql`
-    {
+    query getHeaderImageLocation {
       headerImg: file(
-        sourceInstanceName: { eq: "images" }
         relativeDirectory: { eq: "blog" }
-        extension: { eq: "svg" }
+        name: { eq: "header" }
       ) {
         publicURL
       }
@@ -98,12 +97,8 @@ const BlogMainPage = () => {
 
   const headerRef = useRef(null)
 
-  // Set header's background pattern and detect writing direction.
   useEffect(() => {
-    headerRef.current.style.cssText += `
-      background-image: url(${headerImg.publicURL});
-      background-color: ${palette.gold};
-    `
+    headerRef.current.style.backgroundImage = `url(${headerImg.publicURL})`
   }, [headerImg.publicURL])
 
   return (

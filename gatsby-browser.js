@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from "react"
-import { MDXProvider } from "@mdx-js/react"
 import { css } from "@emotion/core"
+import { MDXProvider } from "@mdx-js/react"
 
 import { AppContextProvider } from './src/context/AppContext'
 

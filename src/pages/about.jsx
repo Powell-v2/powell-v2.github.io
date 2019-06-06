@@ -27,7 +27,8 @@ const main = css`
   display: grid;
   grid-template-rows: repeat(2, max-content);
   grid-template-columns: 15% 70% 15%;
-  grid-row-gap: 15rem;
+  grid-row-gap: 5rem;
+  padding: 5rem 0;
   color: ${palette.beige};
   overflow-y: hidden;
   scrollbar-width: none;
@@ -35,13 +36,8 @@ const main = css`
     display: none;
   }
   @media (max-width: 500px) {
-    grid-row-gap: 3.5rem;
-  }
-  @media (min-width: 500px) and (max-width: 768px) {
-    grid-row-gap: 5rem;
-  }
-  @media (min-width: 768px) and (max-width: 1440px) {
-    grid-row-gap: 10rem;
+    grid-row-gap: 2.5rem;
+    grid-template-columns: 12.5% 75% 12.5%;
   }
 `
 
@@ -54,14 +50,6 @@ const section = css`
     ".       header  ."
     "content content content";
   text-align: justify;
-  &:first-of-type {
-    padding-top: 5rem;
-  }
-  @media (max-width: 425px) {
-    &:first-of-type {
-      padding-top: 3.5rem;
-    }
-  }
   @media (max-width: 500px) {
     &:last-of-type h1::before {
       bottom: -2rem;

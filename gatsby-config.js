@@ -32,13 +32,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Dream.Code.Sleep.Repeat.`,
+        short_name: `D.C.S.R.`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#000`,
+        theme_color: `#fc0`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.png`,
+        icon: `src/images/favicon.svg`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -5,6 +5,12 @@ import useWindowSize from '../custom_hooks/useWindowSize'
 
 const getDistance = (p1, p2) => ((p1.x - p2.x) ** 2) + ((p1.y - p2.y) ** 2)
 
+let dpr
+
+if (typeof window !== `undefined`) {
+  dpr = window.devicePixelRatio
+}
+
 function FloatingGridCanvas() {
   const { windowWidth, windowHeight } = useWindowSize()
   const canvasEl = useRef()
@@ -17,6 +23,7 @@ function FloatingGridCanvas() {
 
   useEffect(() => {
     const ctx = canvasEl.current.getContext(`2d`)
+    ctx.scale(dpr, dpr)
 
     class Circle {
       constructor(pos, rad) {
@@ -86,7 +93,7 @@ function FloatingGridCanvas() {
     points.forEach((p) => {
       p.circle = new Circle(p, 2 + Math.random())
     })
-  }, [])
+  }, [points, windowHeight, windowWidth])
 
   useEffect(() => {
     const ctx = canvasEl.current.getContext(`2d`)
@@ -146,7 +153,7 @@ function FloatingGridCanvas() {
 
     animate()
     points.map((_el, i) => shiftPoint(points[i]))
-  }, [])
+  }, [points, target, windowHeight, windowWidth])
 
   useEffect(() => {
     if (!(`ontouchstart` in window)) {
@@ -159,15 +166,17 @@ function FloatingGridCanvas() {
       return () => window.removeEventListener(`mousemove`, handler)
     }
     return null
-  }, [])
+  }, [target.x, target.y])
 
   return (
     <canvas
       ref={canvasEl}
-      width={windowWidth}
-      height={windowHeight}
+      width={windowWidth * dpr}
+      height={windowHeight * dpr}
       style={{
         position: `absolute`,
+        width: `${windowWidth}px`,
+        height: `${windowHeight}px`,
       }}
     />
   )

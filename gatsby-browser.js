@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from "react"
-import { css } from "@emotion/core"
+import { css, Global } from "@emotion/core"
 import { MDXProvider } from "@mdx-js/react"
 
 import { AppContextProvider } from './src/context/AppContext'
@@ -9,7 +9,7 @@ import Link from './src/components/Link'
 import HighlightCode from './src/components/markdown/HighlightCode'
 
 import 'normalize.css/normalize.css'
-import './src/styles/meta.css'
+import globalStyles from './src/styles/global'
 import { linkHighlighted } from './src/styles/shared'
 
 const components = {
@@ -81,6 +81,7 @@ const components = {
 
 export const wrapRootElement = ({ element }) => (
   <AppContextProvider>
+    <Global styles={globalStyles} />
     <MDXProvider components={components}>
       {element}
     </MDXProvider>

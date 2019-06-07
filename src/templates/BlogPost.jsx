@@ -1,12 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import { Global, css } from '@emotion/core'
+import { css } from '@emotion/core'
 
 import Menu from '../components/Menu'
 import Post from '../components/Post'
-
-import globalStyles from '../styles/global'
 
 import { palette } from '../styles/meta'
 
@@ -54,7 +52,6 @@ const BlogPost = ({ data }) => {
 
   return (
     <>
-      <Global styles={globalStyles} />
       <Menu />
       <Post
         title={frontmatter.title}

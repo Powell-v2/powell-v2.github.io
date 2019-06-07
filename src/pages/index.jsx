@@ -1,10 +1,9 @@
 import React from 'react'
-import { Global, css } from '@emotion/core'
+import { css } from '@emotion/core'
 
 import Header from '../components/Header'
 import Cube from '../components/Cube'
 
-import globalStyles from '../styles/global'
 import { palette } from '../styles/meta'
 
 const pageContainer = css`
@@ -27,7 +26,6 @@ const cubeContainer = css`
 
 const IndexPage = () => (
   <>
-    <Global styles={globalStyles} />
     <div css={pageContainer}>
       <Header />
       <div css={cubeContainer}>

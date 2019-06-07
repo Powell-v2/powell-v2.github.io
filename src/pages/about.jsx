@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Global, css, keyframes } from '@emotion/core'
+import { css, keyframes } from '@emotion/core'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -9,7 +9,6 @@ import Menu from '../components/Menu'
 import { intro } from '../components/cmd/content/AboutMe'
 import { extra } from '../components/cmd/content/Skills'
 
-import globalStyles from '../styles/global'
 import { palette } from '../styles/meta'
 
 const container = css`
@@ -215,7 +214,6 @@ const AboutPage = () => {
 
   return (
     <>
-      <Global styles={globalStyles} />
       <Menu />
       <div css={[container, isMenuOpen && disableScroll]}>
         <main css={main}>

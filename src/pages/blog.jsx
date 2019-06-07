@@ -1,11 +1,10 @@
 import React from 'react'
-import { Global, css } from '@emotion/core'
+import { css } from '@emotion/core'
 import headerBg from '../images/blog/header.svg'
 
 import Menu from '../components/Menu'
 import PostList from '../components/PostList'
 
-import globalStyles from '../styles/global'
 import { palette } from '../styles/meta'
 
 const container = css`
@@ -79,7 +78,6 @@ const link = css`
 
 const BlogMainPage = () => (
   <>
-    <Global styles={globalStyles} />
     <Menu />
     <div
       role="presentation"

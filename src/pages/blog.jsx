@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { Global, css } from '@emotion/core'
-import { useStaticQuery, graphql } from 'gatsby'
+import headerBg from '../images/blog/header.svg'
 
 import Menu from '../components/Menu'
 import PostList from '../components/PostList'
@@ -29,6 +29,7 @@ const mainHeader = css`
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
+  background-image: url(${headerBg});
   background-color: ${palette.gold};
   margin: 0;
   writing-mode: vertical-lr;
@@ -61,13 +62,6 @@ const postsList = css`
 const listItem = css`
   position: relative;
   padding: .5rem 0;
-  &:hover::before {
-    content: '👉';
-    position: absolute;
-    top: .75rem;
-    left: -3rem;
-    font-size: 2rem;
-  }
 `
 const link = css`
   transition: box-shadow .3s;
@@ -83,50 +77,30 @@ const link = css`
   }
 `
 
-const BlogMainPage = () => {
-  const { headerImg } = useStaticQuery(graphql`
-    query getHeaderImageLocation {
-      headerImg: file(
-        relativeDirectory: { eq: "blog" }
-        name: { eq: "header" }
-      ) {
-        publicURL
-      }
-    }
-  `)
-
-  const headerRef = useRef(null)
-
-  useEffect(() => {
-    headerRef.current.style.backgroundImage = `url(${headerImg.publicURL})`
-  }, [headerImg.publicURL])
-
-  return (
-    <>
-      <Global styles={globalStyles} />
-      <Menu />
-      <div
-        role="presentation"
-        css={container}
-      >
-        <header css={headerWrapper}>
-          <h1
-            role="presentation"
-            ref={headerRef}
-            css={mainHeader}
-          >
-            Blog
-          </h1>
-        </header>
-        <section css={postsList}>
-          <PostList
-            liStyle={[listItem]}
-            linkStyle={[link]}
-          />
-        </section>
-      </div>
-    </>
-  )
-}
+const BlogMainPage = () => (
+  <>
+    <Global styles={globalStyles} />
+    <Menu />
+    <div
+      role="presentation"
+      css={container}
+    >
+      <header css={headerWrapper}>
+        <h1
+          role="presentation"
+          css={mainHeader}
+        >
+          Blog
+        </h1>
+      </header>
+      <section css={postsList}>
+        <PostList
+          liStyle={[listItem]}
+          linkStyle={[link]}
+        />
+      </section>
+    </div>
+  </>
+)
 
 export default BlogMainPage

@@ -39,7 +39,6 @@ const sectionStyle = css`
   & article {
     grid-area: body;
     padding-bottom: 3rem;
-    text-align: justify;
     & p {
       padding: 1rem 0;
       line-height: 1.6;

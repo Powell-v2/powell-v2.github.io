@@ -11,10 +11,10 @@ const buttonWrapper = css`
   width: 5rem;
   height: 3rem;
   z-index: 555;
-  @media (max-width: 499px) {
+  @media (max-width: 425px) {
     transform: scale(.75);
-    top: 1.5rem;
-    left: .5rem;
+    top: 2rem;
+    left: 1rem;
   }
 `
 const button = css`

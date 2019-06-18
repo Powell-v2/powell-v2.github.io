@@ -57,4 +57,15 @@ export default css`
   ul {
     list-style: none;
   }
+
+  /* Remark image plugin */
+  .gatsby-resp-image-wrapper {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .gatsby-resp-image-link {
+    box-shadow: none !important;
+  }
+  /* Remark image plugin */
 `

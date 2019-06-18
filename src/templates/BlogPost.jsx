@@ -22,10 +22,10 @@ const sectionStyle = css`
   color: ${palette.beige};
   background-color: ${palette.black};
   @media(max-width: 425px) {
-    grid-template-columns: 12.5% 75% 12.5%;
+    grid-template-columns: 7.5% 85% 7.5%;
   }
   @media(min-width: 425px) and (max-width: 768px) {
-    grid-template-columns: 15% 70% 15%;
+    grid-template-columns: 10% 80% 10%;
   }
   & header {
     grid-area: hd;

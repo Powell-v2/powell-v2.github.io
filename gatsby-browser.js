@@ -21,6 +21,7 @@ const components = {
           &:hover { background-color: transparent; }
         `,
       ]}
+      target="_blank"
       {...props}
     />
   ),

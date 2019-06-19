@@ -26,45 +26,43 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-27794b28a1eaa1fd4969.js"
+    "url": "webpack-runtime-cf60e9c5038598038853.js"
   },
   {
     "url": "styles.24bf1742e3764eb5de3c.css"
   },
   {
-    "url": "styles-488902697cf66aa5a9fb.js"
+    "url": "styles-338f6989f1d79c445d55.js"
   },
   {
-    "url": "app-9e95b41517ad7c4f9a71.js"
+    "url": "app-e770193b2618b7a46c3f.js"
   },
   {
-    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-723eb1e29249f96d7060.js"
+    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-0a641a1bd215a4690954.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "26b8029f635fd152492efb3a3839af55"
+    "revision": "90f77cf58e38b234a7aeb978fa8b2240"
   },
   {
-    "url": "component---src-pages-404-jsx-0fa5d02aebc128b8b6dd.js"
+    "url": "component---src-pages-404-jsx-393f98ab6d9051d29394.js"
   },
   {
-    "url": "1-0ea60594b81aeb4768af.js"
+    "url": "1-261d86be5629c46b5344.js"
   },
   {
     "url": "static/d/164/path---404-html-516-62a-NZuapzHg3X9TaN1iIixfv1W23E.json"
   },
   {
-    "url": "static/d/520/path---offline-plugin-app-shell-fallback-a-30-c5a-NZuapzHg3X9TaN1iIixfv1W23E.json"
-  },
-  {
     "url": "manifest.webmanifest",
-    "revision": "7fe5fa2c272ee665c323b52b62c10020"
+    "revision": "9e7286e20a45616711ace36b9266e845"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerRoute(/(\.js$|\.css$|static\/)/, workbox.strategies.cacheFirst(), 'GET');
+workbox.routing.registerRoute(/^https?:.*\page-data\/.*\/page-data\.json/, workbox.strategies.networkFirst(), 'GET');
 workbox.routing.registerRoute(/^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/, workbox.strategies.staleWhileRevalidate(), 'GET');
 workbox.routing.registerRoute(/^https?:\/\/fonts\.googleapis\.com\/css/, workbox.strategies.staleWhileRevalidate(), 'GET');
 

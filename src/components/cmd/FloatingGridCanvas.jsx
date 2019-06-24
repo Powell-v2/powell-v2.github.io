@@ -3,6 +3,8 @@ import { TweenLite, SlowMo } from 'gsap/all'
 
 import useWindowSize from '../custom_hooks/useWindowSize'
 
+import { palette } from '../../styles/meta'
+
 const getDistance = (p1, p2) => ((p1.x - p2.x) ** 2) + ((p1.y - p2.y) ** 2)
 
 let dpr
@@ -177,6 +179,7 @@ function FloatingGridCanvas() {
         position: `absolute`,
         width: `${windowWidth}px`,
         height: `${windowHeight}px`,
+        backgroundColor: `${palette.white}`,
       }}
     />
   )

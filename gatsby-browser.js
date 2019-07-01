@@ -41,8 +41,8 @@ const components = {
     <h2
       css={css`
         font-size: 2.6rem;
-        margin-top: 3rem;
-        margin-bottom: 1rem;
+        margin-top: 6rem;
+        margin-bottom: 2rem;
       `}
       {...props}
     />

@@ -60,8 +60,8 @@ export default css`
 
   /* Remark image plugin */
   .gatsby-resp-image-wrapper {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
   .gatsby-resp-image-link {

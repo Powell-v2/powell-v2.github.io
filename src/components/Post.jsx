@@ -14,7 +14,7 @@ const disableScroll = css`
 `
 
 const Post = ({
-  title, date, body, sectionStyle, articleClassName
+  title, date, body, sectionStyle, detailsWrapperStyle, articleClassName
 }) => {
   const { isMenuOpen } = useContext(AppContext)
 
@@ -24,11 +24,13 @@ const Post = ({
         <h1>
           {title}
         </h1>
-        <p css={details}>
-          Date:
-          {` `}
-          {date}
-        </p>
+        <div css={detailsWrapperStyle}>
+          <p css={details}>
+            Date:
+            {` `}
+            {date}
+          </p>
+        </div>
       </header>
       <article
         className={articleClassName}
@@ -44,11 +46,13 @@ Post.propTypes = {
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   sectionStyle: PropTypes.arrayOf(PropTypes.object),
+  detailsWrapperStyle: PropTypes.arrayOf(PropTypes.object),
   articleClassName: PropTypes.string,
 }
 
 Post.defaultProps = {
   sectionStyle: [],
+  detailsWrapperStyle: [],
   articleClassName: null,
 }
 

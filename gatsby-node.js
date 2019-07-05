@@ -14,37 +14,67 @@ const onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-const createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-
-  return graphql(`
-    {
-      allMdx {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
+const createPages = async ({ graphql, actions }) => graphql(`
+  query loadPublishedBlogPosts {
+    allMdx (
+      sort: {
+        fields: frontmatter___date,
+        order: DESC
+      }
+      filter: {
+        frontmatter: { published: { eq: true }}
+      }
+    ) {
+      edges {
+        next {
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+          }
+        }
+        previous {
+          frontmatter {
+            title
+          }
+          fields {
+            slug
+          }
+        }
+        node {
+          id
+          fields {
+            slug
           }
         }
       }
     }
-  `)
-    .then((result) => {
-      if (result.errors) {
-        return Promise.reject(result.errors)
-      }
+  }`).then((result) => {
+  if (result.errors) {
+    return Promise.reject(result.errors)
+  }
 
-      result.data.allMdx.edges.forEach(({ node }) => {
-        createPage({
-          path: node.fields.slug,
-          component: path.resolve(`./src/templates/BlogPost.jsx`),
-          context: { id: node.id }
-        })
-      })
+  const { createPage } = actions
+
+  result.data.allMdx.edges.forEach(({ node, next, previous }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/BlogPost.jsx`),
+      context: {
+        id: node.id,
+        nextPost: next ? {
+          path: next.fields.slug,
+          title: next.frontmatter.title,
+        } : null,
+        previousPost: previous ? {
+          path: previous.fields.slug,
+          title: previous.frontmatter.title,
+        } : null,
+      }
     })
-}
+  })
+})
 
 module.exports = {
   onCreateNode,

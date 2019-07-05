@@ -8,10 +8,11 @@ const preCss = css`
   margin: 2rem auto;
   overflow-x: scroll;
 `
-const codeCss = css`
+const inlineCodeCss = css`
   padding: .25rem .5rem;
 `
 const lineWrapperCss = css`
+  display: block;
   & span:last-child {
     margin-right: 2rem;
   }
@@ -26,7 +27,7 @@ const HighlightCode = ({ language, code, inline }) => {
       >
         {({ className, style }) => (
           <code
-            css={codeCss}
+            css={inlineCodeCss}
             className={className}
             style={style}
           >
@@ -53,12 +54,13 @@ const HighlightCode = ({ language, code, inline }) => {
           style={style}
         >
           {tokens.map((line, i) => !line[0].empty && (
-          <div
-            css={lineWrapperCss}
-            {...getLineProps({ line, key: i })}
-          >
-            {line.map((token, key) => token.content && <span {...getTokenProps({ token, key })} />)}
-          </div>
+            <code
+              css={lineWrapperCss}
+              {...getLineProps({ line, key: i })}
+            >
+              {line.map((token, key) => token.content
+                && <span {...getTokenProps({ token, key })} />)}
+            </code>
           ))}
         </pre>
       )}
@@ -73,7 +75,7 @@ HighlightCode.propTypes = {
 }
 
 HighlightCode.defaultProps = {
-  language: `bash`,
+  language: `none`,
   inline: false,
 }
 

@@ -26,7 +26,7 @@ Console is capable of holding up to 5 such references (`$0` through `$4`). It's 
 ## Query the DOM quicker
 Even though DOM elements could be retrieved by calling either `document.querySelector` or `document.querySelectorAll`, I often opt into using their aliases instead - `$` and `$$` respectively. They are actually enhanced versions of the said methods as you can specify an entry point for your search - it doesn't have to always be `document`, which is the default:
 
-```js
+```javascript
 $(selector, [startNode: document])
 ```
 
@@ -35,7 +35,7 @@ $(selector, [startNode: document])
 ## Fetch all event listeners
 With the help of this utility you can get a list of all event listeners attached to the given DOM node. It returns an object with all events conveniently grouped under respective keys. Nifty, eh?
 
-```js
+```javascript
 getEventListeners(EventTarget)
 ```
 
@@ -49,7 +49,7 @@ In order to get hold of the most recently evaluated expression, invoke `$_`:
 ## Copy to clipboard
 Ever wondered how to copy an object from the console to the clipboard without directly selecting it? `copy` does exactly that. Just feed it something (doesn't have to be strictly an object - could be an array, a number or a DOM node) and now you have its string representation ready for pasting.
 
-```js
+```javascript
 copy(stuff)
 ```
 

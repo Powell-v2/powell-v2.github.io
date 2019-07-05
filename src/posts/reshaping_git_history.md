@@ -29,19 +29,19 @@ I personally like my commit history to come across as neat and polished, clearly
 
 To actually kick off the process we need to supply an SHA hash of the commit which comes right before the point where we'd like to start rebasing (`-i` is a shorthand for `--interactive`):
 
-```text
+```bash
 git rebase -i <after_this_commit>
 ```
 
 You don't have to always indicate hash. Tip of the branch (aka HEAD pointer) could be used as a reference instead. Let's stick with the last three commits:
 
-```
+```bash
 git rebase -i HEAD~3
 ```
 
 As a result, Git opens up an editor within the terminal window and presents a list of selected records which will resemble the following:
 
-```
+```bash
 pick a1rt1m3 third-to-last commit summary
 pick bass1st second-to-last commit summary
 pick cr0wbar last commit summary
@@ -52,7 +52,7 @@ Compared to `git log`'s output, the chronological order is reversed - the oldest
 
 ### Editing
 
-```
+```bash
 pick a1rt1m3 third-to-last commit summary
 edit bass1st second-to-last commit summary
 pick cr0wbar last commit summary
@@ -71,7 +71,7 @@ Finally, if you misstepped and things got messed up - don't fret! It's always po
 
 Say we committed something which fundamentally belongs to the existing `a1rt1m3` commit:
 
-```
+```bash
 pick a1rt1m3 third-to-last commit summary
 pick bass1st second-to-last commit summary
 pick cr0wbar last commit summary
@@ -82,7 +82,7 @@ There are two options to meld `jazz13r` into `a1rt1m3`. First would be `squash`,
 
 With any of these commands, however, the general idea is to place accessary commit (or commits) right below the target commit:
 
-```
+```bash
 pick a1rt1m3 third-to-last commit summary
 fixup jazz13r new changes
 pick bass1st second-to-last commit summary
@@ -91,19 +91,19 @@ pick cr0wbar last commit summary
 
 Picking an action and reordering actually could be done automatically. Start with committing new changes using [one of the special flags](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---fixupltcommitgt) and specifying the target:
 
-```text
+```bash
 git commit --squash (or --fixup) <commit_to_modify>
 ```
 
 Which translates to following, in line with our example:
 
-```
+```bash
 git commit --fixup a1rt1m3
 ```
 
 You'll notice that the subject line will contain target commit's message prefixed with the action we defined earlier:
 
-```text
+```bash
 pick a1rt1m3 third-to-last commit summary
 pick bass1st second-to-last commit summary
 pick cr0wbar last commit summary
@@ -112,13 +112,13 @@ pick jazz13r fixup! third-to-last commit summary
 
 Start rebasing with an additional flag called ['autosquash'](https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt---autosquash):
 
-```
+```bash
 git rebase -i --autosquash HEAD~4
 ```
 
 Git will pre-scan records and rearrange the list for you. Hey presto!
 
-```text
+```bash
 pick a1rt1m3 third-to-last commit summary
 fixup jazz13r fixup! third-to-last commit summary
 pick bass1st second-to-last commit summary
@@ -134,7 +134,7 @@ Deletion is trivial. Either apply `drop` action, or simply erase the line.
 
 Switching order of the items is also a no-brainer. Simply rearrange the lines as necessary:
 
-```
+```bash
 pick bass1st second-to-last commit summary
 pick cr0wbar last commit summary
 pick a1rt1m3 third-to-last commit summary

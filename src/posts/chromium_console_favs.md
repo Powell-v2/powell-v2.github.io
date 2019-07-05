@@ -7,9 +7,7 @@ published: true
 Chromium-based browsers like Google Chrome, Brave and [now even Microsoft Edge][1] come pre-packed with a suite of convenient utilities available in JavaScript console panel. They have proven helpful to me over the years, and in this short article I'd like to make an overview of the ones I find myself using quite frequently.
 
 ## Get the last element touched by the DOM Inspector
-There is a special variable which holds a reference to the most recently selected node within the **Elements** panel - `$0`.
-
-To illustrate, let's say we wanted to take a peek at Octocat logo's underlying DOM definition on [GitHub][2] (micro-tip: you can quickly access **Inspector** tool by pressing `Cmd+Shift+C`):
+There is a special variable which holds a reference to the most recently selected node within the **Elements** panel - `$0`. To illustrate, let's say we wanted to take a peek at Octocat logo's underlying DOM definition on [GitHub][2] (micro-tip: you can quickly access **Inspector** tool by pressing `Cmd+Shift+C`):
 
 ![Select Octocat logo](./images/chromium_console_favs/select_octocat_logo.png)
 

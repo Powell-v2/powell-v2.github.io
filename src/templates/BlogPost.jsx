@@ -59,36 +59,35 @@ const detailsWrapperStyle = css`
   }
   &::after {
     height: 1px;
-    width: 100vw;
+    width: 50vw;
     left: 50%;
     transform: translateX(-50%);
-    background-color: ${palette.mediumseagreen};
+    background-color: ${palette.purple};
     z-index: -2;
   }
   &::before {
     height: 3px;
     margin-top: -1px;
-    left: -3rem;
-    right: -3rem;
     background-color: ${palette.black};
     z-index: -1;
   }
-  & p::after, & p::before {
-    content: "";
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    transform: rotate(45deg);
-  }
-  & p::after {
-    border-top: 1px solid ${palette.mediumseagreen};
-    top: 0;
-    right: -2.2rem;
-  }
-  & p::before {
-    border-bottom: 1px solid ${palette.mediumseagreen};
-    bottom: -1px;
-    left: -2.2rem;
+  & p {
+    background-color: ${palette.purple};
+    padding: 1.5rem;
+    &::after, &::before {
+      content: "";
+      position: absolute;
+      top: 15%;
+      border: 25px solid transparent;
+    }
+    &::after {
+      right: -30px;
+      border-left: 25px solid ${palette.purple};
+    }
+    &::before {
+      left: -30px;
+      border-right: 25px solid ${palette.purple};
+    }
   }
 `
 

@@ -56,16 +56,32 @@ const footerCss = css`
   padding: 2rem 0;
   text-align: center;
   & a {
+    position: relative;
     display: grid;
     grid-template-rows: minmax(min-content, max-content) 1fr;
     align-items: center;
     width: 85%;
     max-width: 50rem;
     padding: 1rem 2rem;
-    border-radius: 10px;
-    background: ${palette.purple};
+    background-color: ${palette.purple};
+    border-bottom: 4px solid ${palette.teal};
+    &:first-of-type {
+      box-shadow:
+        -2rem 0 0 -1rem ${palette.lightPurple},
+        -4rem 0 0 -2rem ${palette.purple},
+        -6rem 0 0 -3rem ${palette.lightPurple};
+    }
+    &:last-of-type {
+      box-shadow:
+        2rem 0 0 -1rem ${palette.lightPurple},
+        4rem 0 0 -2rem ${palette.purple},
+        6rem 0 0 -3rem ${palette.lightPurple};
+    }
     & span {
       padding: 1rem 2rem;
+    }
+    &:hover {
+
     }
   }
 `

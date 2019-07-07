@@ -35,6 +35,7 @@ const headerCss = css`
   grid-area: header;
   text-align: center;
   & h1 {
+    color: ${palette.gold};
     font-size: 4.75rem;
   }
 `

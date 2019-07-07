@@ -5,10 +5,10 @@
   "version": "0.1.0",
   "author": "Pavel Ermolin <oatto.paul@gmail.com>",
   "scripts": {
-    "build": "gatsby build",
-    "start": "gatsby develop",
+    "build": "'rm' -r public/ .cache/ && gatsby build",
+    "start": "'rm' -r public/ .cache/ && gatsby develop",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
-    "deploy": "gatsby build && npx gh-pages -d public -b master"
+    "deploy": "npm run build && npx gh-pages -d public -b master"
   },
   "husky": {
     "hooks": {

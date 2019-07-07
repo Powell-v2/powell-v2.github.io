@@ -131,6 +131,18 @@ const detailsWrapperStyle = css`
       left: -30px;
       border-right: 25px solid ${palette.purple};
     }
+    @media (max-width: 326px) {
+      &::after, &::before {
+        top: 12%;
+        border: 35px solid transparent;
+      }
+      &::after {
+        border-left: 15px solid ${palette.purple};
+      }
+      &::before {
+        border-right: 15px solid ${palette.purple};
+      }
+    }
   }
 `
 const disableScrollCss = css`

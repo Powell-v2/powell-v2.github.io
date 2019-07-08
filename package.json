@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "Dream.Code.Sleep.Repeat.",
   "private": true,
-  "description": "A website built with Gatsby",
-  "version": "0.1.0",
+  "description": "Personal website&blog of Powell Ye",
+  "version": "3.2.0",
   "author": "Pavel Ermolin <oatto.paul@gmail.com>",
   "scripts": {
     "build": "'rm' -r public/ .cache/ && gatsby build",

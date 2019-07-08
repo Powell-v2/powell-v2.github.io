@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { css } from "@emotion/core"
 import Highlight, { defaultProps } from "prism-react-renderer"
+import customTheme from "prism-react-renderer/themes/oceanicNext"
 
 const preCss = css`
   padding: 2rem;
@@ -24,6 +25,7 @@ const HighlightCode = ({ language, code, inline }) => {
       <Highlight
         code={code}
         {...defaultProps}
+        theme={customTheme}
       >
         {({ className, style }) => (
           <code
@@ -44,6 +46,7 @@ const HighlightCode = ({ language, code, inline }) => {
       language={language}
       code={code}
       {...defaultProps}
+      theme={customTheme}
     >
       {({
         className, style, tokens, getLineProps, getTokenProps

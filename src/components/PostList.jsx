@@ -10,7 +10,6 @@ import { randInt } from '../utils'
 const PostList = ({
   onItemSelect,
   customBulletPoint,
-  listClassName,
   linkStyle,
   liStyle,
   cmd,
@@ -47,7 +46,7 @@ const PostList = ({
   `)
 
   return (
-    <ul className={listClassName}>
+    <ul>
       {posts.allMdx.edges
         .map(({
           node: {
@@ -106,7 +105,6 @@ const PostList = ({
 PostList.propTypes = {
   onItemSelect: PropTypes.func,
   customBulletPoint: PropTypes.element,
-  listClassName: PropTypes.string,
   cmd: PropTypes.bool,
   linkStyle: PropTypes.arrayOf(PropTypes.object),
   liStyle: PropTypes.arrayOf(PropTypes.object),
@@ -115,7 +113,6 @@ PostList.propTypes = {
 PostList.defaultProps = {
   onItemSelect: () => {},
   customBulletPoint: <></>,
-  listClassName: ``,
   cmd: false,
   linkStyle: [],
   liStyle: [],

@@ -60,12 +60,13 @@ const postsList = css`
 `
 const listItem = css`
   position: relative;
-  padding: .5rem 0;
+  padding: .75rem 0;
 `
 const link = css`
   transition: box-shadow .3s;
   font-size: 1.8rem;
   color: ${palette.beige};
+  padding-bottom: 2px;
   &:hover {
     box-shadow: 0 .3rem ${palette.gold};
     text-decoration: inherit;

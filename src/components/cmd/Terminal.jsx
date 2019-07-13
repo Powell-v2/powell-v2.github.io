@@ -58,12 +58,7 @@ export default function Terminal() {
             cmd
             linkStyle={[linkHighlighted, css`color: black;`]}
             onItemSelect={displayNextNode}
-            customBulletPoint={(
-              <span className="fa-li">
-                <FontAwesomeIcon icon={faSun} />
-              </span>
-            )}
-            listClassName="fa-ul"
+            customBulletPoint={<FontAwesomeIcon icon={faSun} />}
           />
         </article>
       )

@@ -31,7 +31,6 @@ const mediums = [
 
 const ContactLinks = ({
   iconSize,
-  pullIcon,
   listStyle,
   linkStyle,
   displayName
@@ -41,7 +40,6 @@ const ContactLinks = ({
       const iconComp = (
         <FontAwesomeIcon
           fixedWidth
-          pull={pullIcon}
           size={iconSize}
           icon={icon}
           alt={name}
@@ -67,7 +65,6 @@ const ContactLinks = ({
 
 ContactLinks.propTypes = {
   iconSize: PropTypes.string,
-  pullIcon: PropTypes.string,
   displayName: PropTypes.bool,
   listStyle: PropTypes.arrayOf(PropTypes.object),
   linkStyle: PropTypes.arrayOf(PropTypes.object),
@@ -75,7 +72,6 @@ ContactLinks.propTypes = {
 
 ContactLinks.defaultProps = {
   iconSize: "1x",
-  pullIcon: null,
   displayName: false,
   listStyle: [],
   linkStyle: [],

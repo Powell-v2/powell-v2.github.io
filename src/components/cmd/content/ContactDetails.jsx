@@ -4,18 +4,17 @@ import { css } from '@emotion/core'
 import ContactLinks from '../../ContactLinks'
 
 import { palette } from '../../../styles/meta'
-
-const linkStyle = css`
-  color: ${palette.black};
-`
+import { linkHighlighted } from '../../../styles/shared'
 
 const ContactDetails = () => (
   <article className="output--block">
     <p>Get in touch:</p>
     <ContactLinks
       displayName
-      pullIcon="left"
-      linkStyle={[linkStyle]}
+      linkStyle={[
+        linkHighlighted,
+        css`color: ${palette.black};`
+      ]}
     />
   </article>
 )

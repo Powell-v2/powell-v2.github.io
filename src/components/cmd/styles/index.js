@@ -18,8 +18,8 @@ export default css`
   a {
     color: #000;
     text-decoration: none;
-    box-shadow: inset 0px -2px #ffc555;
-    transition: background 0.5s cubic-bezier(0.35, 0.65, 0.65, 1); }
+    box-shadow: inset 0px -3px #ffc555;
+    transition: background 0.25s cubic-bezier(0.35, 0.65, 0.65, 1); }
     a:hover {
       text-decoration: inherit;
       background: #ffc555;
@@ -31,7 +31,8 @@ export default css`
     padding: 0; }
 
   li {
-    margin-top: 0.4rem; }
+    margin-top: 1.25rem;
+  }
 
   hr {
     height: 5px;
@@ -41,8 +42,9 @@ export default css`
     border-top: 2px dashed #333;
     overflow: visible; }
 
-  .fa-ul {
-    margin-left: 3.2rem; }
+  .svg-inline--fa {
+    margin-right: .5rem;
+  }
 
   .italic {
     font-style: italic; }

@@ -18,6 +18,7 @@ const components = {
       css={[
         linkHighlighted,
         css`
+          padding: 4px 0;
           &:hover { background-color: transparent; }
         `,
       ]}

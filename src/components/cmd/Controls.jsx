@@ -71,14 +71,19 @@ function Controls({ handleSubmit, clearOutputStream }) {
 
   return (
     <section className="controls">
-      <form onSubmit={(e) => handleSubmit(e, command)}>
-        <label htmlFor="cmd_line">
-          <FontAwesomeIcon icon={faAngleDoubleRight} />
-        </label>
+      <form
+        className="form"
+        onSubmit={(e) => handleSubmit(e, command)}
+      >
+        <FontAwesomeIcon
+          icon={faAngleDoubleRight}
+          className="label__input"
+        />
         <input
           type="text"
           id="cmd_line"
           name="cmd_line"
+          aria-label="Input field"
           value={command}
           onChange={(e) => setCommand(e.target.value)}
           placeholder={placeholder}

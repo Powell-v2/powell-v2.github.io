@@ -30,9 +30,9 @@ const IndexPage = () => (
     <SEO title="Root" />
     <div css={pageContainer}>
       <Header />
-      <div css={cubeContainer}>
+      <main css={cubeContainer}>
         <Cube />
-      </div>
+      </main>
     </div>
   </>
 )

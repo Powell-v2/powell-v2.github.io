@@ -34,14 +34,6 @@ export default css`
     margin-top: 1.25rem;
   }
 
-  hr {
-    height: 5px;
-    width: 90%;
-    margin-top: 15px;
-    border: none;
-    border-top: 2px dashed #333;
-    overflow: visible; }
-
   .svg-inline--fa {
     margin-right: .5rem;
   }
@@ -83,18 +75,19 @@ export default css`
     margin: 0.8rem 0 1.6rem 0;
     background-color: black; }
 
-  form {
+  .form {
     display: flex;
-    margin: 1.6rem; }
+    margin: 1.6rem;
+  }
 
-  label {
-    width: 1.2rem;
-    padding-top: 0.4571428571rem; }
+  .label__input {
+    align-self: center;
+  }
 
   input {
     flex: 8;
     margin-top: .1rem;
-    height: 2.4rem;
+    height: 100%;
     padding-left: 0.8rem;
     border: #ccc 1px solid;
     border-radius: .6rem; }
@@ -245,17 +238,18 @@ export default css`
       pointer-events: none; }
 
   @media (max-width: 420px) {
-    #clear, label {
-      display: none; }
+    #clear, .label__input {
+      display: none;
+    }
 
-    .quote {
-      font-size: 1rem; }
-
-    .output--block, .tooltip {
-      font-size: 1.1rem; } }
-  @media (min-width: 420px) and (max-width: 840px) {
     .quote {
       font-size: 1.2rem; }
+
+    .output--block, .tooltip {
+      font-size: 1.2rem; } }
+  @media (min-width: 420px) and (max-width: 840px) {
+    .quote {
+      font-size: 1.3rem; }
 
     .output--block, .tooltip {
       font-size: 1.3rem; } }
@@ -266,7 +260,7 @@ export default css`
     button {
       margin-left: 1.6rem; }
 
-    label {
+    .label__input {
       margin-left: auto; } }
   @media (max-width: 1024px) {
     .output--block:last-child {
@@ -286,20 +280,20 @@ export default css`
     .controls {
       align-self: center; }
 
-    form {
+    .form {
       display: grid;
       grid-template-columns: 1.6rem 7fr repeat(2, minmax(6.4rem, 1fr));
       grid-column-gap: 1vmax;
       grid-template-areas: "label input btn-run btn-clear"; }
 
-    label {
+    .label__input {
       grid-area: label;
       padding-right: 0; }
 
-    form input {
+    .form input {
       grid-area: input; }
 
-    form button {
+    .form button {
       margin-left: 0; }
 
     #run {
@@ -309,7 +303,7 @@ export default css`
       grid-area: btn-clear; }
 
     @media (max-width: 420px) {
-      form {
+      .form {
         grid-template-columns: 4fr 1fr;
         grid-template-areas: "input btn-run"; } } }
 `

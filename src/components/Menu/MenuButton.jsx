@@ -101,6 +101,7 @@ const MenuButton = ({ isOpen, setIsOpen }) => (
   <div css={buttonWrapper}>
     <button
       type="button"
+      aria-label="Menu"
       css={[button, !isOpen && burgerOnHover]}
       onClick={() => setIsOpen((prevState) => !prevState)}
       onKeyDown={(e) => {

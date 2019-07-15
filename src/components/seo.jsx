@@ -15,7 +15,7 @@ const detailsQuery = graphql`
   }
 `
 
-function SEO({
+export default function SEO({
   description, lang, meta, keywords, title,
 }) {
   return (
@@ -82,7 +82,7 @@ SEO.defaultProps = {
   description: ``,
   lang: `en`,
   meta: [],
-  keywords: [],
+  keywords: [`blog`, `web development`],
 }
 
 SEO.propTypes = {
@@ -92,5 +92,3 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
 }
-
-export default SEO

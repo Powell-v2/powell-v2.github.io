@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 import Header from '../components/Header'
+import SEO from '../components/seo'
 import Cube from '../components/Cube'
 
 import { palette } from '../styles/meta'
@@ -26,6 +27,7 @@ const cubeContainer = css`
 
 const IndexPage = () => (
   <>
+    <SEO title="Root" />
     <div css={pageContainer}>
       <Header />
       <div css={cubeContainer}>

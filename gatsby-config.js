@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Dream.Code.Sleep.Repeat.`,
-    description: `A website made by Powell-v2. No critters were hurt during its creation.`,
+    description: `Personal website & blog of Powell Yermolin.`,
     author: `@powell_v2`,
   },
   plugins: [

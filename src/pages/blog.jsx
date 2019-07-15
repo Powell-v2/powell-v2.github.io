@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import headerBg from '../images/blog/header.svg'
 
+import SEO from '../components/seo'
 import Menu from '../components/Menu'
 import PostList from '../components/PostList'
 
@@ -79,6 +80,7 @@ const link = css`
 
 const BlogMainPage = () => (
   <>
+    <SEO title="Blog" />
     <Menu />
     <div
       role="presentation"

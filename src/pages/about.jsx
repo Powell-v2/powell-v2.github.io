@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 
 import AppContext from '../context/AppContext'
 
+import SEO from '../components/seo'
 import Menu from '../components/Menu'
 import { intro } from '../components/cmd/content/AboutMe'
 import { extra } from '../components/cmd/content/Skills'
@@ -214,6 +215,7 @@ const AboutPage = () => {
 
   return (
     <>
+      <SEO title="About" />
       <Menu />
       <div css={[container, isMenuOpen && disableScroll]}>
         <main css={main}>

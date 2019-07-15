@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
+import SEO from '../components/seo'
 import Menu from '../components/Menu'
 import Post from '../components/Post'
 
@@ -11,6 +12,7 @@ const BlogPost = ({ data, pageContext }) => {
 
   return (
     <>
+      <SEO title={frontmatter.title} />
       <Menu />
       <Post
         title={frontmatter.title}
@@ -37,12 +39,17 @@ BlogPost.propTypes = {
     }),
   }).isRequired,
   data: PropTypes.shape({
-    html: PropTypes.string,
-    frontmatter: PropTypes.shape({
-      date: PropTypes.string,
-      title: PropTypes.string,
-    })
-  }).isRequired
+    mdx: PropTypes.shape({
+      id: PropTypes.string,
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+        date: PropTypes.string,
+      }),
+      code: PropTypes.shape({
+        body: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
 }
 
 export const blogPostQuery = graphql`

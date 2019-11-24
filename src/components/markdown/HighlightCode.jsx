@@ -7,7 +7,7 @@ import customTheme from "prism-react-renderer/themes/oceanicNext"
 const preCss = css`
   padding: 2rem;
   margin: 2rem auto;
-  overflow-x: scroll;
+  overflow-x: auto;
 `
 const inlineCodeCss = css`
   padding: .25rem .5rem;

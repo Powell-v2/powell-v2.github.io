@@ -17,7 +17,11 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "**/*.{json,md,mdx}": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{js,jsx}": [
       "npx eslint --fix",
       "git add"
     ]
@@ -68,7 +72,8 @@
     "gatsby-cli": "^2.7.8",
     "gh-pages": "^2.0.1",
     "husky": "^1.3.1",
-    "lint-staged": "^8.1.5"
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.19.1"
   },
   "keywords": [
     "gatsby",

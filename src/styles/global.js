@@ -59,10 +59,7 @@ export default css`
   }
 
   /* Remark image plugin */
-  .gatsby-resp-image-wrapper {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
+  .gatsby-resp-image-wrapper {}
 
   .gatsby-resp-image-link {
     box-shadow: none !important;

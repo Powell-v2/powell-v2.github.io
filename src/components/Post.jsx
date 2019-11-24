@@ -179,7 +179,9 @@ const Post = ({
         className={articleClassName}
         css={articleCss}
       >
-        <MDXRenderer>{body}</MDXRenderer>
+        <MDXRenderer>
+          {body}
+        </MDXRenderer>
       </article>
       <footer
         css={[footerCss, isOutermostPost && singleSwitchCss]}

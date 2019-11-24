@@ -48,14 +48,11 @@ const burgerOnHover = css`
   &:hover > span {
     &::before {
       transform: scaleX(1);
-      transform-origin: right;
     }
     &::after {
       transform: scaleX(.8);
-      transform-origin: right;
     }
     & span {
-      transform-origin: right;
       transform: scaleX(.6);
     }
   }
@@ -89,9 +86,17 @@ const cross = css`
     transform-origin: center;
   }
   &::before {
-    transform: scaleX(1) translateY(1rem) rotate(-45deg); }
+    transform:
+      scaleX(1)
+      translateY(1rem)
+      rotate(-45deg);
+  }
   &::after {
-    transform: scaleX(1) translateY(-1rem) rotate(45deg); }
+    transform:
+      scaleX(1)
+      translateY(-1rem)
+      rotate(45deg);
+  }
   & span {
     transform: scaleX(0);
   }

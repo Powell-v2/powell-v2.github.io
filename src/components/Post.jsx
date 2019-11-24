@@ -56,35 +56,32 @@ const footerCss = css`
   justify-items: center;
   padding: 2rem 0;
   text-align: center;
-  & a {
-    position: relative;
-    display: grid;
-    grid-template-rows: minmax(min-content, max-content) 1fr;
-    align-items: center;
-    width: 85%;
-    max-width: 50rem;
+`
+const switchCss = css`
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(min-content, max-content) 1fr;
+  align-items: center;
+  width: 85%;
+  max-width: 50rem;
+  padding: 1rem 2rem;
+  background-color: ${palette.purple};
+  border-bottom: 4px solid ${palette.teal};
+  & span {
     padding: 1rem 2rem;
-    background-color: ${palette.purple};
-    border-bottom: 4px solid ${palette.teal};
-    &:first-of-type {
-      box-shadow:
-        -2rem 0 0 -1rem ${palette.lightPurple},
-        -4rem 0 0 -2rem ${palette.purple},
-        -6rem 0 0 -3rem ${palette.lightPurple};
-    }
-    &:last-of-type {
-      box-shadow:
-        2rem 0 0 -1rem ${palette.lightPurple},
-        4rem 0 0 -2rem ${palette.purple},
-        6rem 0 0 -3rem ${palette.lightPurple};
-    }
-    & span {
-      padding: 1rem 2rem;
-    }
-    &:hover {
-
-    }
   }
+`
+const nextSwitchCss = css`
+  box-shadow:
+    -2rem 0 0 -1rem ${palette.lightPurple},
+    -4rem 0 0 -2rem ${palette.purple},
+    -6rem 0 0 -3rem ${palette.lightPurple};
+`
+const previousSwitchCss = css`
+  box-shadow:
+    2rem 0 0 -1rem ${palette.lightPurple},
+    4rem 0 0 -2rem ${palette.purple},
+    6rem 0 0 -3rem ${palette.lightPurple};
 `
 const detailsWrapperStyle = css`
   grid-area: details;
@@ -149,7 +146,7 @@ const disableScrollCss = css`
   height: 100vh;
   overflow-y: hidden;
 `
-const singleSwitch = css`
+const singleSwitchCss = css`
   grid-template-rows: none;
 `
 
@@ -185,18 +182,26 @@ const Post = ({
         <MDXRenderer>{body}</MDXRenderer>
       </article>
       <footer
-        css={[footerCss, isOutermostPost && singleSwitch]}
+        css={[footerCss, isOutermostPost && singleSwitchCss]}
       >
         {nextPost && (
-          <Link to={nextPost.path}>
-            <span>Next post:</span>
+          <Link
+            to={nextPost.path}
+            css={[switchCss, nextSwitchCss]}
+          >
+            <span>
+              Next post:
+            </span>
             <span css={boldFont}>
               {nextPost.title}
             </span>
           </Link>
         )}
         {previousPost && (
-          <Link to={previousPost.path}>
+          <Link
+            to={previousPost.path}
+            css={[switchCss, previousSwitchCss]}
+          >
             <span>Previous post:</span>
             <span css={boldFont}>
               {previousPost.title}

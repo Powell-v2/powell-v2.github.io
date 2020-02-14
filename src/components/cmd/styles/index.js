@@ -162,7 +162,7 @@ export default css`
     margin: 1.6rem;
     margin-top: 0;
     padding: 1.6rem;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden; }
 
   .output--block {

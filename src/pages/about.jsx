@@ -23,7 +23,7 @@ const container = css`
   }
 `
 
-const main = css`
+const mainCss = css`
   display: grid;
   grid-template-rows: repeat(2, max-content);
   grid-template-columns: 15% 70% 15%;
@@ -41,7 +41,7 @@ const main = css`
   }
 `
 
-const section = css`
+const sectionCss = css`
   grid-column: 2 / 3;
   display: grid;
   grid-template-rows: repeat(2, max-content);
@@ -58,7 +58,7 @@ const section = css`
   }
 `
 
-const h1 = css`
+const h1Css = css`
   align-self: end;
   justify-self: end;
   grid-area: header;
@@ -86,7 +86,7 @@ const h1 = css`
   }
 `
 
-const p = css`
+const pCss = css`
   grid-area: content;
   margin: auto;
   line-height: 1.6;
@@ -94,7 +94,7 @@ const p = css`
 
 const blink = keyframes`
   from, 19.999%, 25%, to {
-    z-index: 0;
+    z-index: -11;
   }
 
   20%, 24.999% {
@@ -169,7 +169,7 @@ const asideCss = css`
     position: relative;
     width: 80vw;
     max-height: 80vh;
-    padding-top: 7.5rem;
+    padding-bottom: 5rem;
     clip-path: polygon(11% 0, 100% 0, 89% 100%, 0 100%);
     &:not(.mask) {
       animation: ${distort} 10s infinite;
@@ -179,6 +179,9 @@ const asideCss = css`
       &:nth-of-type(n) {
         animation: none;
       }
+    }
+    & .mask {
+      display: none;
     }
   }
 `
@@ -218,14 +221,20 @@ const AboutPage = () => {
       <SEO title="About" />
       <Menu />
       <div css={[container, isMenuOpen && disableScroll]}>
-        <main css={main}>
-          <section css={section}>
-            <h1 css={h1} data-shadow="About me">About me</h1>
-            <p css={p}>{intro}</p>
+        <main css={mainCss}>
+          <section css={sectionCss}>
+            <h1 css={h1Css} data-shadow="About me">
+              About me
+            </h1>
+            <p css={pCss}>
+              {intro}
+            </p>
           </section>
-          <section css={section}>
-            <h1 css={h1} data-shadow="Skills">Skills</h1>
-            <p css={p}>
+          <section css={sectionCss}>
+            <h1 css={h1Css} data-shadow="Skills">
+              Skills
+            </h1>
+            <p css={pCss}>
               {extra}
             </p>
           </section>
@@ -246,7 +255,9 @@ const AboutPage = () => {
                   ...(extension === `png`)
                   && {
                     position: `absolute`,
+                    top: 0,
                     width: `100%`,
+                    zIndex: -11,
                     filter: `brightness(90%) contrast(122%)`,
                   }
                 }}

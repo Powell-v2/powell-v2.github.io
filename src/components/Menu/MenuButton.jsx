@@ -5,7 +5,7 @@ import { css } from '@emotion/core'
 import { palette } from '../../styles/meta'
 
 const buttonWrapper = css`
-  position: absolute;
+  position: sticky;
   top: 3.5rem;
   left: 2.5rem;
   width: 5rem;

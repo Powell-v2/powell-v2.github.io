@@ -1,10 +1,10 @@
 import * as THREE from 'three'
 import * as React from 'react'
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 // import { GUI } from 'lil-gui'
 
-let windowWidth = 1
-let windowHeight = 1
+let windowWidth = 1024
+let windowHeight = 1024
 let devicePixelRatio = 1
 
 if (typeof window !== `undefined`) {
@@ -78,7 +78,6 @@ scene.add(clippingPlaneHelper)
 
 const geometry = new THREE.TorusKnotGeometry(0.55, 0.15, 220, 60)
 const object = new THREE.Group()
-// object.position.y = -0.2
 scene.add(object)
 
 const stencilGroup = createPlaneStencilGroup(geometry, clippingPlane)
@@ -119,6 +118,12 @@ if (typeof document !== 'undefined') {
   renderer.localClippingEnabled = true
 
   document.body.appendChild(renderer.domElement)
+
+  // Controls
+  const controls = new OrbitControls(camera, renderer.domElement)
+  controls.minDistance = 3
+  controls.maxDistance = 20
+  controls.update()
 }
 
 function onWindowResize() {
@@ -133,12 +138,6 @@ function onWindowResize() {
 if (typeof window !== 'undefined') {
   window.addEventListener('resize', onWindowResize)
 }
-
-// Controls
-// const controls = new OrbitControls(camera, renderer ? renderer.domElement : undefined)
-// controls.minDistance = 3
-// controls.maxDistance = 20
-// controls.update()
 
 // GUI
 // const gui = new GUI()

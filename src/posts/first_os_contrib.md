@@ -1,7 +1,7 @@
 ---
 date: 2017-01-05T00:00:00.000Z
 title: First Open Source Contribution
-published: true
+published: false
 ---
 
 Yesterday my first PR got merged (woohoo!), which marks the beginning of my path in the open source world.

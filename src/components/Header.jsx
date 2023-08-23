@@ -177,13 +177,13 @@ const Header = () => {
             >
               {part.split(``).map((symbol) => {
                 const isFlickeringLetter = (
-                  symbol.toLowerCase() === `c`
-                  || symbol.toLowerCase() === `o`)
+                  symbol.toLowerCase() === `d`
+                  || symbol.toLowerCase() === `m`)
 
                 return (
                   <span
                     className={
-                      isFlickeringLetter
+                      isFlickeringLetter && partIdx === 0
                         ? `slogan__letter--flickering`
                         : `slogan__letter`}
                     key={randInt()}

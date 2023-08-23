@@ -158,7 +158,15 @@ function animate() {
 
 export default function FloatingBlobsBackground() {
   React.useEffect(() => {
+    if (renderer.domElement.style.display === 'none') {
+      renderer.domElement.style.display = 'block'
+    }
+
     animate()
+
+    return () => {
+      renderer.domElement.style.display = 'none'
+    }
   }, [])
 
   return null

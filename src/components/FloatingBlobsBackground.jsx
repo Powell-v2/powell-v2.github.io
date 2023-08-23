@@ -3,6 +3,17 @@ import * as React from 'react'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 // import { GUI } from 'lil-gui'
 
+let windowWidth = 1
+let windowHeight = 1
+let devicePixelRatio = 1
+
+if (typeof window !== `undefined`) {
+  // eslint-disable-next-line
+  devicePixelRatio = window.devicePixelRatio
+  windowWidth = window.innerWidth
+  windowHeight = window.innerHeight
+}
+
 const params = {
   animate: true,
   planeY: {
@@ -49,7 +60,7 @@ const clock = new THREE.Clock()
 
 const scene = new THREE.Scene()
 
-const camera = new THREE.PerspectiveCamera(36, window.innerWidth / window.innerHeight, 1, 25)
+const camera = new THREE.PerspectiveCamera(36, windowWidth / windowHeight, 1, 25)
 camera.position.set(0, 5, 0)
 
 // Light
@@ -100,17 +111,19 @@ scene.add(planeObject)
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true })
-renderer.setPixelRatio(window.devicePixelRatio)
-renderer.setSize(window.innerWidth, window.innerHeight)
+renderer.setPixelRatio(devicePixelRatio)
+renderer.setSize(windowWidth, windowHeight)
 renderer.setClearColor(0x0a0010)
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight
+  camera.aspect = windowWidth / windowHeight
   camera.updateProjectionMatrix()
-  renderer.setSize(window.innerWidth, window.innerHeight)
+  renderer.setSize(windowWidth, windowHeight)
 }
 
-window.addEventListener('resize', onWindowResize)
+if (window !== undefined) {
+  window.addEventListener('resize', onWindowResize)
+}
 document.body.appendChild(renderer.domElement)
 
 renderer.localClippingEnabled = true

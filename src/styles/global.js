@@ -58,6 +58,13 @@ export default css`
     list-style: none;
   }
 
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
   /* Remark image plugin */
   .gatsby-resp-image-wrapper {}
 

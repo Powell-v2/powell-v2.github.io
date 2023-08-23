@@ -4,14 +4,12 @@ import { css } from '@emotion/core'
 import Header from '../components/Header'
 import SEO from '../components/seo'
 import Cube from '../components/Cube'
-
-import { palette } from '../styles/meta'
+import FloatingBlobsBackground from '../components/FloatingBlobsBackground'
 
 const pageContainer = css`
   display: grid;
   min-height: 100vh;
   grid-template-rows: 1fr 7fr;
-  background-color: ${palette.black};
   @media (max-width: 888px) {
     display: block;
   }
@@ -33,6 +31,7 @@ const IndexPage = () => (
       <main css={cubeContainer}>
         <Cube />
       </main>
+      <FloatingBlobsBackground />
     </div>
   </>
 )

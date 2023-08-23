@@ -33,11 +33,11 @@ const button = css`
     border-right: 2.5rem solid transparent;
   }
   &:before {
-    top: -1.5rem;
+    top: -1.45rem;
     border-bottom: 1.5rem solid ${palette.purple};
   }
   &:after {
-    bottom: -1.5rem;
+    bottom: -1.45rem;
     border-top: 1.5rem solid ${palette.purple};
   }
   &:hover {

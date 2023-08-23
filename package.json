@@ -58,11 +58,13 @@
     "prop-types": "^15.6.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "three": "^0.155.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.3",
     "@commitlint/config-conventional": "^7.5.0",
+    "@types/three": "^0.155.1",
     "eslint": "^5.13.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.0",

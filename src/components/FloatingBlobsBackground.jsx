@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import * as React from 'react'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 // import { GUI } from 'lil-gui'
 
 let windowWidth = 1
@@ -110,29 +110,35 @@ scene.add(planeObject)
 
 
 // Renderer
-const renderer = new THREE.WebGLRenderer({ antialias: true })
-renderer.setPixelRatio(devicePixelRatio)
-renderer.setSize(windowWidth, windowHeight)
-renderer.setClearColor(0x0a0010)
+let renderer
+if (typeof document !== 'undefined') {
+  renderer = new THREE.WebGLRenderer({ antialias: true })
+  renderer.setPixelRatio(devicePixelRatio)
+  renderer.setSize(windowWidth, windowHeight)
+  renderer.setClearColor(0x0a0010)
+  renderer.localClippingEnabled = true
+
+  document.body.appendChild(renderer.domElement)
+}
 
 function onWindowResize() {
   camera.aspect = windowWidth / windowHeight
   camera.updateProjectionMatrix()
-  renderer.setSize(windowWidth, windowHeight)
+
+  if (renderer) {
+    renderer.setSize(windowWidth, windowHeight)
+  }
 }
 
-if (window !== undefined) {
+if (typeof window !== 'undefined') {
   window.addEventListener('resize', onWindowResize)
 }
-document.body.appendChild(renderer.domElement)
-
-renderer.localClippingEnabled = true
 
 // Controls
-const controls = new OrbitControls(camera, renderer.domElement)
-controls.minDistance = 3
-controls.maxDistance = 20
-controls.update()
+// const controls = new OrbitControls(camera, renderer ? renderer.domElement : undefined)
+// controls.minDistance = 3
+// controls.maxDistance = 20
+// controls.update()
 
 // GUI
 // const gui = new GUI()
@@ -166,19 +172,23 @@ function animate() {
     planeObject.position.z - clippingPlane.normal.z,
   )
 
-  renderer.render(scene, camera)
+  if (renderer) {
+    renderer.render(scene, camera)
+  }
 }
 
 export default function FloatingBlobsBackground() {
   React.useEffect(() => {
-    if (renderer.domElement.style.display === 'none') {
+    if (renderer && renderer.domElement.style.display === 'none') {
       renderer.domElement.style.display = 'block'
     }
 
     animate()
 
     return () => {
-      renderer.domElement.style.display = 'none'
+      if (renderer) {
+        renderer.domElement.style.display = 'none'
+      }
     }
   }, [])
 

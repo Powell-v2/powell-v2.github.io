@@ -90,7 +90,7 @@ export default css`
     flex: 8;
     margin-top: .1rem;
     height: 100%;
-    padding-left: 0.8rem;
+    padding-left: 1.25rem;
     border: #ccc 1px solid;
     border-radius: .6rem; }
     input:focus {

@@ -2,14 +2,17 @@ import React from 'react'
 
 const CmdNotRecognized = () => (
   <p>
-    Sorry, but your command wasn&apos;t recognized. To see the full list of available commands, type
+    {String.raw`
+      Sorry, but your command wasn't recognized. Type
+    `}
     {` `}
-    <span className="bold">powell -h</span>
+    <span className="bold">powell --help</span>
     {` `}
-    into the command line and hit
+    and hit
     {` `}
     <span className="italic">Run</span>
-    .
+    {` `}
+    to reveal the list of all available commands.
   </p>
 )
 

@@ -1,11 +1,10 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
+import styles from './menu_body.module.css'
 import { randInt } from '../../utils'
-
 import Link from '../Link'
 import ContactLinks from '../ContactLinks'
-
 import { palette } from '../../styles/meta'
 
 const pages = [
@@ -27,21 +26,6 @@ const pages = [
   },
 ]
 
-const menuContainer = css`
-  position: absolute;
-  display: grid;
-  justify-items: center;
-  grid-template-rows: repeat(2, max-content);
-  grid-gap: 2.5rem;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  z-index: 12;
-  transform: translate(-50%, -50%);
-  & nav {
-    align-self: end;
-  }
-`
 const menuList = css`
   display: grid;
   @media (max-width: 375px) {
@@ -90,17 +74,9 @@ const link = css`
   color: ${palette.beige};
   display: inline-block;
 `
-const contactSection = css`
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: 4rem;
-  @media (max-width: 374px) {
-    grid-gap: 2rem;
-  }
-`
 
 const MenuBody = () => (
-  <section css={menuContainer}>
+  <section className={styles.menuContainer}>
     <nav>
       <ul css={menuList}>
         {pages.map(({ name, to }) => (
@@ -128,10 +104,9 @@ const MenuBody = () => (
         ))}
       </ul>
     </nav>
-    <section>
+    <section className={styles.contactSection}>
       <ContactLinks
-        iconSize="2x"
-        listStyle={[contactSection]}
+        iconsOnly
       />
     </section>
   </section>

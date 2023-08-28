@@ -1,11 +1,13 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-import styles from './menu_body.module.css'
-import { randInt } from '../../utils'
 import Link from '../Link'
+import { useLockBodyScroll } from "../custom_hooks/useLockBodyScroll"
 import ContactLinks from '../ContactLinks'
+import { randInt } from '../../utils'
 import { palette } from '../../styles/meta'
+
+import styles from './menu_body.module.css'
 
 const pages = [
   {
@@ -75,41 +77,45 @@ const link = css`
   display: inline-block;
 `
 
-const MenuBody = () => (
-  <section className={styles.menuContainer}>
-    <nav>
-      <ul css={menuList}>
-        {pages.map(({ name, to }) => (
-          <li
-            key={name}
-            css={[menuItem, !navigator.maxTouchPoints && expandOnHover]}
-          >
-            <Link
-              to={to}
-              css={link}
+const MenuBody = () => {
+  useLockBodyScroll()
+
+  return (
+    <section className={styles.menuContainer}>
+      <nav>
+        <ul css={menuList}>
+          {pages.map(({ name, to }) => (
+            <li
+              key={name}
+              css={[menuItem, !navigator.maxTouchPoints && expandOnHover]}
             >
-              {name
-                .split(``)
-                .map((char) => (
-                  <span
-                    key={randInt()}
-                    css={letter}
-                  >
-                    {char}
-                  </span>
-                ))
-              }
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
-    <section className={styles.contactSection}>
-      <ContactLinks
-        iconsOnly
-      />
+              <Link
+                to={to}
+                css={link}
+              >
+                {name
+                  .split(``)
+                  .map((char) => (
+                    <span
+                      key={randInt()}
+                      css={letter}
+                    >
+                      {char}
+                    </span>
+                  ))
+                }
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <section className={styles.contactSection}>
+        <ContactLinks
+          iconsOnly
+        />
+      </section>
     </section>
-  </section>
-)
+  )
+}
 
 export default MenuBody

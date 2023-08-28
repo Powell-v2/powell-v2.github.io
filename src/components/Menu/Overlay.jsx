@@ -3,6 +3,8 @@ import { css } from '@emotion/core'
 
 const overlay = css`
   position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100vw;
   z-index: 12;

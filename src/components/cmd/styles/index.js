@@ -291,7 +291,7 @@ export default css`
     .form {
       display: grid;
       grid-template-columns: 1.6rem 7fr repeat(2, minmax(6.4rem, 1fr));
-      grid-column-gap: 1vmax;
+      grid-column-gap: 1.5vmax;
       grid-template-areas: "label input btn-run btn-clear"; }
 
     .label__input {

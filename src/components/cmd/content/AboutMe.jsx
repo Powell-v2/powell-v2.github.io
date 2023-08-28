@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun } from '@fortawesome/free-solid-svg-icons'
 
 export const intro = `
-  Salute, my name is Pavel. I'm a versatile JavaScript engineer dedicated to lifelong learning. I like working solo as much as playing on a team. You can always expect me to be transparent about progress on tasks while seeking feedback early and often. I enjoy exchanging knowledge with others and believe that trust and respect are at the root of all great teamwork.
+Salute, my name is Pavel Yermolin. I'm a versatile fullstack engineer passionate about pragmatic programming and delivering delightful user experiences.
 `
 export const goals = [
   `Do exceptional work`,

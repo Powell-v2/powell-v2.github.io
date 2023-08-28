@@ -1,22 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faGithub, faStackOverflow } from '@fortawesome/free-brands-svg-icons'
 
 import Link from './Link'
 
-const mediums = [
-  {
-    icon: faGithub,
-    href: `https://github.com/Powell-v2`,
-    name: `GitHub`,
-  },
-  {
-    icon: faStackOverflow,
-    href: `http://stackoverflow.com/story/powell-v2`,
-    name: `StackOverflow`,
-  },
+const contacts = [
   {
     icon: faPaperPlane,
     href: `https://t.me/keepiteasy`,
@@ -29,38 +20,92 @@ const mediums = [
   },
 ]
 
+const profiles = [
+  {
+    icon: faGithub,
+    href: `https://github.com/Powell-v2`,
+    name: `GitHub`,
+  },
+  {
+    icon: faStackOverflow,
+    href: `https://stackoverflow.com/users/7200363/pa-ye`,
+    name: `StackOverflow`,
+  },
+]
+
+const containerCss = css`
+  display: grid;
+  gap: 1.5rem;
+`
+
 const ContactLinks = ({
   iconSize,
   listStyle,
   linkStyle,
   displayName
 }) => (
-  <ul css={listStyle}>
-    {mediums.map(({ href, icon, name }) => {
-      const iconComp = (
-        <FontAwesomeIcon
-          fixedWidth
-          size={iconSize}
-          icon={icon}
-          alt={name}
-        />
-      )
-      const isEmail = href.startsWith(`mailto`)
+  <div css={containerCss}>
+    <div>
+      <p>Get in touch:</p>
+      <ul css={listStyle}>
+        {contacts.map(({ href, icon, name }) => {
+          const iconComp = (
+            <FontAwesomeIcon
+              fixedWidth
+              size={iconSize}
+              icon={icon}
+              alt={name}
+            />
+          )
+          const isEmail = href.startsWith(`mailto`)
 
-      return (
-        <li key={name}>
-          {displayName && iconComp}
-          <Link
-            key={name}
-            css={linkStyle}
-            href={href}
-            target={isEmail ? null : `_blank`}
-          >
-            {displayName ? name : iconComp}
-          </Link>
-        </li>
-      ) })}
-  </ul>
+          return (
+            <li key={name}>
+              {displayName && iconComp}
+              <Link
+                key={name}
+                css={linkStyle}
+                href={href}
+                target={isEmail ? null : `_blank`}
+              >
+                {displayName ? name : iconComp}
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+    <div>
+      <p>Profiles:</p>
+      <ul css={listStyle}>
+        {profiles.map(({ href, icon, name }) => {
+          const iconComp = (
+            <FontAwesomeIcon
+              fixedWidth
+              size={iconSize}
+              icon={icon}
+              alt={name}
+            />
+          )
+          const isEmail = href.startsWith(`mailto`)
+
+          return (
+            <li key={name}>
+              {displayName && iconComp}
+              <Link
+                key={name}
+                css={linkStyle}
+                href={href}
+                target={isEmail ? null : `_blank`}
+              >
+                {displayName ? name : iconComp}
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  </div>
 )
 
 ContactLinks.propTypes = {

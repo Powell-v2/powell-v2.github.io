@@ -11,23 +11,23 @@ const content = [
   },
   {
     flag: `-s or --skills`,
-    description: `My professional skills.`,
+    description: `Describe professional skills.`,
   },
   {
-    flag: `-c or --contact`,
-    description: `Find out how to contact me.`,
+    flag: `-l or --links`,
+    description: `Output contact and profile links.`,
   },
   {
     flag: `-b or --blog`,
-    description: `Shows most recent blog posts.`,
+    description: `Show most recent blog posts.`,
   },
   {
     flag: `-v or --version`,
-    description: `Displays powell's version.`,
+    description: `Display powell's version.`,
   },
   {
     flag: `-h or --help`,
-    description: `Displays list of all available commands.`,
+    description: `Display list of all available commands.`,
   },
 ]
 

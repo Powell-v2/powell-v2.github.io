@@ -65,7 +65,7 @@ export default function Terminal() {
           />
         </article>
       )
-    } else if (flag === `--contact` || flag === `-c`) {
+    } else if (flag === `--links` || flag === `-l`) {
       displayNextNode(<ContactDetails key={randInt()} />)
     } else if (flag === `--about` || flag === `-a`) {
       displayNextNode(<AboutMe key={randInt()} />)

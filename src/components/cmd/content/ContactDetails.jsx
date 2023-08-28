@@ -8,7 +8,6 @@ import { linkHighlighted } from '../../../styles/shared'
 
 const ContactDetails = () => (
   <article className="output--block">
-    <p>Get in touch:</p>
     <ContactLinks
       displayName
       linkStyle={[

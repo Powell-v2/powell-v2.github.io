@@ -100,10 +100,6 @@ export default function Terminal() {
     <section
       className="terminal"
       ref={terminalEl}
-      style={{
-        height: `${windowHeight / 1.5}px`,
-        width: `${windowWidth / 1.2}px`,
-      }}
     >
       <Controls
         handleSubmit={handleSubmit}

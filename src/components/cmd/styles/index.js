@@ -52,6 +52,8 @@ export default css`
 
   .terminal {
     display: flex;
+    height: 50vh;
+    width: 80vw;
     flex-direction: column;
     background-color: moccasin;
     position: absolute;
@@ -237,8 +239,14 @@ export default css`
       border-color: transparent #4682b4;
       pointer-events: none; }
 
-  @media (max-width: 420px) {
-    #clear, .label__input {
+  @media (max-width: 800px) {
+    .terminal {
+      height: 80vh;
+      width: 85vw;
+    }
+  }
+  @media (max-width: 460px) {
+    .label__input {
       display: none;
     }
 
@@ -302,8 +310,20 @@ export default css`
     #clear {
       grid-area: btn-clear; }
 
-    @media (max-width: 420px) {
+    @media (max-width: 460px) {
+      .terminal {
+        grid-template-rows: 9rem 1fr;
+      }
       .form {
-        grid-template-columns: 4fr 1fr;
-        grid-template-areas: "input btn-run"; } } }
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+          "input input"
+          "btn-clear btn-run";
+        gap: 1rem;
+      }
+      #cmd_line {
+        line-height: 2.5rem;
+      }
+    }
+  }
 `

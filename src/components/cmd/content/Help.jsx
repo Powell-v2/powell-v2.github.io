@@ -9,10 +9,10 @@ const content = [
     flag: `-q or --quit`,
     description: `Quit terminal.`,
   },
-  {
-    flag: `-s or --skills`,
-    description: `Describe professional skills.`,
-  },
+  // {
+  //   flag: `-s or --skills`,
+  //   description: `Describe professional skills.`,
+  // },
   {
     flag: `-l or --links`,
     description: `Output contact and profile links.`,

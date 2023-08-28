@@ -12,7 +12,7 @@ import CmdNotRecognized from './content/CmdNotRecognized'
 import ContactDetails from './content/ContactDetails'
 import Help from './content/Help'
 import PostList from '../PostList'
-import Skills from './content/Skills'
+// import Skills from './content/Skills'
 import Tooltip from './content/Tooltip'
 
 import useWindowSize from '../custom_hooks/useWindowSize'
@@ -69,9 +69,11 @@ export default function Terminal() {
       displayNextNode(<ContactDetails key={randInt()} />)
     } else if (flag === `--about` || flag === `-a`) {
       displayNextNode(<AboutMe key={randInt()} />)
-    } else if (flag === `--skills` || flag === `-s`) {
-      displayNextNode(<Skills key={randInt()} />)
-    } else {
+    }
+    // } else if (flag === `--skills` || flag === `-s`) {
+    //   displayNextNode(<Skills key={randInt()} />)
+    // }
+    else {
       displayNextNode(<CmdNotRecognized key={randInt()} />)
     }
   }

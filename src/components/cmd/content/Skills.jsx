@@ -9,7 +9,8 @@ export const skills = [
   `Get shit done while having fun along the way!`,
 ]
 export const extra = `
-  I'm empathetic towards customers and this naturally extends into my desire to deliver high-quality UX. New technologies rouse my curiosity and excite me - at least moderately :] I have tool agnostic mentality when it comes to choosing the most appropriate instrument(s) for the job which allows to detach and clearly evaluate benefits and tradeoffs for the team as well as for the project and its users. Above all else, being pragmatic enables me to identify high-yielding areas to focus on and set clear priorities.
+  I'm empathetic towards customers and this naturally extends into my desire to deliver high-quality UX.
+  New technologies rouse my curiosity and excite me - at least moderately :] I have tool agnostic mentality when it comes to choosing the most appropriate instrument(s) for the job which allows to detach and clearly evaluate benefits and tradeoffs for the team as well as for the project and its users. Above all else, being pragmatic enables me to identify high-yielding areas to focus on and set clear priorities.
 `
 
 const Skills = () => (

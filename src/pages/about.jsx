@@ -7,13 +7,13 @@ import AppContext from '../context/AppContext'
 
 import SEO from '../components/seo'
 import Menu from '../components/Menu'
-import { intro } from '../components/cmd/content/AboutMe'
-import { extra } from '../components/cmd/content/Skills'
+import { intro, keyFacts } from '../components/cmd/content/AboutMe'
 
 import { palette } from '../styles/meta'
 
 const container = css`
   display: grid;
+  position: relative;
   place-items: center;
   min-height: 100vh;
   grid-template-columns: 60% 40%;
@@ -27,7 +27,7 @@ const mainCss = css`
   display: grid;
   grid-template-rows: repeat(2, max-content);
   grid-template-columns: 15% 70% 15%;
-  grid-row-gap: 5rem;
+  grid-row-gap: 7rem;
   padding: 5rem 0;
   color: ${palette.beige};
   overflow-y: hidden;
@@ -36,7 +36,7 @@ const mainCss = css`
     display: none;
   }
   @media (max-width: 500px) {
-    grid-row-gap: 2.5rem;
+    grid-row-gap: 3.5rem;
     grid-template-columns: 12.5% 75% 12.5%;
   }
 `
@@ -86,7 +86,7 @@ const h1Css = css`
   }
 `
 
-const pCss = css`
+const contentCss = css`
   grid-area: content;
   margin: auto;
   line-height: 1.6;
@@ -138,6 +138,7 @@ const distort = keyframes`
 
 const asideCss = css`
   position: fixed;
+  top: 0;
   right: 0;
   height: 100%;
   width: 40vw;
@@ -226,17 +227,21 @@ const AboutPage = () => {
             <h1 css={h1Css} data-shadow="About me">
               About me
             </h1>
-            <p css={pCss}>
+            <p css={contentCss}>
               {intro}
             </p>
           </section>
           <section css={sectionCss}>
-            <h1 css={h1Css} data-shadow="Skills">
-              Skills
+            <h1 css={h1Css} data-shadow="Key facts">
+              Key facts
             </h1>
-            <p css={pCss}>
-              {extra}
-            </p>
+            <ul css={contentCss}>
+              {keyFacts.map((fact) => (
+                <li key={fact}>
+                  {fact}
+                </li>
+              ))}
+            </ul>
           </section>
         </main>
         <aside css={asideCss}>

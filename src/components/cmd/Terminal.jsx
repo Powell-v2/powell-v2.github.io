@@ -45,7 +45,7 @@ export default function Terminal() {
     } else if (flag === `--version` || flag === `-v`) {
       displayNextNode(
         <article className="output--block">
-          <p>v2.3.0 (03/18/2019)</p>
+          <p>v2.6.0 (03/18/2019)</p>
         </article>
       )
     } else if (flag === `--quit` || flag === `-q`) {

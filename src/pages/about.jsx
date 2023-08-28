@@ -58,7 +58,7 @@ const sectionCss = css`
   }
 `
 
-const h1Css = css`
+const sectionHeadingCss = css`
   align-self: end;
   justify-self: end;
   grid-area: header;
@@ -142,7 +142,7 @@ const asideCss = css`
   right: 0;
   height: 100%;
   width: 40vw;
-  &:hover .mask {
+  /*&:hover .mask {
     z-index: 11;
     &:nth-of-type(1) {
       animation: ${blink} 2s infinite alternate;
@@ -162,16 +162,15 @@ const asideCss = css`
     &:nth-of-type(6) {
       animation: ${blink} 2s -500ms infinite;
     }
-  }
+  }*/
   &:hover:not(.mask) {
     animation: ${distort} 10s infinite;
   }
   @media (max-width: 1100px) {
     position: relative;
-    width: 80vw;
+    width: 100vw;
     max-height: 80vh;
     padding-bottom: 5rem;
-    clip-path: polygon(11% 0, 100% 0, 89% 100%, 0 100%);
     &:not(.mask) {
       animation: ${distort} 10s infinite;
     }
@@ -224,7 +223,7 @@ const AboutPage = () => {
       <div css={[container, isMenuOpen && disableScroll]}>
         <main css={mainCss}>
           <section css={sectionCss}>
-            <h1 css={h1Css} data-shadow="About me">
+            <h1 css={sectionHeadingCss} data-shadow="About me">
               About me
             </h1>
             <p css={contentCss}>
@@ -232,7 +231,7 @@ const AboutPage = () => {
             </p>
           </section>
           <section css={sectionCss}>
-            <h1 css={h1Css} data-shadow="Key facts">
+            <h1 css={sectionHeadingCss} data-shadow="Key facts">
               Key facts
             </h1>
             <ul css={contentCss}>

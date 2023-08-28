@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { navigate } from '@reach/router'
 import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun } from '@fortawesome/free-solid-svg-icons'
@@ -47,6 +48,8 @@ export default function Terminal() {
           <p>Version 2.3.0</p>
         </article>
       )
+    } else if (flag === `--quit` || flag === `-q`) {
+      navigate('/')
     } else if (flag === `--blog` || flag === `-b`) {
       displayNextNode(
         <article

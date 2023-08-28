@@ -6,6 +6,10 @@ const content = [
     description: `Self-intro.`,
   },
   {
+    flag: `-q or --quit`,
+    description: `Quit terminal.`,
+  },
+  {
     flag: `-s or --skills`,
     description: `My professional skills.`,
   },

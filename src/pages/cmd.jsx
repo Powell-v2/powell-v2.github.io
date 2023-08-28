@@ -7,7 +7,7 @@ import MainContainer from '../components/cmd/MainContainer'
 
 const CMD = () => (
   <>
-    <SEO title="CMD" />
+    <SEO title="cmd" />
     <MainContainer>
       <FloatingGridCanvas />
       <Terminal />

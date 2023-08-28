@@ -17,6 +17,7 @@ const MainContainer = ({ children }) => {
         style={{
           width: `${windowWidth}px`,
           height: `${windowHeight}px`,
+          background: 'antiquewhite',
         }}
       >
         {children}

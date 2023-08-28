@@ -53,7 +53,7 @@ export default css`
   .terminal {
     display: flex;
     flex-direction: column;
-    background-color: rgba(250, 245, 210, 0.9);
+    background-color: moccasin;
     position: absolute;
     border: #ccc 1px solid;
     border-radius: 12px;

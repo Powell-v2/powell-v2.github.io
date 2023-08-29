@@ -7,6 +7,7 @@
   grid-template-rows: 1fr max-content;
   height: 100%;
   width: 100%;
+  padding: 4rem;
 }
 
 .contactSection {
@@ -14,7 +15,6 @@
   grid-auto-flow: column;
   justify-content: left;
   grid-gap: 3rem;
-  padding: 3rem;
   /* Icon size */
   font-size: 2.5rem;
   @media (max-width: 374px) {
@@ -29,19 +29,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
 }
 
 .pageLinkItem {
-  height: 4rem;
-  line-height: 4rem;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   margin-right: auto;
   padding: 0 1.5rem;
   font-size: 7.5rem;
   cursor: pointer;
   text-transform: uppercase;
+  background: transparent;
 
   &:nth-child(1) {
     margin-left: 60%;
@@ -56,21 +57,65 @@
     }
   }
   &:nth-child(3) {
-    margin-left: 20%;
+    margin-left: -50%;
+    justify-content: end;
   }
   &:nth-child(4) {
-    margin-left: 30%;
+    margin-left: -40%;
+    justify-content: end;
   }
 
   @media (max-width: 800px) {
     font-size: 5rem;
-    height: 3rem;
-    line-height: 3rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
   @media (max-width: 600px) {
     font-size: 3.5rem;
+  }
+}
+
+.glowOnHover {
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 33%;
+  z-index: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -25px;
+    width: 100%;
+    height: calc(100% + 10px);
+    background: linear-gradient(45deg, var(--color-purple), var(--color-teal), var(--color-purple));
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(50px);
+    animation: glow 25s linear infinite;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 330ms;
+    transition-timing-function: ease-in-out;
+    border-radius: 33%;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
   }
 }

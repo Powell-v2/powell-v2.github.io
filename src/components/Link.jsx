@@ -20,9 +20,11 @@ const link = css`
   color: ${palette.beige};
 `
 
-const Link = ({
-  to, children, cmd, href, target, ...other
-}) => {
+const Link = (props) => {
+  const {
+    to, children, cmd, href, target, ...other
+  } = props
+
   if (cmd) {
     return (
       <button

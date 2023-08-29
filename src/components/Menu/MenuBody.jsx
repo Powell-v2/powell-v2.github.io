@@ -34,7 +34,7 @@ const MenuBody = () => {
         {pages.map(({ name, to }) => (
           <li
             key={name}
-            className={styles.pageLinkItem}
+            className={`${styles.pageLinkItem} ${styles.glowOnHover}`}
           >
             <Link
               to={to}

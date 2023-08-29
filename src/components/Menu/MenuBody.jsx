@@ -44,11 +44,11 @@ const MenuBody = () => {
           </li>
         ))}
       </ul>
-      <section className={styles.contactSection}>
+      <ul className={styles.contactSection}>
         <ContactLinks
           iconsOnly
         />
-      </section>
+      </ul>
     </section>
   )
 }

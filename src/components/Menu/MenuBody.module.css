@@ -43,6 +43,9 @@
   cursor: pointer;
   text-transform: uppercase;
   background: transparent;
+  & > a {
+    width: 100%;
+  }
 
   &:nth-child(1) {
     margin-left: 60%;
@@ -59,10 +62,18 @@
   &:nth-child(3) {
     margin-left: -50%;
     justify-content: end;
+
+    & > a {
+      text-align: end;
+    }
   }
   &:nth-child(4) {
     margin-left: -40%;
     justify-content: end;
+
+    & > a {
+      text-align: end;
+    }
   }
 
   @media (max-width: 800px) {
@@ -92,7 +103,7 @@
     width: 100%;
     height: calc(100% + 10px);
     background: linear-gradient(45deg, var(--color-purple), var(--color-teal), var(--color-purple));
-    background-size: 400%;
+    background-size: 300%;
     z-index: -1;
     filter: blur(50px);
     animation: glow 25s linear infinite;
@@ -113,7 +124,7 @@
     background-position: 0 0;
   }
   50% {
-    background-position: 400% 0;
+    background-position: 300% 0;
   }
   100% {
     background-position: 0 0;

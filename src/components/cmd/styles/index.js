@@ -52,7 +52,7 @@ export default css`
 
   .terminal {
     display: flex;
-    height: 50vh;
+    height: 80vh;
     width: 80vw;
     flex-direction: column;
     background-color: moccasin;
@@ -241,7 +241,6 @@ export default css`
 
   @media (max-width: 800px) {
     .terminal {
-      height: 80vh;
       width: 85vw;
     }
   }

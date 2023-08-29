@@ -6,7 +6,6 @@
 .postsList {
   align-self: center;
   justify-self: start;
-  overflow-y: scroll;
 
   @media (max-width: 925px) {
     align-self: start;

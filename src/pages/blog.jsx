@@ -41,17 +41,31 @@ const mainHeader = css`
 
 const listItem = css`
   position: relative;
-  padding: .75rem 0;
+  margin-bottom: 3rem;
 `
 
 const link = css`
-  transition: box-shadow .3s;
+  position: relative;
   font-size: 1.8rem;
   color: ${palette.beige};
-  padding-bottom: 2px;
-  &:hover {
-    box-shadow: 0 .3rem ${palette.gold};
-    text-decoration: inherit;
+  padding: 8px 12px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(100% - 18px);
+    left: 25px;
+    width: calc(100% - 25px);
+    height: 14px;
+    background-color: ${palette.gold};
+    transition:
+      opacity 200ms ease-in-out,
+      transform 150ms ease-in-out;
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  &:hover::before {
+    opacity: .4;
+    transform: translateX(0);
   }
   @media (max-width: 925px) {
     justify-self: center;

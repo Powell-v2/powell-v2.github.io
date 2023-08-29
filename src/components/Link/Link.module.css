@@ -1,0 +1,15 @@
+.button {
+  /* reset default button styles */
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  text-transform: none;
+  background: transparent;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-red);
+}

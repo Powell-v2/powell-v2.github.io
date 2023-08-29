@@ -3,18 +3,9 @@ import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
-import { palette } from '../styles/meta'
+import styles from './Link.module.css'
+import { palette } from '../../styles/meta'
 
-const button = css`
-  /* reset default button styles */
-  height: auto;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  text-transform: none;
-  background: none;
-`
 const link = css`
   text-decoration: none;
   color: ${palette.beige};
@@ -29,7 +20,7 @@ const Link = (props) => {
     return (
       <button
         type="button"
-        css={button}
+        className={styles.button}
         {...other}
       >
         {children}
@@ -40,7 +31,7 @@ const Link = (props) => {
     return (
       <a
         href={href}
-        css={link}
+        className={styles.link}
         target={target}
         rel={(target === `_blank`) ? `noopener noreferrer` : null}
         {...other}

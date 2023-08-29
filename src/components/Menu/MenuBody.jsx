@@ -4,7 +4,7 @@ import Link from '../Link'
 import { useLockBodyScroll } from "../custom_hooks/useLockBodyScroll"
 import ContactLinks from '../ContactLinks'
 
-import styles from './menu_body.module.css'
+import styles from './MenuBody.module.css'
 
 const pages = [
   {

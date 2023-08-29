@@ -1,0 +1,18 @@
+.buttonWrapper {
+  position: sticky;
+  top: 3.5rem;
+  left: 2.5rem;
+  width: 5rem;
+  height: 3rem;
+  /*
+    Sticky positioning keeps element in the document flow.
+    Create an offset to avoid additional top margin.
+  */
+  margin-top: -3.5rem;
+  z-index: 555;
+  @media (max-width: 425px) {
+    transform: scale(.75);
+    top: 2rem;
+    left: 1rem;
+  }
+}

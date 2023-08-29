@@ -2,21 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
+import styles from './MenuButton.module.css'
 import { palette } from '../../styles/meta'
 
-const buttonWrapper = css`
-  position: sticky;
-  top: 3.5rem;
-  left: 2.5rem;
-  width: 5rem;
-  height: 3rem;
-  z-index: 555;
-  @media (max-width: 425px) {
-    transform: scale(.75);
-    top: 2rem;
-    left: 1rem;
-  }
-`
 const button = css`
   width: inherit;
   height: inherit;
@@ -103,7 +91,7 @@ const cross = css`
 `
 
 const MenuButton = ({ isOpen, setIsOpen }) => (
-  <div css={buttonWrapper}>
+  <div className={styles.buttonWrapper}>
     <button
       type="button"
       aria-label="Menu"

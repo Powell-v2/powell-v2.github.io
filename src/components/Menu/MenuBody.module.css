@@ -7,16 +7,6 @@
   grid-template-rows: 1fr max-content;
   height: 100%;
   width: 100%;
-  /* position: absolute;
-  display: grid;
-  justify-items: center;
-  grid-template-rows: repeat(2, max-content);
-  grid-gap: 2.5rem;
-  top: 50%;
-  left: 50%;
-  z-index: 12;
-  transform: translate(-50%, -50%);
-  */
 }
 
 .contactSection {

@@ -72,4 +72,9 @@ export default css`
     box-shadow: none !important;
   }
   /* Remark image plugin */
+
+  #___gatsby > div {
+    position: relative;
+    min-height: 100vh;
+  }
 `

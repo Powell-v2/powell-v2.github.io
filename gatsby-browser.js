@@ -8,9 +8,11 @@ import { AppContextProvider } from './src/context/AppContext'
 import Link from './src/components/Link'
 import HighlightCode from './src/components/markdown/HighlightCode'
 
-import 'normalize.css/normalize.css'
 import globalStyles from './src/styles/global'
 import { linkHighlighted } from './src/styles/shared'
+
+import './src/styles/global.css'
+import 'normalize.css/normalize.css'
 
 const components = {
   a: (props) => (

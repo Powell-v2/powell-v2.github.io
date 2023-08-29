@@ -1,0 +1,11 @@
+:root {
+  --color-purple: rgb(41,41,163);
+  --color-light-purple: rgb(71, 71, 209);
+  --color-teal: rgb(23,117,138);
+  --color-medium-seagreen: rgb(60, 179, 113);
+  --color-red: rgb(178,34,34);
+  --color-gold: rgb(255,204,0);
+  --color-white: rgb(255,255,255);
+  --color-beige: rgb(255,235,205);
+  --color-black: rgb(6,6,6);
+}

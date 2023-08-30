@@ -6,46 +6,27 @@ import styles from './MenuButton.module.css'
 import { palette } from '../../styles/meta'
 
 const button = css`
-  width: inherit;
-  height: inherit;
-  background-color: ${palette.purple};
+  width: 5rem;
+  height: 5rem;
+  background-color: transparent;
   font-size: 1.5rem;
   cursor: pointer;
   outline: none;
-  transition: transform .444s ease-out;
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    border-left: 2.5rem solid transparent;
-    border-right: 2.5rem solid transparent;
-  }
-  &:before {
-    top: -1.45rem;
-    border-bottom: 1.5rem solid ${palette.purple};
-  }
-  &:after {
-    bottom: -1.45rem;
-    border-top: 1.5rem solid ${palette.purple};
-  }
-  &:hover {
-    transform: rotate(-180deg);
-  }
 `
 const burgerOnHover = css`
   &:hover > span {
     &::before {
-      transform: scaleX(1);
+      transform: scaleX(.95);
     }
     &::after {
-      transform: scaleX(.8);
+      transform: scaleX(.95);
     }
     & span {
       transform: scaleX(.6);
     }
   }
 `
-const burger = css`
+const burgerCss = css`
   display: block;
   padding: 0 .9rem;
   &::before, &::after {
@@ -53,7 +34,7 @@ const burger = css`
     display: block;
     height: calc(3rem / 6);
     background-color: ${palette.beige};
-    transition: all .444s ease-out;
+    transition: all 175ms ease-in-out;
   }
   &::before, &::after {
     transform-origin: center;
@@ -66,10 +47,10 @@ const burger = css`
     background-color: ${palette.beige};
     transform-origin: center;
     transform: scaleX(1);
-    transition: all .444s ease-out;
+    transition: all 175ms ease-in-out;
   }
 `
-const cross = css`
+const crossCss = css`
   &::before, &::after {
     transform-origin: center;
   }
@@ -104,7 +85,7 @@ const MenuButton = ({ isOpen, setIsOpen }) => (
         }
       }}
     >
-      <span css={[burger, isOpen && cross]}>
+      <span css={[burgerCss, isOpen && crossCss]}>
         <span />
       </span>
     </button>

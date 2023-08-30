@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faEnvelope } from '@fortawesome/free-regular-svg-icons'
-import { faGithub, faStackOverflow } from '@fortawesome/free-brands-svg-icons'
+import { faStackOverflow, faLinkedinIn, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 
 import Link from './Link'
 
@@ -22,9 +22,14 @@ const contacts = [
 
 const profiles = [
   {
-    icon: faGithub,
+    icon: faGithubAlt,
     href: `https://github.com/Powell-v2`,
     name: `GitHub`,
+  },
+  {
+    icon: faLinkedinIn,
+    href: `https://www.linkedin.com/in/pavel-yermolin/`,
+    name: `LinkedIn`,
   },
   {
     icon: faStackOverflow,
@@ -106,8 +111,8 @@ const ContactLinks = (props) => {
   if (iconsOnly) {
     return (
       <>
-        {renderContactLinks()}
         {renderProfileLinks()}
+        {renderContactLinks()}
       </>
     )
   }

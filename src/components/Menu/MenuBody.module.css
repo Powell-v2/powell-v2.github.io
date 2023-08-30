@@ -39,44 +39,64 @@
   position: relative;
   display: flex;
   width: 100%;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
   margin-right: auto;
   padding: 0 1.5rem;
   font-size: 7.5rem;
   cursor: pointer;
   text-transform: uppercase;
   background: transparent;
+
   & > a {
     width: 100%;
   }
 
   &:nth-child(1) {
-    margin-left: 60%;
+    margin-left: 42%;
+    margin-top: 4rem;
     @media (max-width: 450px) {
       margin-left: 15%;
     }
+
+    &::before {
+      left: -15%;
+    }
   }
   &:nth-child(2) {
-    margin-left: 53%;
+    margin-left: 55%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     @media (max-width: 450px) {
       margin-left: 30%;
     }
+
+    &::before {
+      left: -15%;
+    }
   }
   &:nth-child(3) {
-    margin-left: -50%;
+    margin-left: -65%;
+    margin-top: -7.5%;
+    margin-bottom: 2rem;
     justify-content: end;
 
     & > a {
       text-align: end;
     }
+
+    &::before {
+      right: -15%;
+    }
   }
   &:nth-child(4) {
-    margin-left: -40%;
+    margin-left: -35%;
     justify-content: end;
-
+    margin-bottom: 4rem;
     & > a {
       text-align: end;
+    }
+
+    &::before {
+      right: -15%;
     }
   }
 
@@ -102,8 +122,8 @@
   &::before {
     content: '';
     position: absolute;
+    /* Left/right is set on parent element. */
     top: -5px;
-    left: -25px;
     width: 100%;
     height: calc(100% + 10px);
     background: linear-gradient(45deg, var(--color-purple), var(--color-teal), var(--color-purple));
@@ -113,7 +133,7 @@
     animation: glow 25s linear infinite;
     opacity: 0;
     transition-property: opacity;
-    transition-duration: 330ms;
+    transition-duration: 175ms;
     transition-timing-function: ease-in-out;
     border-radius: 33%;
   }

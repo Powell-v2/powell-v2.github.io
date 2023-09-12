@@ -90,16 +90,6 @@ const contentCss = css`
   line-height: 1.6;
 `
 
-const blink = keyframes`
-  from, 19.999%, 25%, to {
-    z-index: -11;
-  }
-
-  20%, 24.999% {
-    z-index: 11;
-  }
-`
-
 const distort = keyframes`
   0.5%, 1.5%, 2.5% {
     filter: contrast(150%) blur(1px) hue-rotate(-45deg);
@@ -140,28 +130,7 @@ const asideCss = css`
   right: 0;
   height: 100%;
   width: 40vw;
-  /*&:hover .mask {
-    z-index: 11;
-    &:nth-of-type(1) {
-      animation: ${blink} 2s infinite alternate;
-    }
-    &:nth-of-type(2) {
-      animation: ${blink} 2s -100ms infinite;
-    }
-    &:nth-of-type(3) {
-      animation: ${blink} 2s -200ms infinite;
-    }
-    &:nth-of-type(4) {
-      animation: ${blink} 2s -300ms infinite alternate;
-    }
-    &:nth-of-type(5) {
-      animation: ${blink} 2s -400ms infinite alternate;
-    }
-    &:nth-of-type(6) {
-      animation: ${blink} 2s -500ms infinite;
-    }
-  }*/
-  &:hover:not(.mask) {
+  &:hover {
     animation: ${distort} 10s infinite;
   }
   @media (max-width: 1100px) {
@@ -169,18 +138,7 @@ const asideCss = css`
     width: 100vw;
     max-height: 80vh;
     padding-bottom: 5rem;
-    &:not(.mask) {
-      animation: ${distort} 10s infinite;
-    }
-    &:hover .mask {
-      z-index: 0;
-      &:nth-of-type(n) {
-        animation: none;
-      }
-    }
-    & .mask {
-      display: none;
-    }
+    animation: ${distort} 10s infinite;
   }
 `
 
@@ -191,6 +149,7 @@ const AboutPage = () => {
         filter: {
           sourceInstanceName: { eq: "images" }
           relativeDirectory: { eq: "about" }
+          name: { eq: "me_with_Niki_Pardubice_park" }
         }
       ) {
         edges {
@@ -239,7 +198,6 @@ const AboutPage = () => {
           {data.images.edges.map(({ node }) => {
             const { fluid } = node.childImageSharp
             const { originalName } = fluid
-            const { extension } = node
 
             return (
               <Img
@@ -248,16 +206,7 @@ const AboutPage = () => {
                 alt={originalName}
                 style={{
                   height: `100%`,
-                  ...(extension === `png`)
-                  && {
-                    position: `absolute`,
-                    top: 0,
-                    width: `100%`,
-                    zIndex: -11,
-                    filter: `brightness(90%) contrast(122%)`,
-                  }
                 }}
-                className={(extension === `png`) ? "mask" : ""}
               />
             )
           })}

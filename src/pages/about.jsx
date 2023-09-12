@@ -90,7 +90,7 @@ const contentCss = css`
   line-height: 1.6;
 `
 
-const distort = keyframes`
+const distortAnim = keyframes`
   0.5%, 1.5%, 2.5% {
     filter: contrast(150%) blur(1px) hue-rotate(-45deg);
   }
@@ -124,21 +124,57 @@ const distort = keyframes`
   }
 `
 
-const asideCss = css`
+const clipAndFlashAnim = keyframes`
+  0% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  100% {
+    clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+  }
+`
+
+const enlargeAnim = keyframes`
+  0% {
+    transform: scale(1);
+    filter: brightness(330%) hue-rotate(165deg);
+  }
+
+  100% {
+    transform: scale(1.44) translateY(9%) translateX(3%);
+    filter: brightness(100%) hue-rotate(0deg);
+  }
+`
+
+const photoContainerCss = css`
   position: fixed;
   top: 0;
   right: 0;
-  height: 100%;
+  display: grid;
+  height: 100vh;
   width: 40vw;
-  &:hover {
-    animation: ${distort} 10s infinite;
+  overflow: hidden;
+
+  &:hover > .gatsby-image-wrapper:first-child {
+    animation: ${enlargeAnim} 500ms;
+    animation-fill-mode: forwards;
   }
+
+  &:hover > .gatsby-image-wrapper:last-child {
+    animation: ${clipAndFlashAnim} 500ms;
+    animation-fill-mode: forwards;
+  }
+
+  & > .gatsby-image-wrapper {
+    grid-area: 1 / 1 / -1 / -1;
+  }
+
   @media (max-width: 1100px) {
     position: relative;
     width: 100vw;
     max-height: 80vh;
     padding-bottom: 5rem;
-    animation: ${distort} 10s infinite;
+    animation: ${distortAnim} 10s infinite;
   }
 `
 
@@ -156,7 +192,7 @@ const AboutPage = () => {
           node {
             extension
             childImageSharp {
-              fluid {
+              fluid(quality: 100) {
                 originalName
                 ...GatsbyImageSharpFluid_withWebp
               }
@@ -194,20 +230,24 @@ const AboutPage = () => {
             </ul>
           </section>
         </main>
-        <aside css={asideCss}>
+        <aside css={photoContainerCss}>
           {data.images.edges.map(({ node }) => {
             const { fluid } = node.childImageSharp
             const { originalName } = fluid
 
             return (
-              <Img
-                key={originalName}
-                fluid={fluid}
-                alt={originalName}
-                style={{
-                  height: `100%`,
-                }}
-              />
+              <>
+                <Img
+                  key={originalName}
+                  fluid={fluid}
+                  alt={originalName}
+                />
+                <Img
+                  key={originalName}
+                  fluid={fluid}
+                  alt={originalName}
+                />
+              </>
             )
           })}
         </aside>

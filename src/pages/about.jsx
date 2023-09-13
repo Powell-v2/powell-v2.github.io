@@ -90,7 +90,7 @@ const contentCss = css`
   line-height: 1.6;
 `
 
-const distortAnim = keyframes`
+const distortColorAnim = keyframes`
   0.5%, 1.5%, 2.5% {
     filter: contrast(150%) blur(1px) hue-rotate(-45deg);
   }
@@ -124,25 +124,46 @@ const distortAnim = keyframes`
   }
 `
 
-const clipAndFlashAnim = keyframes`
+const clipFromTopAnim = keyframes`
   0% {
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 
   100% {
-    clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
   }
 `
-
-const enlargeAnim = keyframes`
+const clipFromBottomAnim = keyframes`
   0% {
-    transform: scale(1);
-    filter: brightness(330%) hue-rotate(165deg);
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
   }
 
   100% {
-    transform: scale(1.44) translateY(9%) translateX(3%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+`
+
+const enlargeAndFlashAnim = keyframes`
+  0% {
+    transform: scale(1);
+    filter: brightness(330%) hue-rotate(180deg);
+  }
+
+  100% {
+    transform: scale(1.44) translateY(7%) translateX(3%);
     filter: brightness(100%) hue-rotate(0deg);
+  }
+`
+
+const minimizeAndFlashAnim = keyframes`
+  0% {
+    transform: scale(1.44) translateY(7%) translateX(3%);
+    filter: brightness(100%) hue-rotate(0deg);
+  }
+
+  100% {
+    transform: scale(1);
+    filter: brightness(330%) hue-rotate(180deg);
   }
 `
 
@@ -155,15 +176,22 @@ const photoContainerCss = css`
   width: 40vw;
   overflow: hidden;
 
+  & > .gatsby-image-wrapper:first-child {
+     animation: ${minimizeAndFlashAnim} 400ms ease-in-out forwards;
+  }
+  
   &:hover > .gatsby-image-wrapper:first-child {
-    animation: ${enlargeAnim} 500ms;
-    animation-fill-mode: forwards;
+    animation: ${enlargeAndFlashAnim} 400ms ease-in-out forwards, ${distortColorAnim} 10s ease-in-out 1s infinite;
+  }
+  
+  & > .gatsby-image-wrapper:last-child {
+    animation: ${clipFromBottomAnim} 400ms ease-in-out forwards;
   }
 
   &:hover > .gatsby-image-wrapper:last-child {
-    animation: ${clipAndFlashAnim} 500ms;
-    animation-fill-mode: forwards;
+    animation: ${clipFromTopAnim} 400ms ease-in-out forwards;
   }
+
 
   & > .gatsby-image-wrapper {
     grid-area: 1 / 1 / -1 / -1;
@@ -174,7 +202,7 @@ const photoContainerCss = css`
     width: 100vw;
     max-height: 80vh;
     padding-bottom: 5rem;
-    animation: ${distortAnim} 10s infinite;
+    animation: ${distortColorAnim} 10s infinite;
   }
 `
 

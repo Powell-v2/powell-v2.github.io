@@ -2,7 +2,9 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 export const intro = `
-Hey there 👋 My name is Pavel Yermolin. I'm a versatile fullstack engineer passionate about pragmatic programming and delivering delightful user experiences.
+Hey there 👋 My name is Pavel Yermolin.
+I'm a versatile fullstack engineer with unquenchable thirst for knowledge passionate about pragmatic
+programming and delivering delightful user experiences.
 `
 export const keyFacts = [
   `💪 6+ years of experience building rich and robust applications in TypeScript, React and Node`,

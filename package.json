@@ -55,6 +55,7 @@
     "gatsby-transformer-sharp": "^2.2.1",
     "gsap": "^2.1.3",
     "normalize.css": "^8.0.1",
+    "posthog-js": "^1.88.1",
     "prism-react-renderer": "^0.1.7",
     "prop-types": "^15.6.2",
     "react": "^16.8.6",

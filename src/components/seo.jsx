@@ -82,7 +82,7 @@ SEO.defaultProps = {
   description: ``,
   lang: `en`,
   meta: [],
-  keywords: [`blog`, `web development`],
+  keywords: [`blog`, `web development`, 'typescript', 'reactjs', 'developer productivity'],
 }
 
 SEO.propTypes = {

@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import posthog from 'posthog-js'
 
 import Header from '../components/Header'
 import SEO from '../components/seo'
@@ -22,6 +23,8 @@ const cubeContainer = css`
     height: 100vh;
   }
 `
+
+posthog.init('phc_4wjIUZsHhbZJNUjHPTBTd5inK2ykTorxoYReXN2VGmy', { api_host: 'https://app.posthog.com' })
 
 const IndexPage = () => (
   <>

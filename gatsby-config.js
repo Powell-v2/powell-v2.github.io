@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Dream.Code.Sleep.Repeat.`,
-    description: `Personal website & blog of Powell Yermolin.`,
-    author: `@powell_v2`,
+    description: `Personal website & blog of Pavel Yermolin.`,
+    author: `Pavel Yermolin`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

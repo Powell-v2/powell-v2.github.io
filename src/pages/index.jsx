@@ -24,7 +24,9 @@ const cubeContainer = css`
   }
 `
 
-posthog.init('phc_4wjIUZsHhbZJNUjHPTBTd5inK2ykTorxoYReXN2VGmy', { api_host: 'https://app.posthog.com' })
+if (typeof window !== 'undefined') {
+  posthog.init('phc_4wjIUZsHhbZJNUjHPTBTd5inK2ykTorxoYReXN2VGmy', { api_host: 'https://app.posthog.com' })
+}
 
 const IndexPage = () => (
   <>

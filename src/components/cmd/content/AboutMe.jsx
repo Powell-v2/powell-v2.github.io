@@ -2,10 +2,10 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 export const intro = `
-Hi there! 👋 I'm Pavel, a product-minded, frontend-focused fullstack engineer with a keen interest in 3D and ML/DL.
+Hi there! 👋 I'm Pavel, a product-minded fullstack engineer with a keen interest in ML.
 `
 export const keyFacts = [
-  `💪 6+ years of experience building rich and robust applications in TypeScript, React, Node and Python`,
+  `💪 7+ years of diverse experience building robust web applications primarily with TypeScript, Node, Python, React and AWS.`,
   `🙌 Skillful collaborator and proactive communicator who works effectively in cross-functional teams`,
   `🦸 Resourceful problem solver who loves to ship solutions quickly and often while keeping user needs at the forefront`,
   `⚡ Comfortable navigating in a complex codebase and delivering across the stack`,

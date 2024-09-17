@@ -150,14 +150,14 @@ const enlargeAndFlashAnim = keyframes`
   }
 
   100% {
-    transform: scale(1.44) translateY(7%) translateX(3%);
+    transform: scale(1.44) translateY(-14%) translateX(3%);
     filter: brightness(100%) hue-rotate(0deg);
   }
 `
 
 const minimizeAndFlashAnim = keyframes`
   0% {
-    transform: scale(1.44) translateY(7%) translateX(3%);
+    transform: scale(1.44) translateY(-14%) translateX(3%);
     filter: brightness(100%) hue-rotate(0deg);
   }
 
@@ -213,7 +213,7 @@ const AboutPage = () => {
         filter: {
           sourceInstanceName: { eq: "images" }
           relativeDirectory: { eq: "about" }
-          name: { eq: "me_with_Niki_Pardubice_park" }
+          name: { eq: "nl_aug_2024" }
         }
       ) {
         edges {

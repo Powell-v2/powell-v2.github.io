@@ -114,18 +114,19 @@ const detailsWrapperStyle = css`
     font-weight: bold;
     background-color: ${palette.purple};
     padding: 1.5rem;
+    border-radius: 2px;
     &::after, &::before {
       content: "";
       position: absolute;
-      top: 15%;
+      top: 11.5px;
       border: 25px solid transparent;
     }
     &::after {
-      right: -30px;
+      right: -15px;
       border-left: 25px solid ${palette.purple};
     }
     &::before {
-      left: -30px;
+      left: -15px;
       border-right: 25px solid ${palette.purple};
     }
     @media (max-width: 326px) {

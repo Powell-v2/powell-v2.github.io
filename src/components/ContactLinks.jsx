@@ -2,22 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane, faEnvelope } from '@fortawesome/free-regular-svg-icons'
-import { faStackOverflow, faLinkedinIn, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
+// import { faPaperPlane, faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import {
+  // faStackOverflow,
+  faLinkedinIn,
+  faGithubAlt
+} from '@fortawesome/free-brands-svg-icons'
 
 import Link from './Link'
 
 const contacts = [
-  {
-    icon: faPaperPlane,
-    href: `https://t.me/keepiteasy`,
-    name: `Telegram`,
-  },
-  {
-    icon: faEnvelope,
-    href: `mailto:ermolinpv@gmail.com`,
-    name: `Email`,
-  },
+  //   {
+  //     icon: faPaperPlane,
+  //     href: `https://t.me/keepiteasy`,
+  //     name: `Telegram`,
+  //   },
+  //   {
+  //     icon: faEnvelope,
+  //     href: `mailto:ermolinpv@gmail.com`,
+  //     name: `Email`,
+  //   },
 ]
 
 const profiles = [
@@ -31,11 +35,11 @@ const profiles = [
     href: `https://www.linkedin.com/in/pavel-yermolin/`,
     name: `LinkedIn`,
   },
-  {
-    icon: faStackOverflow,
-    href: `https://stackoverflow.com/users/7200363/pa-ye`,
-    name: `StackOverflow`,
-  },
+  // {
+  //   icon: faStackOverflow,
+  //   href: `https://stackoverflow.com/users/7200363/pa-ye`,
+  //   name: `StackOverflow`,
+  // },
 ]
 
 const containerCss = css`

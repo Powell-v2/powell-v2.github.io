@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-pages-index-jsx","path":"/","webpackCompilationHash":"404d26c7d80052ebd217","result":{"pageContext":{"isCreatedByStatefulCreatePages":true}}}
+{
+    "componentChunkName": "component---src-pages-index-jsx",
+    "path": "/",
+    "result": {"pageContext":{}},
+    "staticQueryHashes": ["3128451518"]}

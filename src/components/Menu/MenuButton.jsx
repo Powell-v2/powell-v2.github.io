@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
-import styles from './MenuButton.module.css'
+import * as componentStyles from './MenuButton.module.css'
 import { palette } from '../../styles/meta'
 
 const button = css`
@@ -72,7 +72,7 @@ const crossCss = css`
 `
 
 const MenuButton = ({ isOpen, setIsOpen }) => (
-  <div className={styles.buttonWrapper}>
+  <div className={componentStyles.buttonWrapper}>
     <button
       type="button"
       aria-label="Menu"

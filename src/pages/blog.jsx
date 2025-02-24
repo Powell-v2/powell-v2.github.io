@@ -6,7 +6,7 @@ import SEO from '../components/seo'
 import Menu from '../components/Menu'
 import PostList from '../components/PostList'
 
-import styles from './blog.module.css'
+import * as componentStyles from './blog.module.css'
 import { palette } from '../styles/meta'
 
 const container = css`
@@ -81,7 +81,7 @@ const BlogMainPage = () => (
       role="presentation"
       css={container}
     >
-      <header className={styles.headerWrapper}>
+      <header className={componentStyles.headerWrapper}>
         <h1
           role="presentation"
           css={mainHeader}
@@ -89,7 +89,7 @@ const BlogMainPage = () => (
           Blog
         </h1>
       </header>
-      <section className={styles.postsList}>
+      <section className={componentStyles.postsList}>
         <PostList
           liStyle={[listItem]}
           linkStyle={[link]}

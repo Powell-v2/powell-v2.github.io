@@ -8,7 +8,10 @@ import Post from '../components/Post'
 
 const BlogPost = ({ data, pageContext }) => {
   const { previousPost, nextPost } = pageContext
-  const { frontmatter, code } = data.mdx
+  const {
+    frontmatter,
+    body,
+  } = data.mdx
 
   return (
     <>
@@ -17,7 +20,7 @@ const BlogPost = ({ data, pageContext }) => {
       <Post
         title={frontmatter.title}
         date={frontmatter.date}
-        body={code.body}
+        body={body}
         // inverse as we are sorting in descending order
         previousPost={nextPost}
         nextPost={previousPost}
@@ -45,9 +48,7 @@ BlogPost.propTypes = {
         title: PropTypes.string,
         date: PropTypes.string,
       }),
-      code: PropTypes.shape({
-        body: PropTypes.string,
-      }),
+      body: PropTypes.string,
     }),
   }).isRequired,
 }
@@ -62,9 +63,7 @@ export const blogPostQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
       }
-      code {
-        body
-      }
+      body
     }
   }
 `

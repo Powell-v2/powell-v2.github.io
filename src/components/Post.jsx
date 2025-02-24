@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { MDXRenderer } from 'gatsby-mdx'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { css } from '@emotion/core'
 
 import AppContext from '../context/AppContext'
@@ -115,6 +115,7 @@ const detailsWrapperStyle = css`
     background-color: ${palette.purple};
     padding: 1.5rem;
     border-radius: 2px;
+    // pointy edges
     &::after, &::before {
       content: "";
       position: absolute;
@@ -122,12 +123,12 @@ const detailsWrapperStyle = css`
       border: 25px solid transparent;
     }
     &::after {
-      right: -15px;
-      border-left: 25px solid ${palette.purple};
+      right: 0;
+      border-left: 0 solid ${palette.purple};
     }
     &::before {
-      left: -15px;
-      border-right: 25px solid ${palette.purple};
+      left: 0;
+      border-right: 0 solid ${palette.purple};
     }
     @media (max-width: 326px) {
       &::after, &::before {

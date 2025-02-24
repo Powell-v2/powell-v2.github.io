@@ -36,9 +36,7 @@ const PostList = ({
               title
               date(formatString: "MMMM DD, YYYY")
             }
-            code {
-              body
-            }
+            body
           }
         }
       }
@@ -50,7 +48,10 @@ const PostList = ({
       {posts.allMdx.edges
         .map(({
           node: {
-            fields, frontmatter, code, id
+            id,
+            fields,
+            frontmatter,
+            body,
           }
         }) => (
           <li
@@ -68,7 +69,7 @@ const PostList = ({
                   onItemSelect(
                     <Post
                       key={randInt()}
-                      body={code.body}
+                      body={body}
                       date={frontmatter.date}
                       title={frontmatter.title}
                       articleClassName="blogpost--fetched"
@@ -83,7 +84,7 @@ const PostList = ({
                     onItemSelect(
                       <Post
                         key={randInt()}
-                        body={code.body}
+                        body={body}
                         date={frontmatter.date}
                         title={frontmatter.title}
                         articleClassName="blogpost--fetched"
@@ -111,7 +112,7 @@ PostList.propTypes = {
 }
 
 PostList.defaultProps = {
-  onItemSelect: () => {},
+  onItemSelect: () => { },
   customBulletPoint: <></>,
   cmd: false,
   linkStyle: [],

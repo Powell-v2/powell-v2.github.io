@@ -4,7 +4,7 @@ import Link from '../Link'
 import { useLockBodyScroll } from "../custom_hooks/useLockBodyScroll"
 import ContactLinks from '../ContactLinks'
 
-import styles from './MenuBody.module.css'
+import * as componentStyles from './MenuBody.module.css'
 
 const pages = [
   {
@@ -29,12 +29,12 @@ const MenuBody = () => {
   useLockBodyScroll()
 
   return (
-    <section className={styles.menuContainer}>
-      <ul className={styles.pageLinksListWrapper}>
+    <section className={componentStyles.menuContainer}>
+      <ul className={componentStyles.pageLinksListWrapper}>
         {pages.map(({ name, to }) => (
           <li
             key={name}
-            className={`${styles.pageLinkItem} ${styles.glowOnHover}`}
+            className={`${componentStyles.pageLinkItem} ${componentStyles.glowOnHover}`}
           >
             <Link
               to={to}
@@ -44,7 +44,7 @@ const MenuBody = () => {
           </li>
         ))}
       </ul>
-      <ul className={styles.contactSection}>
+      <ul className={componentStyles.contactSection}>
         <ContactLinks
           iconsOnly
         />

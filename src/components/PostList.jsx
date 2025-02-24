@@ -28,9 +28,7 @@ const PostList = ({
       ) {
         edges {
           node {
-            fields {
-              slug
-            }
+            slug
             id
             frontmatter {
               title
@@ -49,7 +47,7 @@ const PostList = ({
         .map(({
           node: {
             id,
-            fields,
+            slug,
             frontmatter,
             body,
           }
@@ -60,7 +58,7 @@ const PostList = ({
           >
             {customBulletPoint}
             <Link
-              to={fields.slug}
+              to={slug}
               cmd={cmd}
               tabIndex={0}
               css={[...linkStyle]}

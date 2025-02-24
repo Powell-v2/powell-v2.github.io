@@ -1,4 +1,6 @@
-module.exports = {
+// import type { GatsbyConfig } from "gatsby"
+
+const gatsbyConfig = {
   siteMetadata: {
     title: `Dream.Code.Sleep.Repeat.`,
     description: `Personal website & blog of Pavel Yermolin.`,
@@ -7,6 +9,10 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {}
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -56,3 +62,5 @@ module.exports = {
     'gatsby-plugin-offline',
   ],
 }
+
+module.exports = gatsbyConfig

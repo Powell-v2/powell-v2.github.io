@@ -1,5 +1,7 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require("path")
+
+// import type { CreateNodeArgs, CreatePagesArgs } from "gatsby"
+const { createFilePath } = require("gatsby-source-filesystem")
 
 const onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -57,6 +59,7 @@ const createPages = async ({ graphql, actions }) => graphql(`
 
   const { createPage } = actions
 
+  // @ts-expect-error
   result.data.allMdx.edges.forEach(({ node, next, previous }) => {
     createPage({
       path: node.fields.slug,

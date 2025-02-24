@@ -4,7 +4,6 @@ import { css, Global } from "@emotion/core"
 import { MDXProvider } from "@mdx-js/react"
 
 import { AppContextProvider } from './src/context/AppContext'
-
 import Link from './src/components/Link'
 import HighlightCode from './src/components/markdown/HighlightCode'
 

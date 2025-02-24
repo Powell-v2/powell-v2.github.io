@@ -1,6 +1,6 @@
 import React from 'react'
+import type { ReactNode } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
 import * as componentStyles from './Link.module.css'
@@ -11,9 +11,21 @@ const link = css`
   color: ${palette.beige};
 `
 
-const Link = (props) => {
+const Link = (props: {
+  to: string,
+  children: ReactNode,
+  cmd: boolean,
+  href: string,
+  target: string,
+  [key: string]: any
+}) => {
   const {
-    to, children, cmd, href, target, ...other
+    to = `/`,
+    children = `This is nothing but a placeholder link text`,
+    cmd = false,
+    href,
+    target,
+    ...other
   } = props
 
   if (cmd) {
@@ -33,7 +45,7 @@ const Link = (props) => {
         href={href}
         className={componentStyles.link}
         target={target}
-        rel={(target === `_blank`) ? `noopener noreferrer` : null}
+        rel={(target === `_blank`) ? `noopener noreferrer` : undefined}
         {...other}
       >
         {children}
@@ -50,26 +62,6 @@ const Link = (props) => {
       {children}
     </GatsbyLink>
   )
-}
-
-Link.propTypes = {
-  to: PropTypes.string,
-  children: PropTypes.oneOfType(
-    PropTypes.string,
-    PropTypes.array,
-    PropTypes.element
-  ),
-  cmd: PropTypes.bool,
-  href: PropTypes.string,
-  target: PropTypes.string,
-}
-
-Link.defaultProps = {
-  to: `/`,
-  children: `This is nothing but a placholder link text`,
-  cmd: false,
-  href: null,
-  target: null,
 }
 
 export default Link

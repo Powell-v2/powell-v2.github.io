@@ -1,0 +1,55 @@
+module.exports = {
+  root: true,
+  extends: ['airbnb'],
+  plugins: ['react-hooks', '@typescript-eslint'],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: 'tsconfig.json',
+    tsconfigRootDir: __dirname,
+    sourceType: 'module',
+    ecmaVersion: 2018,
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  env: {
+    browser: true,
+    node: true,
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+    'import/resolver': {
+      typescript: true,
+      node: true,
+    },
+  },
+  rules: {
+    'arrow-parens': ['error', 'always'],
+    'brace-style': 'off',
+    'comma-dangle': ['error', 'only-multiline'],
+    'consistent-return': 'off',
+    'no-nested-ternary': 'off',
+    'no-param-reassign': ['error', { props: false }],
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
+    'no-use-before-define': 'off',
+    quotes: 'off',
+    semi: ['error', 'never'],
+    'jsx-a11y/anchor-is-valid': 'warn',
+    'jsx-a11y/label-has-associated-control': 'warn',
+    'jsx-a11y/label-has-for': 'off',
+    'import/prefer-default-export': 'off',
+    'import/extensions': ['error', 'never', {
+      js: 'never',
+      jsx: 'never',
+      ts: 'never',
+      tsx: 'never',
+    }],
+    'react/no-unknown-property': 'off',
+    'react/forbid-prop-types': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+  },
+}

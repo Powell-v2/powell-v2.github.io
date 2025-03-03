@@ -27,27 +27,24 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-a57751453d7a0a312808.js"
+    "url": "webpack-runtime-10f5392ef587500c0200.js"
   },
   {
-    "url": "styles.009bdf980a9e6f0baba1.css"
+    "url": "styles.b3d199a948e6bcf11b7a.css"
   },
   {
-    "url": "framework-f6f38fd56adb9c876181.js"
+    "url": "framework-20933d0e14f3646d622f.js"
   },
   {
-    "url": "app-9cb1b1c7d954c20da1d3.js"
+    "url": "app-dde53b14adcff649ef0d.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "b1b61b1ec1b5233241dce2c9d47a7b73"
-  },
-  {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-0f7f3041e596eb726338.js"
+    "revision": "a760530e558005672b22aa0a86d0894b"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "d07064522b393a70e565db9996fcb509"
+    "revision": "619f57880b8655b9853d8ce4242dbc4a"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -73,6 +70,24 @@ const MessageAPI = {
 
   clearPathResources: event => {
     event.waitUntil(idbKeyval.clear())
+
+    // We detected compilation hash mismatch
+    // we should clear runtime cache as data
+    // files might be out of sync and we should
+    // do fresh fetches for them
+    event.waitUntil(
+      caches.keys().then(function (keyList) {
+        return Promise.all(
+          keyList.map(function (key) {
+            if (key && key.includes(`runtime`)) {
+              return caches.delete(key)
+            }
+
+            return Promise.resolve()
+          })
+        )
+      })
+    )
   },
 
   enableOfflineShell: () => {
@@ -139,7 +154,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-9cb1b1c7d954c20da1d3.js`))) {
+  if (!resources || !(await caches.match(`/app-dde53b14adcff649ef0d.js`))) {
     return await fetch(event.request)
   }
 

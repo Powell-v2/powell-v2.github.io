@@ -6,12 +6,13 @@ import SEO from '../components/seo'
 import Menu from '../components/Menu'
 import Post from '../components/Post'
 
-const BlogPost = ({ data, pageContext }) => {
+const BlogPostTemplate = ({
+  data: { mdx },
+  children,
+  pageContext
+}) => {
   const { previousPost, nextPost } = pageContext
-  const {
-    frontmatter,
-    body,
-  } = data.mdx
+  const { frontmatter } = mdx
 
   return (
     <>
@@ -20,16 +21,17 @@ const BlogPost = ({ data, pageContext }) => {
       <Post
         title={frontmatter.title}
         date={frontmatter.date}
-        body={body}
         // inverse as we are sorting in descending order
         previousPost={nextPost}
         nextPost={previousPost}
-      />
+      >
+        {children}
+      </Post>
     </>
   )
 }
 
-BlogPost.propTypes = {
+BlogPostTemplate.propTypes = {
   pageContext: PropTypes.shape({
     id: PropTypes.string,
     previousPost: PropTypes.shape({
@@ -48,9 +50,9 @@ BlogPost.propTypes = {
         title: PropTypes.string,
         date: PropTypes.string,
       }),
-      body: PropTypes.string,
     }),
   }).isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export const blogPostQuery = graphql`
@@ -63,9 +65,8 @@ export const blogPostQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
       }
-      body
     }
   }
 `
 
-export default BlogPost
+export default BlogPostTemplate

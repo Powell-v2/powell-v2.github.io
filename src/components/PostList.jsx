@@ -18,17 +18,14 @@ const PostList = ({
   const posts = useStaticQuery(graphql`
     query {
       allMdx(
-        sort: {
-          fields: frontmatter___date,
-          order: DESC
-        }
-        filter: {
-          frontmatter: { published: { eq: true }}
-        }
+        sort: {frontmatter: {date: DESC}}
+        filter: {frontmatter: {published: {eq: true}}}
       ) {
         edges {
           node {
-            slug
+            fields {
+              slug
+            }
             id
             frontmatter {
               title
@@ -47,7 +44,7 @@ const PostList = ({
         .map(({
           node: {
             id,
-            slug,
+            fields,
             frontmatter,
             body,
           }
@@ -58,7 +55,7 @@ const PostList = ({
           >
             {customBulletPoint}
             <Link
-              to={slug}
+              to={fields.slug}
               cmd={cmd}
               tabIndex={0}
               css={[...linkStyle]}

@@ -14,9 +14,9 @@ const link = css`
 const Link = (props: {
   to: string,
   children: ReactNode,
-  cmd: boolean,
-  href: string,
-  target: string,
+  cmd?: boolean,
+  target?: string,
+  href?: string,
   [key: string]: any
 }) => {
   const {

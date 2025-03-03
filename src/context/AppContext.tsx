@@ -1,15 +1,17 @@
-import React, { useState, createContext } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, createContext, ReactNode } from 'react'
 
 const AppContext = createContext({
   isMenuOpen: false,
   toggleMenuState: () => {},
 })
 
-export const AppContextProvider = ({ children }) => {
+export const AppContextProvider = (props: {
+  children: ReactNode,
+}) => {
+  const { children } = props
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const toggleMenuState = (bool) => setIsMenuOpen(bool)
+  const toggleMenuState = (isOpen: boolean) => setIsMenuOpen(isOpen)
 
   return (
     <AppContext.Provider
@@ -21,10 +23,6 @@ export const AppContextProvider = ({ children }) => {
       {children}
     </AppContext.Provider>
   )
-}
-
-AppContextProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default AppContext

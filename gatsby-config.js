@@ -17,17 +17,19 @@ const gatsbyConfig = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 768,
-              quality: 100,
-              withWebp: true,
-              tracedSVG: true,
+        mdxOptions: {
+          remarkPlugins: [
+            {
+              resolve: "gatsby-remark-images",
+              options: {
+                maxWidth: 768,
+                quality: 100,
+                withWebp: true,
+                tracedSVG: true,
+              }
             }
-          }
-        ]
+          ]
+        },
       },
     },
     {

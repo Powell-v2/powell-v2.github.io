@@ -19,13 +19,8 @@ const onCreateNode = ({ node, getNode, actions }) => {
 const createPages = async ({ graphql, actions }) => graphql(`
   query loadPublishedBlogPosts {
     allMdx (
-      sort: {
-        fields: frontmatter___date,
-        order: DESC
-      }
-      filter: {
-        frontmatter: { published: { eq: true }}
-      }
+      sort: {frontmatter: {date: DESC}}
+      filter: {frontmatter: {published: {eq: true}}}
     ) {
       edges {
         next {
@@ -46,6 +41,9 @@ const createPages = async ({ graphql, actions }) => graphql(`
         }
         node {
           id
+          internal {
+            contentFilePath
+          }
           fields {
             slug
           }
@@ -57,13 +55,15 @@ const createPages = async ({ graphql, actions }) => graphql(`
     return Promise.reject(result.errors)
   }
 
+  const postTemplate = path.resolve(`./src/templates/BlogPostTemplate.jsx`)
+
   const { createPage } = actions
 
   // @ts-expect-error
   result.data.allMdx.edges.forEach(({ node, next, previous }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/BlogPost.jsx`),
+      component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
         id: node.id,
         nextPost: next ? {

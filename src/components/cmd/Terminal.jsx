@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { navigate } from '@reach/router'
+import { navigate } from 'gatsby'
 import { css } from '@emotion/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun } from '@fortawesome/free-solid-svg-icons'

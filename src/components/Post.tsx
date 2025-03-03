@@ -1,10 +1,8 @@
-import React, { useContext } from 'react'
-import PropTypes from 'prop-types'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+import React, { ReactNode, useContext } from 'react'
 import { css } from '@emotion/core'
 
 import AppContext from '../context/AppContext'
-import Link from './Link'
+import Link from './Link/Link'
 
 import { palette } from '../styles/meta'
 
@@ -152,14 +150,29 @@ const singleSwitchCss = css`
   grid-template-rows: none;
 `
 
-const Post = ({
-  title,
-  date,
-  body,
-  articleClassName,
-  previousPost,
-  nextPost,
+const Post = (props: {
+  title: string,
+  date: string,
+  children: ReactNode,
+  articleClassName: string,
+  previousPost: {
+    path: string,
+    title: string,
+  },
+  nextPost: {
+    path: string,
+    title: string,
+  },
 }) => {
+  const {
+    title,
+    date,
+    children,
+    articleClassName = '',
+    previousPost = null,
+    nextPost = null,
+  } = props
+  // @ts-expect-error
   const { isMenuOpen } = useContext(AppContext)
   const isOutermostPost = !previousPost || !nextPost
 
@@ -181,9 +194,7 @@ const Post = ({
         className={articleClassName}
         css={articleCss}
       >
-        <MDXRenderer>
-          {body}
-        </MDXRenderer>
+        {children}
       </article>
       <footer
         css={[footerCss, isOutermostPost && singleSwitchCss]}
@@ -215,27 +226,6 @@ const Post = ({
       </footer>
     </section>
   )
-}
-
-Post.propTypes = {
-  body: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  articleClassName: PropTypes.string,
-  previousPost: PropTypes.shape({
-    path: PropTypes.string,
-    title: PropTypes.string,
-  }),
-  nextPost: PropTypes.shape({
-    path: PropTypes.string,
-    title: PropTypes.string,
-  }),
-}
-
-Post.defaultProps = {
-  articleClassName: ``,
-  previousPost: null,
-  nextPost: null,
 }
 
 export default Post

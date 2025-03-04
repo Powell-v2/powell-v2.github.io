@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['airbnb'],
+  extends: [],
   plugins: ['react-hooks', '@typescript-eslint'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -34,6 +34,18 @@ module.exports = {
     'no-param-reassign': ['error', { props: false }],
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-use-before-define': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        args: 'all',
+        argsIgnorePattern: '^_',
+        caughtErrors: 'all',
+        caughtErrorsIgnorePattern: '^_',
+        destructuredArrayIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        ignoreRestSiblings: true,
+      },
+    ],
     quotes: 'off',
     semi: ['error', 'never'],
     'jsx-a11y/anchor-is-valid': 'warn',

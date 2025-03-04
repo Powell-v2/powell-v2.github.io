@@ -1,8 +1,15 @@
-import React, { useState, createContext, ReactNode } from 'react'
+import React, {
+  useState, createContext, ReactNode
+} from 'react'
 
-const AppContext = createContext({
+type TAppContext = {
+  isMenuOpen: boolean
+  toggleMenuState: (isOpen: boolean) => void
+}
+
+const AppContext = createContext<TAppContext>({
   isMenuOpen: false,
-  toggleMenuState: () => {},
+  toggleMenuState: () => { },
 })
 
 export const AppContextProvider = (props: {

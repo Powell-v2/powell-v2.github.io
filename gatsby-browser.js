@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from "react"
 import { css, Global } from "@emotion/core"
 import { MDXProvider } from "@mdx-js/react"
@@ -11,6 +10,7 @@ import globalStyles from './src/styles/global'
 import { linkHighlighted } from './src/styles/shared'
 
 import './src/styles/global.css'
+import './src/styles/style-rich.css'
 import 'normalize.css/normalize.css'
 
 const components = {

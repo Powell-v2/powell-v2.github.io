@@ -1,6 +1,7 @@
-// import type { GatsbyConfig } from "gatsby"
+import type { GatsbyConfig } from "gatsby"
 
-const gatsbyConfig = {
+const gatsbyConfig: GatsbyConfig = {
+  graphqlTypegen: true,
   siteMetadata: {
     title: `Dream.Code.Sleep.Repeat.`,
     description: `Personal website & blog of Pavel Yermolin.`,
@@ -46,6 +47,13 @@ const gatsbyConfig = {
         path: `${__dirname}/src/posts`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -65,4 +73,4 @@ const gatsbyConfig = {
   ],
 }
 
-module.exports = gatsbyConfig
+export default gatsbyConfig
